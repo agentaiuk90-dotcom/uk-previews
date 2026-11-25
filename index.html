@@ -1,307 +1,287 @@
 <!DOCTYPE html>
-<html lang="en-GB" class="dark">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LocalWeb UK Studio — 11,520+ Agency-Grade Websites for £60/yr</title>
-  <meta name="description" content="Explore 11,520 unique, agency-grade UK trade & local business websites. Live preview, instant .co.uk domain check, custom logo upload & launch in 24h for £60/year." />
+  <title>LocalWeb UK — Curated Gallery of 11,520 Non-Repeating Websites (£60/yr)</title>
+  <meta name="description" content="Curated gallery of 11,520 unique, agency-grade websites for UK businesses. Live preview, instant .co.uk Nominet RDAP check, custom logo & launch in 24 hours for £60/yr." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Plus Jakarta Sans', 'sans-serif'],
-            serif: ['Instrument Serif', 'serif'],
-          }
-        }
-      }
-    };
-  </script>
   <style>
-    body {
-      background: #050608;
-      color: #f4f4f5;
-      overflow-x: hidden;
-    }
-    .ambient-grid {
-      background-image:
-        radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.18), transparent 42%),
-        radial-gradient(circle at 82% 8%, rgba(16, 185, 129, 0.14), transparent 38%),
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
-    }
-    .glass {
-      background: rgba(15, 17, 23, 0.72);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .card-hover {
-      transition: transform 0.22s cubic-bezier(.22,1,.36,1), border-color 0.22s, box-shadow 0.22s;
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      border-color: rgba(129, 140, 248, 0.45);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(129, 140, 248, 0.15);
-    }
+    body { background: #f6f6f7; color: #111113; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    .font-editorial { font-family: 'Instrument Serif', serif; }
+    .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Land-book / OnePageLove Tall Interactive Showcase Card */
+    .lb-card {
+      background: #ffffff;
+      border: 1px solid rgba(17, 17, 19, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .lb-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(17, 17, 19, 0.18);
+      box-shadow: 0 22px 48px rgba(17, 17, 19, 0.09);
+    }
+    .lb-frame {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(17, 17, 19, 0.07);
+    }
+    .lb-viewport {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .lb-scroll-inner {
+      transition: transform 0.75s cubic-bezier(.22,1,.36,1);
+    }
+    .lb-card:hover .lb-scroll-inner {
+      transform: translateY(-68px);
+    }
+    .lb-actions {
+      position: absolute;
+      inset: auto 12px 12px 12px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 10;
+    }
+    .lb-card:hover .lb-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body class="ambient-grid min-h-screen antialiased selection:bg-indigo-500/40 selection:text-white">
+<body class="min-h-screen">
 
-  <!-- Sticky Glass Navbar -->
-  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#050608]/80 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-      <a href="#" class="flex items-center gap-3">
-        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-emerald-400 font-display text-sm font-extrabold text-white shadow-lg shadow-indigo-500/25">LW</span>
-        <div>
-          <div class="font-display text-sm font-extrabold tracking-tight text-white">LocalWeb UK</div>
-          <div class="text-[11px] text-zinc-400">11,520+ Unique Layouts</div>
-        </div>
-      </a>
+  <!-- Crisp Editorial Top Navbar (Land-book / Landingfolio Style) -->
+  <header class="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5">
+      <div class="flex items-center gap-7">
+        <a href="#" class="flex items-center gap-2.5">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 font-display text-xs font-extrabold text-white">LW</span>
+          <span class="font-display text-[15px] font-extrabold tracking-tight text-zinc-950">LocalWeb<span class="text-zinc-400 font-semibold">.uk</span></span>
+        </a>
+        <nav class="hidden items-center gap-6 text-[13px] font-medium text-zinc-500 md:flex">
+          <a href="#gallery" class="text-zinc-950 font-semibold">Websites <span class="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] text-zinc-600">11,520</span></a>
+          <a href="#how" class="hover:text-zinc-950 transition">How it works</a>
+          <a href="#pricing" class="hover:text-zinc-950 transition">Pricing (£60/yr)</a>
+        </nav>
+      </div>
 
-      <nav class="hidden items-center gap-8 text-sm font-medium text-zinc-400 md:flex">
-        <a href="#catalog" class="hover:text-white transition">Layout Store</a>
-        <a href="#how" class="hover:text-white transition">How It Works</a>
-        <a href="#pricing" class="hover:text-white transition">£60/yr All-In</a>
-      </nav>
+      <!-- Inline Search in Navbar (Landingfolio style) -->
+      <div class="hidden max-w-md flex-1 lg:block">
+        <input id="navSearch" type="text" placeholder="Search 11,520 designs — e.g. Swiss, Plumber, Dark, UK-04812..." class="w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:bg-white focus:outline-none transition" />
+      </div>
 
-      <div class="flex items-center gap-3">
-        <button onclick="openRandomPreview()" class="hidden rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-semibold text-zinc-200 hover:bg-white/10 sm:inline-flex items-center gap-1.5 transition">
-          ✦ Surprise Layout
+      <div class="flex items-center gap-2.5">
+        <button onclick="openRandomPreview()" class="hidden rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-xs font-semibold text-zinc-700 hover:border-zinc-400 hover:text-zinc-950 sm:inline-flex items-center gap-1.5 transition cursor-pointer">
+          ↻ Shuffle
         </button>
-        <button onclick="openDrawer()" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-xs font-bold text-zinc-950 shadow-lg hover:bg-zinc-200 transition">
-          <span>Order Bag</span>
-          <span id="bagCount" class="rounded-md bg-zinc-900 px-1.5 py-0.5 text-[10px] text-white">0</span>
+        <button onclick="openDrawer()" class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 transition cursor-pointer">
+          <span>Order £60/yr</span>
+          <span id="bagCount" class="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">0</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative mx-auto max-w-7xl px-5 pb-16 pt-16 md:pt-24">
-    <div class="mx-auto max-w-4xl text-center">
-      <div class="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold text-indigo-300">
-        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        11,520 Non-Repeating UK Layouts · Live in 24 Hours · £60/year All-In
-      </div>
-
-      <h1 class="mt-7 font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl leading-[1.03]">
-        Agency-grade websites that turn UK searches into
-        <span class="font-serif italic font-normal bg-gradient-to-r from-indigo-300 via-white to-emerald-300 bg-clip-text text-transparent">booked calls.</span>
-      </h1>
-
-      <p class="mx-auto mt-6 max-w-2xl text-base text-zinc-400 sm:text-lg leading-relaxed">
-        Browse <strong class="text-white">11,520 unique, non-repeating website designs</strong> built for UK trades &amp; local businesses. Customise with your logo live, claim your <code class="rounded bg-white/10 px-1.5 py-0.5 text-emerald-300">.co.uk</code> domain, and go live tomorrow — zero monthly agency retainers.
-      </p>
-
-      <!-- Live .co.uk Nominet RDAP Domain Checker -->
-      <div class="mx-auto mt-9 max-w-2xl">
-        <form onsubmit="checkHeroDomain(event)" class="glass flex flex-col gap-2 rounded-2xl p-2 sm:flex-row sm:items-center shadow-2xl shadow-indigo-950/30">
-          <div class="flex flex-1 items-center px-3">
-            <span class="text-zinc-500 text-sm mr-2">https://</span>
-            <input id="heroDomainInput" type="text" placeholder="yourbusiness.co.uk" class="w-full bg-transparent py-2.5 text-sm font-medium text-white placeholder-zinc-500 focus:outline-none" />
+  <!-- Compact Editorial Gallery Hero (OnePageLove / Land-book Proportions) -->
+  <section class="border-b border-zinc-200/80 bg-white">
+    <div class="mx-auto max-w-[1400px] px-5 py-12 md:py-16">
+      <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[11px] font-semibold text-zinc-600">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            11,520 Exclusive, Zero-Repeat UK Designs · Turnkey in 24 Hours
           </div>
-          <button type="submit" class="rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/25 hover:opacity-95 transition cursor-pointer">
-            Check .co.uk Free
-          </button>
-        </form>
-        <div id="heroDomainResult" class="mt-3 min-h-[24px] text-xs font-medium text-zinc-400"></div>
-      </div>
+          <h1 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-[54px] leading-[1.04]">
+            The finest websites for UK businesses — <span class="font-editorial italic font-normal text-zinc-600">yours for £60/yr.</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-zinc-500">
+            Curated across 12 agency-grade design architectures and 20 UK trades. Preview any design live with your own logo, claim a free <strong class="text-zinc-900">.co.uk</strong> domain, and launch tomorrow.
+          </p>
+        </div>
 
-      <!-- Trust Metrics -->
-      <div class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
-        <div class="glass rounded-2xl p-4">
-          <div class="font-display text-2xl font-extrabold text-white">11,520</div>
-          <div class="text-xs text-zinc-400 mt-0.5">Unique Layouts</div>
-        </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="font-display text-2xl font-extrabold text-emerald-400">£60/yr</div>
-          <div class="text-xs text-zinc-400 mt-0.5">.co.uk + Hosting + SSL</div>
-        </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="font-display text-2xl font-extrabold text-white">24 hrs</div>
-          <div class="text-xs text-zinc-400 mt-0.5">Turnkey Launch</div>
-        </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="font-display text-2xl font-extrabold text-indigo-300">0%</div>
-          <div class="text-xs text-zinc-400 mt-0.5">Duplicate Templates</div>
+        <!-- Clean Live .co.uk Nominet RDAP Checker Card -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl border border-zinc-200 bg-[#f9f9fa] p-4">
+            <div class="flex items-center justify-between text-[11px] font-semibold text-zinc-500 mb-2.5">
+              <span>LIVE NOMINET UK DOMAIN CHECKER</span>
+              <span class="text-emerald-600">Included in £60/yr</span>
+            </div>
+            <form onsubmit="checkHeroDomain(event)" class="flex gap-2">
+              <input id="heroDomainInput" type="text" placeholder="yourbusiness.co.uk" class="flex-1 rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-sm text-zinc-950 placeholder-zinc-400 focus:border-zinc-900 focus:outline-none" />
+              <button type="submit" class="rounded-xl bg-zinc-950 px-4 py-2.5 text-xs font-bold text-white hover:bg-zinc-800 transition cursor-pointer">Check Free</button>
+            </form>
+            <div id="heroDomainResult" class="mt-2.5 min-h-[18px] text-xs text-zinc-500">Instant check against official UK registry (RDAP).</div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Featured Live Showcase Strip -->
-    <div id="featuredRow" class="mt-14 grid gap-5 md:grid-cols-3"></div>
   </section>
 
-  <!-- 11,520+ Layout Marketplace -->
-  <section id="catalog" class="mx-auto max-w-7xl px-5 py-14 border-t border-white/10">
-    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-      <div>
-        <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Interactive Marketplace</span>
-        <h2 class="mt-2 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Explore all 11,520 unique layouts</h2>
-        <p class="mt-2 text-sm text-zinc-400">Every design ID (<code class="text-zinc-200">UK-00001</code> to <code class="text-zinc-200">UK-11520</code>) is a distinct combination of trade, architecture, palette, typography &amp; surface.</p>
-      </div>
-      <div class="flex items-center gap-3">
-        <span id="resultsCount" class="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-zinc-300">11,520 layouts</span>
-        <button onclick="resetFilters()" class="rounded-xl border border-white/10 px-3.5 py-1.5 text-xs font-semibold text-zinc-300 hover:bg-white/10 transition">Reset</button>
+  <!-- Sticky Filter Bar (Land-book Style) -->
+  <section id="gallery" class="sticky top-[61px] z-30 border-b border-zinc-200/80 bg-[#f6f6f7]/95 backdrop-blur-md">
+    <div class="mx-auto max-w-[1400px] px-5 py-3">
+      <!-- Category Pills -->
+      <div id="industryPills" class="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-2.5"></div>
+
+      <!-- Precision Sub-Filters -->
+      <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Light / Dark Mode Switch -->
+          <div class="inline-flex rounded-lg border border-zinc-200 bg-white p-0.5 text-xs font-semibold">
+            <button onclick="setMode('all')" id="modeAll" class="rounded-md bg-zinc-950 px-2.5 py-1 text-white">All</button>
+            <button onclick="setMode('light')" id="modeLight" class="rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950">Light</button>
+            <button onclick="setMode('dark')" id="modeDark" class="rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950">Dark</button>
+          </div>
+
+          <select id="archFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
+          <select id="paletteFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
+          <select id="fontFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
+          <button onclick="resetFilters()" class="rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-950 cursor-pointer">Reset</button>
+        </div>
+
+        <div id="resultsCount" class="text-xs font-medium text-zinc-500">11,520 unique websites</div>
       </div>
     </div>
+  </section>
 
-    <!-- Industry Pills -->
-    <div id="industryPills" class="no-scrollbar mt-7 flex gap-2 overflow-x-auto pb-2"></div>
+  <!-- 3-Column Tall Curated Gallery Grid -->
+  <main class="mx-auto max-w-[1400px] px-5 py-8">
+    <div id="catalogGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
 
-    <!-- Filter Bar -->
-    <div class="glass mt-4 grid gap-3 rounded-2xl p-3 sm:grid-cols-2 lg:grid-cols-5">
-      <input id="searchInput" type="text" placeholder="Search ID (e.g. UK-04210) or keyword..." class="rounded-xl border border-white/10 bg-black/40 px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:border-indigo-400 focus:outline-none" />
-      <select id="archFilter" class="rounded-xl border border-white/10 bg-[#0c0e14] px-3 py-2.5 text-xs text-zinc-200 focus:border-indigo-400 focus:outline-none"></select>
-      <select id="paletteFilter" class="rounded-xl border border-white/10 bg-[#0c0e14] px-3 py-2.5 text-xs text-zinc-200 focus:border-indigo-400 focus:outline-none"></select>
-      <select id="fontFilter" class="rounded-xl border border-white/10 bg-[#0c0e14] px-3 py-2.5 text-xs text-zinc-200 focus:border-indigo-400 focus:outline-none"></select>
-      <select id="surfaceFilter" class="rounded-xl border border-white/10 bg-[#0c0e14] px-3 py-2.5 text-xs text-zinc-200 focus:border-indigo-400 focus:outline-none"></select>
-    </div>
-
-    <!-- Grid -->
-    <div id="catalogGrid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-
-    <!-- Load More -->
-    <div class="mt-10 text-center">
-      <button id="loadMoreBtn" onclick="loadMore()" class="rounded-2xl border border-white/15 bg-white/5 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/10 transition cursor-pointer">
-        Load 24 More Unique Layouts
+    <div class="mt-12 text-center">
+      <button id="loadMoreBtn" onclick="loadMore()" class="rounded-full border border-zinc-300 bg-white px-8 py-3 text-xs font-bold text-zinc-900 shadow-sm hover:border-zinc-900 hover:bg-zinc-950 hover:text-white transition cursor-pointer">
+        Load 24 More Exclusive Designs
       </button>
     </div>
-  </section>
+  </main>
 
-  <!-- How It Works -->
-  <section id="how" class="mx-auto max-w-7xl px-5 py-20 border-t border-white/10">
-    <div class="max-w-2xl">
-      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Turnkey Launch</span>
-      <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">From zero to live .co.uk in 3 steps</h2>
-    </div>
-    <div class="mt-10 grid gap-6 md:grid-cols-3">
-      <div class="glass rounded-3xl p-7">
-        <div class="text-xs font-extrabold text-indigo-400">01 / PICK &amp; CUSTOMISE</div>
-        <h3 class="mt-3 font-display text-xl font-bold text-white">Test your brand live</h3>
-        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Open any of the 11,520 layouts in our Live Studio. Type your company name, city, phone number and upload your logo to preview your real site instantly.</p>
-      </div>
-      <div class="glass rounded-3xl p-7">
-        <div class="text-xs font-extrabold text-emerald-400">02 / CLAIM YOUR .CO.UK</div>
-        <h3 class="mt-3 font-display text-xl font-bold text-white">One flat £60/yr payment</h3>
-        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Check availability via Nominet RDAP right inside the checkout drawer and pay securely via Revolut. No hidden setup fees or monthly retainers.</p>
-      </div>
-      <div class="glass rounded-3xl p-7">
-        <div class="text-xs font-extrabold text-violet-400">03 / LIVE IN 24 HOURS</div>
-        <h3 class="mt-3 font-display text-xl font-bold text-white">Domain, SSL &amp; ZIP delivered</h3>
-        <p class="mt-2 text-sm leading-relaxed text-zinc-400">We register your .co.uk domain, connect HTTPS SSL hosting, publish your tailored site, and send you full source ownership as a ZIP archive.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Comparison -->
-  <section id="pricing" class="mx-auto max-w-5xl px-5 py-20 border-t border-white/10">
-    <div class="relative overflow-hidden rounded-3xl border border-indigo-400/30 bg-gradient-to-br from-indigo-950/70 via-[#0d101b] to-emerald-950/40 p-8 sm:p-12 shadow-2xl">
-      <div class="grid gap-10 md:grid-cols-2 md:items-center">
-        <div>
-          <span class="inline-flex rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-bold text-emerald-300">All-Inclusive UK Turnkey</span>
-          <h2 class="mt-4 font-display text-3xl font-extrabold text-white sm:text-4xl">Everything included. Zero monthly bills.</h2>
-          <p class="mt-3 text-sm text-zinc-300 leading-relaxed">Traditional UK web agencies charge £1,500–£3,000 upfront plus £50/mo hosting. With LocalWeb UK you get an agency-grade design, your own .co.uk domain, and fast global hosting for one simple yearly price.</p>
-          <div class="mt-6 flex items-baseline gap-2">
-            <span class="font-display text-5xl font-extrabold text-white">£60</span>
-            <span class="text-sm font-medium text-zinc-400">/ year total · no VAT surprises</span>
+  <!-- Minimal Editorial How It Works + £60/yr Pricing -->
+  <section id="how" class="border-t border-zinc-200 bg-white py-20">
+    <div class="mx-auto max-w-[1400px] px-5">
+      <div class="grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Turnkey Studio</span>
+          <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">Agency craft without the £50,000 invoice.</h2>
+          <p class="mt-4 text-sm leading-relaxed text-zinc-500">Every design in our gallery is mathematically unique — combining distinct layouts, editorial typography, and tailored UK trade copy. Pick your edition, test it live with your logo, and we handle the rest.</p>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-3 lg:col-span-7">
+          <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
+            <div class="font-mono text-xs font-bold text-zinc-400">01</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Pick &amp; Personalise</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Open any of the 11,520 editions in Live Studio. Enter your business name, city, phone and logo to preview immediately.</p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
+            <div class="font-mono text-xs font-bold text-zinc-400">02</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Claim Your .co.uk</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Check domain availability live and pay one flat £60/year via Revolut. Zero monthly agency fees.</p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
+            <div class="font-mono text-xs font-bold text-zinc-400">03</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Live in 24 Hours</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">We register your .co.uk, attach HTTPS SSL hosting, publish your site and send your full source ZIP.</p>
           </div>
         </div>
-        <div class="glass rounded-2xl p-6 space-y-3 text-sm text-zinc-200">
-          <div class="flex items-center gap-3"><span class="text-emerald-400 font-bold">✓</span> Any 1 of 11,520 exclusive layouts</div>
-          <div class="flex items-center gap-3"><span class="text-emerald-400 font-bold">✓</span> Free <code class="text-emerald-300">.co.uk</code> domain registration (1 year)</div>
-          <div class="flex items-center gap-3"><span class="text-emerald-400 font-bold">✓</span> High-speed global hosting + HTTPS SSL</div>
-          <div class="flex items-center gap-3"><span class="text-emerald-400 font-bold">✓</span> Free custom logo integration &amp; copy tailoring</div>
-          <div class="flex items-center gap-3"><span class="text-emerald-400 font-bold">✓</span> Click-to-call mobile optimisation &amp; SEO tags</div>
-          <button onclick="openDrawer()" class="mt-4 w-full rounded-xl bg-white py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
-            Claim Your Website — £60/yr →
-          </button>
+      </div>
+
+      <!-- Pricing Band -->
+      <div id="pricing" class="mt-16 rounded-3xl bg-zinc-950 p-8 text-white sm:p-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+        <div class="max-w-xl">
+          <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">All-Inclusive UK Package</span>
+          <h3 class="mt-4 font-display text-3xl font-extrabold sm:text-4xl">£60 / year — everything included.</h3>
+          <p class="mt-2 text-sm text-zinc-400">1 exclusive layout edition · .co.uk domain registration · 1-year global hosting · HTTPS SSL · free logo setup · mobile SEO.</p>
         </div>
+        <button onclick="openDrawer()" class="shrink-0 rounded-full bg-white px-8 py-4 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
+          Order Your Website — £60/yr →
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-10 text-center text-xs text-zinc-500">
-    <div class="mx-auto max-w-7xl px-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-      <span>© 2026 LocalWeb UK Studio · 11,520 Non-Repeating Layouts</span>
-      <span>Support: <a href="mailto:agentaiuk90@gmail.com" class="text-zinc-300 hover:text-white">agentaiuk90@gmail.com</a></span>
+  <footer class="border-t border-zinc-200 bg-[#f6f6f7] py-8 text-xs text-zinc-500">
+    <div class="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-2 px-5 sm:flex-row">
+      <span>© 2026 LocalWeb UK · 11,520 Curated Non-Repeating Designs</span>
+      <span>Contact: <a href="mailto:agentaiuk90@gmail.com" class="font-semibold text-zinc-800 hover:underline">agentaiuk90@gmail.com</a></span>
     </div>
   </footer>
 
-  <!-- Slide-over Checkout & Customization Drawer -->
-  <div id="drawerBackdrop" onclick="closeDrawer()" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm"></div>
-  <aside id="orderDrawer" class="fixed right-0 top-0 z-50 hidden h-full w-full max-w-md overflow-y-auto border-l border-white/10 bg-[#0b0d13] p-6 shadow-2xl">
-    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+  <!-- Clean Editorial Slide-over Order Drawer -->
+  <div id="drawerBackdrop" onclick="closeDrawer()" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-xs"></div>
+  <aside id="orderDrawer" class="fixed right-0 top-0 z-50 hidden h-full w-full max-w-md overflow-y-auto border-l border-zinc-200 bg-white p-6 shadow-2xl">
+    <div class="flex items-center justify-between border-b border-zinc-200 pb-4">
       <div>
-        <div class="font-display text-lg font-extrabold text-white">Your Turnkey Website</div>
-        <div class="text-xs text-zinc-400">£60/yr all-inclusive · .co.uk + Hosting + SSL</div>
+        <div class="font-display text-lg font-extrabold text-zinc-950">Order Turnkey Website</div>
+        <div class="text-xs text-zinc-500">£60/yr all-in · .co.uk + Hosting + SSL</div>
       </div>
-      <button onclick="closeDrawer()" class="rounded-lg border border-white/10 px-2.5 py-1 text-xs text-zinc-400 hover:text-white">✕</button>
+      <button onclick="closeDrawer()" class="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 cursor-pointer">✕</button>
     </div>
 
     <div class="mt-5 space-y-4">
-      <div class="rounded-2xl border border-indigo-400/25 bg-indigo-500/10 p-4">
-        <div class="text-[11px] font-bold uppercase tracking-wider text-indigo-300">Selected Layout</div>
-        <div id="drawerLayoutTitle" class="mt-1 font-display text-base font-bold text-white">UK-00001 — Choose any layout</div>
-        <div id="drawerLayoutMeta" class="text-xs text-zinc-400 mt-0.5">Select from catalog or keep default</div>
+      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Selected Edition</div>
+        <div id="drawerLayoutTitle" class="mt-1 font-display text-sm font-extrabold text-zinc-950">UK-00001</div>
+        <div id="drawerLayoutMeta" class="text-xs text-zinc-500 mt-0.5"></div>
       </div>
 
       <div>
-        <label class="text-xs font-semibold text-zinc-300">Desired .co.uk Domain</label>
+        <label class="text-xs font-semibold text-zinc-700">Desired .co.uk Domain</label>
         <div class="mt-1.5 flex gap-2">
-          <input id="drawerDomain" type="text" placeholder="mytradeuk.co.uk" class="flex-1 rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 text-xs text-white focus:border-indigo-400 focus:outline-none" />
-          <button onclick="checkDrawerDomain()" class="rounded-xl border border-white/15 bg-white/10 px-3 text-xs font-bold text-white hover:bg-white/20">Check</button>
+          <input id="drawerDomain" type="text" placeholder="mybusiness.co.uk" class="flex-1 rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          <button onclick="checkDrawerDomain()" class="rounded-xl bg-zinc-950 px-3.5 text-xs font-bold text-white hover:bg-zinc-800 cursor-pointer">Check</button>
         </div>
-        <div id="drawerDomainStatus" class="mt-1.5 text-[11px] text-zinc-400"></div>
+        <div id="drawerDomainStatus" class="mt-1.5 text-[11px] text-zinc-500"></div>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="text-xs font-semibold text-zinc-300">Business Name</label>
-          <input id="drawerBiz" type="text" placeholder="Apex Plumbing Ltd" class="mt-1.5 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 text-xs text-white focus:border-indigo-400 focus:outline-none" />
+          <label class="text-xs font-semibold text-zinc-700">Business Name</label>
+          <input id="drawerBiz" type="text" placeholder="Apex Plumbing Ltd" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
         </div>
         <div>
-          <label class="text-xs font-semibold text-zinc-300">UK City</label>
-          <input id="drawerCity" type="text" placeholder="Manchester" class="mt-1.5 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 text-xs text-white focus:border-indigo-400 focus:outline-none" />
+          <label class="text-xs font-semibold text-zinc-700">UK City</label>
+          <input id="drawerCity" type="text" placeholder="Manchester" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="text-xs font-semibold text-zinc-300">Phone Number</label>
-          <input id="drawerPhone" type="text" placeholder="07700 900123" class="mt-1.5 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 text-xs text-white focus:border-indigo-400 focus:outline-none" />
+          <label class="text-xs font-semibold text-zinc-700">Phone</label>
+          <input id="drawerPhone" type="text" placeholder="07700 900123" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
         </div>
         <div>
-          <label class="text-xs font-semibold text-zinc-300">Your Email</label>
-          <input id="drawerEmail" type="email" placeholder="you@gmail.com" class="mt-1.5 w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2.5 text-xs text-white focus:border-indigo-400 focus:outline-none" />
+          <label class="text-xs font-semibold text-zinc-700">Email</label>
+          <input id="drawerEmail" type="email" placeholder="you@gmail.com" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
         </div>
       </div>
 
       <div>
-        <label class="text-xs font-semibold text-zinc-300">Upload Your Logo (Free — Optional)</label>
-        <input id="drawerLogo" type="file" accept="image/*" class="mt-1.5 block w-full rounded-xl border border-dashed border-white/20 bg-black/30 p-2.5 text-xs text-zinc-400 file:mr-3 file:rounded-lg file:border-0 file:bg-indigo-500/20 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-indigo-300" />
+        <label class="text-xs font-semibold text-zinc-700">Upload Your Logo (Free — Optional)</label>
+        <input id="drawerLogo" type="file" accept="image/*" class="mt-1.5 block w-full rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-2.5 text-xs text-zinc-500 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-950 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white" />
       </div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-xs text-zinc-300 space-y-2">
-        <div class="flex justify-between"><span>Turnkey Website + .co.uk + 1yr Hosting</span><strong class="text-white">£60.00</strong></div>
-        <div class="flex justify-between text-zinc-400"><span>Payment Reference to include:</span><code id="orderRef" class="text-emerald-300 font-bold">UK-00001</code></div>
+      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs space-y-2">
+        <div class="flex justify-between text-zinc-600"><span>Website + .co.uk + 1yr Hosting</span><strong class="text-zinc-950">£60.00</strong></div>
+        <div class="flex justify-between text-zinc-500"><span>Revolut Reference:</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
       </div>
 
-      <a id="revolutPayBtn" href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 py-3.5 text-sm font-extrabold text-zinc-950 shadow-lg hover:opacity-95 transition">
+      <a href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
         Pay £60 via Revolut →
       </a>
-
-      <button onclick="sendOrderEmail()" class="w-full rounded-xl border border-white/15 bg-white/5 py-3 text-xs font-bold text-zinc-200 hover:bg-white/10 transition cursor-pointer">
-        Send Order Brief &amp; Logo Details by Email
+      <button onclick="sendOrderEmail()" class="w-full rounded-full border border-zinc-300 py-3 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition cursor-pointer">
+        Send Brief &amp; Logo Details by Email
       </button>
     </div>
   </aside>
@@ -310,234 +290,189 @@
   <script>
     const E = window.UKLayoutEngine;
     const state = {
-      industry: "all",
-      arch: "all",
-      palette: "all",
-      font: "all",
-      surface: "all",
-      search: "",
-      pageSize: 24,
-      shown: 24,
-      filteredIndices: [],
-      selectedLayout: E.getLayoutByIndex(0)
+      industry: "all", mode: "all", arch: "all", palette: "all", font: "all", search: "",
+      pageSize: 24, shown: 24, filtered: [], selected: E.getLayoutByIndex(0)
     };
 
-    function initFilters() {
-      // Industry pills
-      const pillsEl = document.getElementById("industryPills");
-      const allBtn = `<button onclick="setIndustry('all')" data-ind="all" class="ind-pill shrink-0 rounded-full px-4 py-2 text-xs font-bold transition bg-white text-zinc-950">All 20 Trades (11,520)</button>`;
-      const otherBtns = E.INDUSTRIES.map(ind =>
-        `<button onclick="setIndustry('${ind.id}')" data-ind="${ind.id}" class="ind-pill shrink-0 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-zinc-300 hover:bg-white/10 transition">${ind.name}</button>`
-      ).join("");
-      pillsEl.innerHTML = allBtn + otherBtns;
+    function init() {
+      const pills = document.getElementById("industryPills");
+      pills.innerHTML =
+        `<button onclick="setIndustry('all')" data-ind="all" class="ind-pill shrink-0 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-semibold text-white">All 20 Trades</button>` +
+        E.INDUSTRIES.map(ind =>
+          `<button onclick="setIndustry('${ind.id}')" data-ind="${ind.id}" class="ind-pill shrink-0 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-600 hover:border-zinc-400 hover:text-zinc-950 transition cursor-pointer">${ind.short}</button>`
+        ).join("");
 
-      // Dropdowns
-      fillSelect("archFilter", "All 6 Architectures", E.ARCHITECTURES);
-      fillSelect("paletteFilter", "All 12 Palettes", E.PALETTES);
-      fillSelect("fontFilter", "All 4 Font Pairings", E.FONTS);
-      fillSelect("surfaceFilter", "All 2 Surface Styles", E.SURFACES);
+      fill("archFilter", "All 12 Architectures", E.ARCHITECTURES);
+      fill("paletteFilter", "All 12 Palettes", E.PALETTES);
+      fill("fontFilter", "All 4 Font Systems", E.FONTS);
 
-      document.getElementById("searchInput").addEventListener("input", e => { state.search = e.target.value.trim().toLowerCase(); applyFilters(); });
+      document.getElementById("navSearch").addEventListener("input", e => { state.search = e.target.value.trim().toLowerCase(); applyFilters(); });
       document.getElementById("archFilter").addEventListener("change", e => { state.arch = e.target.value; applyFilters(); });
       document.getElementById("paletteFilter").addEventListener("change", e => { state.palette = e.target.value; applyFilters(); });
       document.getElementById("fontFilter").addEventListener("change", e => { state.font = e.target.value; applyFilters(); });
-      document.getElementById("surfaceFilter").addEventListener("change", e => { state.surface = e.target.value; applyFilters(); });
+      document.getElementById("drawerDomain").addEventListener("input", updateDrawer);
+
+      applyFilters();
     }
 
-    function fillSelect(id, label, items) {
-      const el = document.getElementById(id);
-      el.innerHTML = `<option value="all">${label}</option>` + items.map(i => `<option value="${i.id}">${i.name}</option>`).join("");
+    function fill(id, label, list) {
+      document.getElementById(id).innerHTML = `<option value="all">${label}</option>` + list.map(x => `<option value="${x.id}">${x.name}</option>`).join("");
     }
 
-    function setIndustry(indId) {
-      state.industry = indId;
-      document.querySelectorAll(".ind-pill").forEach(btn => {
-        const active = btn.dataset.ind === indId;
-        btn.className = active
-          ? "ind-pill shrink-0 rounded-full px-4 py-2 text-xs font-bold transition bg-white text-zinc-950"
-          : "ind-pill shrink-0 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-zinc-300 hover:bg-white/10 transition";
+    function setIndustry(id) {
+      state.industry = id;
+      document.querySelectorAll(".ind-pill").forEach(b => {
+        const on = b.dataset.ind === id;
+        b.className = on
+          ? "ind-pill shrink-0 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-semibold text-white cursor-pointer"
+          : "ind-pill shrink-0 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-600 hover:border-zinc-400 hover:text-zinc-950 transition cursor-pointer";
+      });
+      applyFilters();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      ["All", "Light", "Dark"].forEach(n => {
+        const el = document.getElementById("mode" + n);
+        const on = n.toLowerCase() === m;
+        el.className = on ? "rounded-md bg-zinc-950 px-2.5 py-1 text-white" : "rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950";
       });
       applyFilters();
     }
 
     function resetFilters() {
-      state.industry = "all"; state.arch = "all"; state.palette = "all"; state.font = "all"; state.surface = "all"; state.search = "";
-      document.getElementById("searchInput").value = "";
+      state.industry = "all"; state.mode = "all"; state.arch = "all"; state.palette = "all"; state.font = "all"; state.search = "";
+      document.getElementById("navSearch").value = "";
       document.getElementById("archFilter").value = "all";
       document.getElementById("paletteFilter").value = "all";
       document.getElementById("fontFilter").value = "all";
-      document.getElementById("surfaceFilter").value = "all";
+      setMode("all");
       setIndustry("all");
     }
 
     function applyFilters() {
       const out = [];
-      for (let i = 0; i < E.TOTAL_LAYOUTS; i++) {
-        const l = E.getLayoutByIndex(i);
+      // Bijective coprime permutation so adjacent cards NEVER repeat architecture, palette, photo or trade!
+      const step = 251; // gcd(251, 11520) = 1 => visits all 11,520 layouts exactly once
+      for (let k = 0; k < E.TOTAL_LAYOUTS; k++) {
+        const idx = (k * step + 17) % E.TOTAL_LAYOUTS;
+        const l = E.getLayoutByIndex(idx);
         if (state.industry !== "all" && l.industry.id !== state.industry) continue;
+        if (state.mode !== "all" && l.palette.mode !== state.mode) continue;
         if (state.arch !== "all" && l.arch.id !== state.arch) continue;
         if (state.palette !== "all" && l.palette.id !== state.palette) continue;
         if (state.font !== "all" && l.font.id !== state.font) continue;
-        if (state.surface !== "all" && l.surface.id !== state.surface) continue;
         if (state.search) {
-          const hay = `${l.code} ${l.industry.name} ${l.palette.name} ${l.arch.name} ${l.font.name}`.toLowerCase();
+          const hay = `${l.code} ${l.bizName} ${l.industry.name} ${l.arch.name} ${l.palette.name} ${l.palette.mode} ${l.font.name}`.toLowerCase();
           if (!hay.includes(state.search)) continue;
         }
-        out.push(i);
+        out.push(idx);
       }
-      // Spread variety when showing "all" so the first screen showcases diverse trades & architectures
-      if (state.industry === "all" && !state.search && out.length > 48) {
-        const stepped = [];
-        const step = 37;
-        for (let k = 0; k < out.length; k++) {
-          stepped.push(out[(k * step) % out.length]);
-        }
-        state.filteredIndices = stepped;
-      } else {
-        state.filteredIndices = out;
-      }
+      state.filtered = out;
       state.shown = state.pageSize;
       renderGrid();
     }
 
-    function buildCardHTML(layout) {
-      return `
-        <article class="glass card-hover flex flex-col justify-between rounded-2xl p-3.5">
-          <div>
-            <a href="preview.html?id=${layout.code}" class="block">${E.renderCardThumbnail(layout)}</a>
-            <div class="mt-3.5 flex items-start justify-between gap-2 px-1">
-              <div>
-                <div class="font-display text-sm font-bold text-white">${layout.industry.name}</div>
-                <div class="mt-0.5 text-[11px] text-zinc-400">${layout.arch.name} · ${layout.palette.name}</div>
-              </div>
-              <span class="shrink-0 rounded-md border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[10px] font-semibold text-indigo-300">${layout.code}</span>
-            </div>
-          </div>
-          <div class="mt-4 flex gap-2 px-1">
-            <a href="preview.html?id=${layout.code}" class="flex-1 rounded-xl border border-white/15 bg-white/5 py-2 text-center text-xs font-bold text-white hover:bg-white/10 transition">Live Preview</a>
-            <button onclick="selectAndOrder(${layout.index})" class="flex-1 rounded-xl bg-white py-2 text-xs font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">Order £60</button>
-          </div>
-        </article>`;
-    }
-
-    function renderFeatured() {
-      const picks = [E.getLayoutByIndex(12), E.getLayoutByIndex(641), E.getLayoutByIndex(1498)];
-      document.getElementById("featuredRow").innerHTML = picks.map(buildCardHTML).join("");
-    }
-
     function renderGrid() {
-      const total = state.filteredIndices.length;
-      const slice = state.filteredIndices.slice(0, state.shown);
-      document.getElementById("resultsCount").textContent = `Showing ${slice.length.toLocaleString()} of ${total.toLocaleString()} unique layouts`;
-      document.getElementById("catalogGrid").innerHTML = slice.map(idx => buildCardHTML(E.getLayoutByIndex(idx))).join("");
-      const btn = document.getElementById("loadMoreBtn");
-      btn.style.display = state.shown < total ? "inline-block" : "none";
+      const total = state.filtered.length;
+      const slice = state.filtered.slice(0, state.shown);
+      document.getElementById("resultsCount").textContent = `Showing ${slice.length.toLocaleString()} of ${total.toLocaleString()} unique websites`;
+      document.getElementById("catalogGrid").innerHTML = slice.map(idx => {
+        const l = E.getLayoutByIndex(idx);
+        return `
+          <article class="lb-card">
+            <div class="lb-frame">
+              <a href="preview.html?id=${l.code}" class="block h-full">${E.renderGalleryThumbnail(l)}</a>
+              <div class="lb-actions">
+                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full bg-zinc-950/92 backdrop-blur-md py-2 text-center text-[11px] font-bold text-white shadow-lg hover:bg-zinc-800 transition">Live Preview ↗</a>
+                <button onclick="selectAndOrder(${l.index})" class="rounded-full bg-white/95 backdrop-blur-md px-4 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-zinc-100 transition cursor-pointer">Buy £60</button>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-2 px-4 py-3">
+              <div class="min-w-0">
+                <a href="preview.html?id=${l.code}" class="block truncate font-display text-[13px] font-bold text-zinc-950 hover:underline">${l.bizName}</a>
+                <div class="truncate text-[11px] text-zinc-500">${l.arch.name} · ${l.palette.name}</div>
+              </div>
+              <span class="shrink-0 rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-zinc-600">${l.code}</span>
+            </div>
+          </article>`;
+      }).join("");
+      document.getElementById("loadMoreBtn").style.display = state.shown < total ? "inline-block" : "none";
     }
 
-    function loadMore() {
-      state.shown += state.pageSize;
-      renderGrid();
-    }
+    function loadMore() { state.shown += state.pageSize; renderGrid(); }
+    function openRandomPreview() { window.location.href = `preview.html?id=${E.formatId(Math.floor(Math.random() * E.TOTAL_LAYOUTS))}`; }
+    function selectAndOrder(idx) { state.selected = E.getLayoutByIndex(idx); document.getElementById("bagCount").textContent = "1"; openDrawer(); }
 
-    function openRandomPreview() {
-      const idx = Math.floor(Math.random() * E.TOTAL_LAYOUTS);
-      window.location.href = `preview.html?id=${E.formatId(idx)}`;
-    }
-
-    function selectAndOrder(idx) {
-      state.selectedLayout = E.getLayoutByIndex(idx);
-      document.getElementById("bagCount").textContent = "1";
-      updateDrawerSummary();
-      openDrawer();
-    }
-
-    function updateDrawerSummary() {
-      const l = state.selectedLayout;
-      document.getElementById("drawerLayoutTitle").textContent = `${l.code} — ${l.industry.name}`;
-      document.getElementById("drawerLayoutMeta").textContent = `${l.arch.name} · ${l.palette.name} · ${l.font.name}`;
+    function updateDrawer() {
+      const l = state.selected;
+      document.getElementById("drawerLayoutTitle").textContent = `${l.code} — ${l.bizName}`;
+      document.getElementById("drawerLayoutMeta").textContent = `${l.industry.name} · ${l.arch.name} · ${l.palette.name}`;
       const dom = document.getElementById("drawerDomain").value.trim();
       document.getElementById("orderRef").textContent = dom ? `${l.code} | ${dom}` : l.code;
     }
 
-    function openDrawer() {
-      updateDrawerSummary();
-      document.getElementById("drawerBackdrop").classList.remove("hidden");
-      document.getElementById("orderDrawer").classList.remove("hidden");
-    }
+    function openDrawer() { updateDrawer(); document.getElementById("drawerBackdrop").classList.remove("hidden"); document.getElementById("orderDrawer").classList.remove("hidden"); }
+    function closeDrawer() { document.getElementById("drawerBackdrop").classList.add("hidden"); document.getElementById("orderDrawer").classList.add("hidden"); }
 
-    function closeDrawer() {
-      document.getElementById("drawerBackdrop").classList.add("hidden");
-      document.getElementById("orderDrawer").classList.add("hidden");
-    }
-
-    async function checkRdap(rawDomain) {
-      let d = rawDomain.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, "");
+    async function checkRdap(raw) {
+      let d = raw.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, "");
       if (!d) return { ok: false, msg: "Enter a domain name first." };
       if (!d.endsWith(".co.uk")) d = d.replace(/\.[^.]+$/, "") + ".co.uk";
       try {
         const res = await fetch(`https://rdap.nominet.uk/uk/domain/${encodeURIComponent(d)}`);
         if (res.status === 404) return { ok: true, domain: d, available: true };
         if (res.status === 200) return { ok: true, domain: d, available: false };
-        return { ok: false, domain: d, msg: "Could not verify right now — try again." };
+        return { ok: false, domain: d, msg: "Registry busy — try again." };
       } catch {
-        return { ok: false, domain: d, msg: "Network error checking RDAP." };
+        return { ok: false, domain: d, msg: "Network error checking Nominet RDAP." };
       }
     }
 
     async function checkHeroDomain(e) {
       e.preventDefault();
-      const input = document.getElementById("heroDomainInput").value;
       const out = document.getElementById("heroDomainResult");
-      out.innerHTML = `<span class="text-indigo-300">Checking live Nominet UK registry...</span>`;
-      const r = await checkRdap(input);
+      out.innerHTML = `<span class="text-zinc-700">Checking official Nominet UK registry...</span>`;
+      const r = await checkRdap(document.getElementById("heroDomainInput").value);
       if (r.ok && r.available) {
-        out.innerHTML = `<span class="text-emerald-400 font-bold">✓ ${r.domain} is AVAILABLE!</span> Included free in your £60/yr package. <button onclick="claimDomain('${r.domain}')" class="ml-2 underline text-white font-bold cursor-pointer">Claim now →</button>`;
-      } else if (r.ok && !r.available) {
-        out.innerHTML = `<span class="text-amber-400 font-semibold">✕ ${r.domain} is already taken.</span> Try adding your city (e.g. ${r.domain.replace('.co.uk','manchester.co.uk')}).`;
-      } else {
-        out.innerHTML = `<span class="text-zinc-400">${r.msg}</span>`;
-      }
-    }
-
-    function claimDomain(domain) {
-      document.getElementById("drawerDomain").value = domain;
-      openDrawer();
-      checkDrawerDomain();
-    }
-
-    async function checkDrawerDomain() {
-      const val = document.getElementById("drawerDomain").value;
-      const out = document.getElementById("drawerDomainStatus");
-      out.textContent = "Checking Nominet RDAP...";
-      const r = await checkRdap(val);
-      if (r.ok && r.available) {
-        document.getElementById("drawerDomain").value = r.domain;
-        out.innerHTML = `<span class="text-emerald-400 font-bold">✓ ${r.domain} is AVAILABLE</span>`;
+        out.innerHTML = `<span class="text-emerald-600 font-bold">✓ ${r.domain} is AVAILABLE</span> — included free in £60/yr. <button onclick="claimDomain('${r.domain}')" class="ml-1 underline font-bold text-zinc-950 cursor-pointer">Claim →</button>`;
       } else if (r.ok) {
-        out.innerHTML = `<span class="text-amber-400 font-semibold">✕ ${r.domain} is taken — try another name</span>`;
+        out.innerHTML = `<span class="text-rose-600 font-semibold">✕ ${r.domain} is taken.</span> Try adding your city.`;
       } else {
         out.textContent = r.msg;
       }
-      updateDrawerSummary();
+    }
+
+    function claimDomain(dom) { document.getElementById("drawerDomain").value = dom; openDrawer(); checkDrawerDomain(); }
+
+    async function checkDrawerDomain() {
+      const out = document.getElementById("drawerDomainStatus");
+      out.textContent = "Checking Nominet RDAP...";
+      const r = await checkRdap(document.getElementById("drawerDomain").value);
+      if (r.ok && r.available) {
+        document.getElementById("drawerDomain").value = r.domain;
+        out.innerHTML = `<span class="text-emerald-600 font-bold">✓ ${r.domain} is AVAILABLE</span>`;
+      } else if (r.ok) {
+        out.innerHTML = `<span class="text-rose-600 font-semibold">✕ ${r.domain} is taken</span>`;
+      } else {
+        out.textContent = r.msg;
+      }
+      updateDrawer();
     }
 
     function sendOrderEmail() {
-      const l = state.selectedLayout;
+      const l = state.selected;
       const biz = document.getElementById("drawerBiz").value || "(Business Name)";
       const city = document.getElementById("drawerCity").value || "(City)";
       const phone = document.getElementById("drawerPhone").value || "(Phone)";
       const email = document.getElementById("drawerEmail").value || "(Email)";
       const domain = document.getElementById("drawerDomain").value || "(Desired .co.uk)";
       const subj = encodeURIComponent(`Turnkey Order £60 — ${l.code} — ${biz}`);
-      const body = encodeURIComponent(`Layout ID: ${l.code} (${l.industry.name} / ${l.arch.name} / ${l.palette.name})\nDomain: ${domain}\nBusiness: ${biz}\nCity: ${city}\nPhone: ${phone}\nEmail: ${email}\n\n(Attach your logo file to this email if you uploaded one.)`);
+      const body = encodeURIComponent(`Edition: ${l.code} (${l.industry.name} / ${l.arch.name} / ${l.palette.name})\nDomain: ${domain}\nBusiness: ${biz}\nCity: ${city}\nPhone: ${phone}\nEmail: ${email}`);
       window.location.href = `mailto:agentaiuk90@gmail.com?subject=${subj}&body=${body}`;
     }
 
-    document.getElementById("drawerDomain").addEventListener("input", updateDrawerSummary);
-
-    initFilters();
-    renderFeatured();
-    applyFilters();
+    init();
   </script>
 </body>
 </html>

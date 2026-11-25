@@ -75,7 +75,7 @@
         <nav class="hidden items-center gap-6 text-[13px] font-medium text-zinc-500 md:flex">
           <a href="#gallery" class="text-zinc-950 font-semibold">Websites <span class="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] text-zinc-600">11,520</span></a>
           <a href="#how" class="hover:text-zinc-950 transition">How it works</a>
-          <a href="#pricing" class="hover:text-zinc-950 transition">Pricing (£60/yr)</a>
+          <a href="#pricing" class="hover:text-zinc-950 transition">Pricing (£15 / £60)</a>
         </nav>
       </div>
 
@@ -89,7 +89,7 @@
           ↻ Shuffle
         </button>
         <button onclick="openDrawer()" class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 transition cursor-pointer">
-          <span>Order £60/yr</span>
+          <span>Order · From £15</span>
           <span id="bagCount" class="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">0</span>
         </button>
       </div>
@@ -197,16 +197,41 @@
         </div>
       </div>
 
-      <!-- Pricing Band -->
-      <div id="pricing" class="mt-16 rounded-3xl bg-zinc-950 p-8 text-white sm:p-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-        <div class="max-w-xl">
-          <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">All-Inclusive UK Package</span>
-          <h3 class="mt-4 font-display text-3xl font-extrabold sm:text-4xl">£60 / year — everything included.</h3>
-          <p class="mt-2 text-sm text-zinc-400">1 exclusive layout edition · .co.uk domain registration · 1-year global hosting · HTTPS SSL · free logo setup · mobile SEO.</p>
+      <!-- 2-Tier Pricing Band (£15 ZIP vs £60/yr Turnkey) -->
+      <div id="pricing" class="mt-16 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-3xl border border-zinc-200 bg-[#fafafa] p-8 sm:p-10 flex flex-col justify-between gap-6">
+          <div>
+            <span class="inline-flex rounded-full border border-zinc-200 bg-white px-3 py-1 text-[11px] font-bold text-zinc-700">Instant Download</span>
+            <h3 class="mt-4 font-display text-3xl font-extrabold text-zinc-950">£15 <span class="text-base font-medium text-zinc-500">one-time</span></h3>
+            <p class="mt-2 text-sm text-zinc-600">Buy any single layout edition as a clean, ready-to-host <strong>.ZIP source package</strong> sent directly to your email right after payment.</p>
+            <ul class="mt-5 space-y-2 text-xs text-zinc-600">
+              <li>✓ 1 exclusive layout edition (<code class="text-zinc-900">index.html</code> + assets)</li>
+              <li>✓ Instant automated ZIP delivery after £15 Revolut payment</li>
+              <li>✓ Lifetime ownership — host free on Netlify Drop or GitHub Pages</li>
+              <li>✓ Simple 60-second upload guide included</li>
+            </ul>
+          </div>
+          <button onclick="setPlan('zip'); openDrawer()" class="w-full rounded-full border border-zinc-950 bg-white py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">
+            Buy Layout ZIP — £15 →
+          </button>
         </div>
-        <button onclick="openDrawer()" class="shrink-0 rounded-full bg-white px-8 py-4 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
-          Order Your Website — £60/yr →
-        </button>
+
+        <div class="rounded-3xl bg-zinc-950 p-8 text-white sm:p-10 flex flex-col justify-between gap-6">
+          <div>
+            <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">Most Popular · Done-For-You</span>
+            <h3 class="mt-4 font-display text-3xl font-extrabold">£60 <span class="text-base font-medium text-zinc-400">/ year all-in</span></h3>
+            <p class="mt-2 text-sm text-zinc-400">Complete turnkey launch — we register your <strong class="text-white">.co.uk</strong> domain, set up hosting &amp; SSL, insert your logo &amp; details, and go live in 24 hours.</p>
+            <ul class="mt-5 space-y-2 text-xs text-zinc-300">
+              <li>✓ Everything in the £15 Layout ZIP package</li>
+              <li>✓ Free <code class="text-emerald-300">.co.uk</code> domain registration (1 year)</li>
+              <li>✓ High-speed global hosting + HTTPS SSL certificate</li>
+              <li>✓ Free logo integration, phone/email tailoring &amp; SEO setup</li>
+            </ul>
+          </div>
+          <button onclick="setPlan('turnkey'); openDrawer()" class="w-full rounded-full bg-white py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
+            Order Turnkey .co.uk — £60/yr →
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -223,20 +248,26 @@
   <aside id="orderDrawer" class="fixed right-0 top-0 z-50 hidden h-full w-full max-w-md overflow-y-auto border-l border-zinc-200 bg-white p-6 shadow-2xl">
     <div class="flex items-center justify-between border-b border-zinc-200 pb-4">
       <div>
-        <div class="font-display text-lg font-extrabold text-zinc-950">Order Turnkey Website</div>
-        <div class="text-xs text-zinc-500">£60/yr all-in · .co.uk + Hosting + SSL</div>
+        <div class="font-display text-lg font-extrabold text-zinc-950">Order Website Edition</div>
+        <div class="text-xs text-zinc-500">Choose £15 instant ZIP or £60/yr turnkey .co.uk</div>
       </div>
       <button onclick="closeDrawer()" class="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 cursor-pointer">✕</button>
     </div>
 
     <div class="mt-5 space-y-4">
+      <!-- Plan Switcher (£15 ZIP vs £60 Turnkey) -->
+      <div class="grid grid-cols-2 gap-2 rounded-xl border border-zinc-200 bg-zinc-100 p-1 text-xs font-bold">
+        <button id="planZipBtn" onclick="setPlan('zip')" class="rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer">Layout ZIP — £15</button>
+        <button id="planTurnkeyBtn" onclick="setPlan('turnkey')" class="rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer">Turnkey .co.uk — £60</button>
+      </div>
+
       <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
         <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Selected Edition</div>
         <div id="drawerLayoutTitle" class="mt-1 font-display text-sm font-extrabold text-zinc-950">UK-00001</div>
         <div id="drawerLayoutMeta" class="text-xs text-zinc-500 mt-0.5"></div>
       </div>
 
-      <div>
+      <div id="drawerDomainBlock">
         <label class="text-xs font-semibold text-zinc-700">Desired .co.uk Domain</label>
         <div class="mt-1.5 flex gap-2">
           <input id="drawerDomain" type="text" placeholder="mybusiness.co.uk" class="flex-1 rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
@@ -273,11 +304,11 @@
       </div>
 
       <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs space-y-2">
-        <div class="flex justify-between text-zinc-600"><span>Website + .co.uk + 1yr Hosting</span><strong class="text-zinc-950">£60.00</strong></div>
+        <div class="flex justify-between text-zinc-600"><span id="drawerSummaryLabel">Website + .co.uk + 1yr Hosting</span><strong id="drawerPriceLabel" class="text-zinc-950">£60.00</strong></div>
         <div class="flex justify-between text-zinc-500"><span>Revolut Reference:</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
       </div>
 
-      <a href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
+      <a id="revolutPayBtn" href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
         Pay £60 via Revolut →
       </a>
       <button onclick="sendOrderEmail()" class="w-full rounded-full border border-zinc-300 py-3 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition cursor-pointer">
@@ -291,7 +322,7 @@
     const E = window.UKLayoutEngine;
     const state = {
       industry: "all", mode: "all", arch: "all", palette: "all", font: "all", search: "",
-      pageSize: 24, shown: 24, filtered: [], selected: E.getLayoutByIndex(0)
+      pageSize: 24, shown: 24, filtered: [], selected: E.getLayoutByIndex(0), plan: "turnkey"
     };
 
     function init() {
@@ -311,6 +342,7 @@
       document.getElementById("paletteFilter").addEventListener("change", e => { state.palette = e.target.value; applyFilters(); });
       document.getElementById("fontFilter").addEventListener("change", e => { state.font = e.target.value; applyFilters(); });
       document.getElementById("drawerDomain").addEventListener("input", updateDrawer);
+      document.getElementById("drawerEmail").addEventListener("input", updateDrawer);
 
       applyFilters();
     }
@@ -384,8 +416,9 @@
             <div class="lb-frame">
               <a href="preview.html?id=${l.code}" class="block h-full">${E.renderGalleryThumbnail(l)}</a>
               <div class="lb-actions">
-                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full bg-zinc-950/92 backdrop-blur-md py-2 text-center text-[11px] font-bold text-white shadow-lg hover:bg-zinc-800 transition">Live Preview ↗</a>
-                <button onclick="selectAndOrder(${l.index})" class="rounded-full bg-white/95 backdrop-blur-md px-4 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-zinc-100 transition cursor-pointer">Buy £60</button>
+                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full bg-zinc-950/92 backdrop-blur-md py-2 text-center text-[11px] font-bold text-white shadow-lg hover:bg-zinc-800 transition">Preview ↗</a>
+                <button onclick="selectAndOrder(${l.index}, 'zip')" class="rounded-full bg-white/95 backdrop-blur-md px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-zinc-100 transition cursor-pointer">ZIP £15</button>
+                <button onclick="selectAndOrder(${l.index}, 'turnkey')" class="rounded-full bg-emerald-500 px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-emerald-400 transition cursor-pointer">Full £60</button>
               </div>
             </div>
             <div class="flex items-center justify-between gap-2 px-4 py-3">
@@ -402,14 +435,48 @@
 
     function loadMore() { state.shown += state.pageSize; renderGrid(); }
     function openRandomPreview() { window.location.href = `preview.html?id=${E.formatId(Math.floor(Math.random() * E.TOTAL_LAYOUTS))}`; }
-    function selectAndOrder(idx) { state.selected = E.getLayoutByIndex(idx); document.getElementById("bagCount").textContent = "1"; openDrawer(); }
+    function selectAndOrder(idx, plan) {
+      state.selected = E.getLayoutByIndex(idx);
+      document.getElementById("bagCount").textContent = "1";
+      setPlan(plan || "turnkey");
+      openDrawer();
+    }
+
+    function setPlan(plan) {
+      state.plan = plan === "zip" ? "zip" : "turnkey";
+      const isZip = state.plan === "zip";
+      document.getElementById("planZipBtn").className = isZip
+        ? "rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer"
+        : "rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer";
+      document.getElementById("planTurnkeyBtn").className = !isZip
+        ? "rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer"
+        : "rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer";
+      document.getElementById("drawerDomainBlock").style.display = isZip ? "none" : "block";
+      updateDrawer();
+    }
 
     function updateDrawer() {
       const l = state.selected;
+      const isZip = state.plan === "zip";
       document.getElementById("drawerLayoutTitle").textContent = `${l.code} — ${l.bizName}`;
       document.getElementById("drawerLayoutMeta").textContent = `${l.industry.name} · ${l.arch.name} · ${l.palette.name}`;
       const dom = document.getElementById("drawerDomain").value.trim();
-      document.getElementById("orderRef").textContent = dom ? `${l.code} | ${dom}` : l.code;
+      const email = document.getElementById("drawerEmail").value.trim();
+      if (isZip) {
+        document.getElementById("drawerSummaryLabel").textContent = "Layout Source Package (.ZIP) — Instant Delivery";
+        document.getElementById("drawerPriceLabel").textContent = "£15.00";
+        document.getElementById("orderRef").textContent = email ? `ZIP ${l.code} ${email}` : `ZIP ${l.code}`;
+        const btn = document.getElementById("revolutPayBtn");
+        btn.href = "https://revolut.me/mantosz90/15gbp";
+        btn.textContent = "Pay £15 via Revolut (Instant ZIP) →";
+      } else {
+        document.getElementById("drawerSummaryLabel").textContent = "Website + .co.uk + 1yr Hosting + SSL";
+        document.getElementById("drawerPriceLabel").textContent = "£60.00";
+        document.getElementById("orderRef").textContent = dom ? `${l.code} | ${dom}` : l.code;
+        const btn = document.getElementById("revolutPayBtn");
+        btn.href = "https://revolut.me/mantosz90/60gbp";
+        btn.textContent = "Pay £60 via Revolut (Turnkey) →";
+      }
     }
 
     function openDrawer() { updateDrawer(); document.getElementById("drawerBackdrop").classList.remove("hidden"); document.getElementById("orderDrawer").classList.remove("hidden"); }

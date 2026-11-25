@@ -308,7 +308,7 @@
         <div class="flex justify-between text-zinc-500"><span>Revolut Reference:</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
       </div>
 
-      <a id="revolutPayBtn" href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
+      <a id="revolutPayBtn" href="https://revolut.me/mantosz90" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
         Pay £60 via Revolut →
       </a>
       <button onclick="sendOrderEmail()" class="w-full rounded-full border border-zinc-300 py-3 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition cursor-pointer">
@@ -467,14 +467,14 @@
         document.getElementById("drawerPriceLabel").textContent = "£15.00";
         document.getElementById("orderRef").textContent = email ? `ZIP ${l.code} ${email}` : `ZIP ${l.code}`;
         const btn = document.getElementById("revolutPayBtn");
-        btn.href = "https://revolut.me/mantosz90/15gbp";
+        btn.href = "https://revolut.me/mantosz90";
         btn.textContent = "Pay £15 via Revolut (Instant ZIP) →";
       } else {
         document.getElementById("drawerSummaryLabel").textContent = "Website + .co.uk + 1yr Hosting + SSL";
         document.getElementById("drawerPriceLabel").textContent = "£60.00";
         document.getElementById("orderRef").textContent = dom ? `${l.code} | ${dom}` : l.code;
         const btn = document.getElementById("revolutPayBtn");
-        btn.href = "https://revolut.me/mantosz90/60gbp";
+        btn.href = "https://revolut.me/mantosz90";
         btn.textContent = "Pay £60 via Revolut (Turnkey) →";
       }
     }

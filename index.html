@@ -393,32 +393,30 @@
     </div>
   </footer>
 
-  <!-- Clean Editorial Slide-over Order Drawer -->
+  <!-- Clean Editorial Slide-over Shopping Cart + Full Client Website Brief Builder -->
   <div id="drawerBackdrop" onclick="closeDrawer()" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-xs"></div>
-  <aside id="orderDrawer" class="fixed right-0 top-0 z-50 hidden h-full w-full max-w-md overflow-y-auto border-l border-zinc-200 bg-white p-6 shadow-2xl">
+  <aside id="orderDrawer" class="fixed right-0 top-0 z-50 hidden h-full w-full max-w-lg overflow-y-auto border-l border-zinc-200 bg-white p-6 shadow-2xl">
     <div class="flex items-center justify-between border-b border-zinc-200 pb-4">
       <div>
-        <div class="font-display text-lg font-extrabold text-zinc-950">Order Website Edition</div>
-        <div class="text-xs text-zinc-500">Choose £15 instant ZIP or £60/yr turnkey .co.uk</div>
+        <div class="font-display text-lg font-extrabold text-zinc-950">Your Cart &amp; Website Brief</div>
+        <div class="text-xs text-zinc-500">Pick £15 ZIP or £60/yr Turnkey &amp; tell us what to put on your site</div>
       </div>
       <button onclick="closeDrawer()" class="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 cursor-pointer">✕</button>
     </div>
 
-    <div class="mt-5 space-y-4">
-      <!-- Plan Switcher (£15 ZIP vs £60 Turnkey) -->
-      <div class="grid grid-cols-2 gap-2 rounded-xl border border-zinc-200 bg-zinc-100 p-1 text-xs font-bold">
-        <button id="planZipBtn" onclick="setPlan('zip')" class="rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer">Layout ZIP — £15</button>
-        <button id="planTurnkeyBtn" onclick="setPlan('turnkey')" class="rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer">Turnkey .co.uk — £60</button>
+    <div class="mt-5 space-y-5">
+      <!-- Multi-item Shopping Cart -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Items in Cart</span>
+          <button onclick="clearCart()" class="text-[11px] font-semibold text-zinc-400 hover:text-rose-600 cursor-pointer">Clear cart</button>
+        </div>
+        <div id="cartItemsList" class="space-y-2"></div>
       </div>
 
-      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
-        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Selected Edition</div>
-        <div id="drawerLayoutTitle" class="mt-1 font-display text-sm font-extrabold text-zinc-950">UK-00001</div>
-        <div id="drawerLayoutMeta" class="text-xs text-zinc-500 mt-0.5"></div>
-      </div>
-
+      <!-- Desired .co.uk Domain (shown whenever a £60 Turnkey item is in cart) -->
       <div id="drawerDomainBlock">
-        <label class="text-xs font-semibold text-zinc-700">Desired .co.uk Domain</label>
+        <label class="text-xs font-semibold text-zinc-700">Desired .co.uk Domain (Included in £60/yr)</label>
         <div class="mt-1.5 flex gap-2">
           <input id="drawerDomain" type="text" placeholder="mybusiness.co.uk" class="flex-1 rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
           <button onclick="checkDrawerDomain()" class="rounded-xl bg-zinc-950 px-3.5 text-xs font-bold text-white hover:bg-zinc-800 cursor-pointer">Check</button>
@@ -426,35 +424,74 @@
         <div id="drawerDomainStatus" class="mt-1.5 text-[11px] text-zinc-500"></div>
       </div>
 
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="text-xs font-semibold text-zinc-700">Business Name</label>
-          <input id="drawerBiz" type="text" placeholder="Apex Plumbing Ltd" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+      <!-- Client Website Content & Features Brief -->
+      <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-4 space-y-3">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">What Should Go On Your Website?</div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">Business Name *</label>
+            <input id="drawerBiz" type="text" placeholder="Apex Plumbing Ltd" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">UK City &amp; Postcode *</label>
+            <input id="drawerCity" type="text" placeholder="Manchester, M1 1AE" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
         </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">Phone / WhatsApp *</label>
+            <input id="drawerPhone" type="text" placeholder="07700 900123" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">Your Email *</label>
+            <input id="drawerEmail" type="email" placeholder="you@gmail.com" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">Street Address (for Map)</label>
+            <input id="drawerAddress" type="text" placeholder="42 King St, Manchester" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-zinc-700">Opening Hours</label>
+            <input id="drawerHours" type="text" placeholder="Mon–Sat 8am–6pm / 24/7" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          </div>
+        </div>
+
         <div>
-          <label class="text-xs font-semibold text-zinc-700">UK City</label>
-          <input id="drawerCity" type="text" placeholder="Manchester" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
+          <label class="text-[11px] font-semibold text-zinc-700">What Do You Specialise In? (Services &amp; Prices)</label>
+          <textarea id="drawerServices" rows="2" placeholder="e.g. Emergency leak repairs, Worcester Bosch boilers, bathroom fitting, Gas Safe CP12 certificates..." class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none"></textarea>
+        </div>
+
+        <div>
+          <label class="text-[11px] font-semibold text-zinc-700">About Your Company (Experience, Accreditations, Areas Covered)</label>
+          <textarea id="drawerAbout" rows="2" placeholder="e.g. Family-run since 2014, NICEIC / Gas Safe registered, covering Greater Manchester &amp; Cheshire..." class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none"></textarea>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-semibold text-zinc-700 mb-1.5">Sections &amp; Features to Include (Free):</div>
+          <div class="grid grid-cols-2 gap-1.5 text-[11px] text-zinc-700">
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="Interactive Google Map & Directions" checked /> Google Map &amp; Directions</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="Click-to-Call & WhatsApp Button" checked /> Click-to-Call / WhatsApp</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="60-Second Free Quote Form" checked /> Instant Quote Form</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="Customer Reviews & Star Rating" checked /> Customer Reviews</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="Guide Pricing Table" /> Guide Pricing Table</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="checkbox" class="feat-cb accent-zinc-950" value="Before & After Photo Gallery" /> Photo Gallery</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-[11px] font-semibold text-zinc-700">Upload Your Logo (Free — Optional)</label>
+          <input id="drawerLogo" type="file" accept="image/*" class="mt-1 block w-full rounded-xl border border-dashed border-zinc-300 bg-white p-2 text-xs text-zinc-500 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-950 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white" />
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="text-xs font-semibold text-zinc-700">Phone</label>
-          <input id="drawerPhone" type="text" placeholder="07700 900123" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-zinc-700">Email</label>
-          <input id="drawerEmail" type="email" placeholder="you@gmail.com" class="mt-1.5 w-full rounded-xl border border-zinc-200 px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-900 focus:outline-none" />
-        </div>
-      </div>
-
-      <div>
-        <label class="text-xs font-semibold text-zinc-700">Upload Your Logo (Free — Optional)</label>
-        <input id="drawerLogo" type="file" accept="image/*" class="mt-1.5 block w-full rounded-xl border border-dashed border-zinc-300 bg-zinc-50 p-2.5 text-xs text-zinc-500 file:mr-3 file:rounded-lg file:border-0 file:bg-zinc-950 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white" />
-      </div>
-
+      <!-- Order Summary & Checkout -->
       <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs space-y-2">
-        <div class="flex justify-between text-zinc-600"><span id="drawerSummaryLabel">Website + .co.uk + 1yr Hosting</span><strong id="drawerPriceLabel" class="text-zinc-950">£60.00</strong></div>
+        <div class="flex justify-between text-zinc-600"><span id="drawerSummaryLabel">Cart Total</span><strong id="drawerPriceLabel" class="text-base text-zinc-950">£60.00</strong></div>
         <div class="flex justify-between text-zinc-500"><span>Revolut Reference:</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
       </div>
 
@@ -462,7 +499,7 @@
         Pay £60 via Revolut →
       </a>
       <button onclick="sendOrderEmail()" class="w-full rounded-full border border-zinc-300 py-3 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition cursor-pointer">
-        Send Brief &amp; Logo Details by Email
+        ✉ Send Complete Website Brief to Studio
       </button>
     </div>
   </aside>
@@ -472,7 +509,7 @@
     const E = window.UKLayoutEngine;
     const state = {
       industry: "all", mode: "all", arch: "all", palette: "all", font: "all", search: "",
-      pageSize: 24, shown: 24, filtered: [], selected: E.getLayoutByIndex(0), plan: "turnkey"
+      pageSize: 24, shown: 24, filtered: [], cart: [{ idx: 0, plan: "turnkey" }]
     };
 
     function init() {
@@ -586,47 +623,77 @@
     function loadMore() { state.shown += state.pageSize; renderGrid(); }
     function openRandomPreview() { window.location.href = `preview.html?id=${E.formatId(Math.floor(Math.random() * E.TOTAL_LAYOUTS))}`; }
     function selectAndOrder(idx, plan) {
-      state.selected = E.getLayoutByIndex(idx);
-      document.getElementById("bagCount").textContent = "1";
-      setPlan(plan || "turnkey");
+      const p = plan === "zip" ? "zip" : "turnkey";
+      const existing = state.cart.find(item => item.idx === idx);
+      if (existing) {
+        existing.plan = p;
+      } else {
+        state.cart.push({ idx, plan: p });
+      }
+      updateDrawer();
       openDrawer();
     }
 
     function setPlan(plan) {
-      state.plan = plan === "zip" ? "zip" : "turnkey";
-      const isZip = state.plan === "zip";
-      document.getElementById("planZipBtn").className = isZip
-        ? "rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer"
-        : "rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer";
-      document.getElementById("planTurnkeyBtn").className = !isZip
-        ? "rounded-lg bg-zinc-950 py-2 text-white transition cursor-pointer"
-        : "rounded-lg py-2 text-zinc-600 hover:text-zinc-950 transition cursor-pointer";
-      document.getElementById("drawerDomainBlock").style.display = isZip ? "none" : "block";
+      const p = plan === "zip" ? "zip" : "turnkey";
+      if (!state.cart.length) state.cart.push({ idx: 0, plan: p });
+      else state.cart[state.cart.length - 1].plan = p;
+      updateDrawer();
+    }
+
+    function toggleCartItemPlan(pos) {
+      const item = state.cart[pos];
+      if (!item) return;
+      item.plan = item.plan === "zip" ? "turnkey" : "zip";
+      updateDrawer();
+    }
+
+    function removeCartItem(pos) {
+      state.cart.splice(pos, 1);
+      updateDrawer();
+    }
+
+    function clearCart() {
+      state.cart = [];
       updateDrawer();
     }
 
     function updateDrawer() {
-      const l = state.selected;
-      const isZip = state.plan === "zip";
-      document.getElementById("drawerLayoutTitle").textContent = `${l.code} — ${l.bizName}`;
-      document.getElementById("drawerLayoutMeta").textContent = `${l.industry.name} · ${l.arch.name} · ${l.palette.name}`;
-      const dom = document.getElementById("drawerDomain").value.trim();
-      const email = document.getElementById("drawerEmail").value.trim();
-      if (isZip) {
-        document.getElementById("drawerSummaryLabel").textContent = "Layout Source Package (.ZIP) — Instant Delivery";
-        document.getElementById("drawerPriceLabel").textContent = "£15.00";
-        document.getElementById("orderRef").textContent = email ? `ZIP ${l.code} ${email}` : `ZIP ${l.code}`;
-        const btn = document.getElementById("revolutPayBtn");
-        btn.href = "https://revolut.me/mantosz90";
-        btn.textContent = "Pay £15 via Revolut (Instant ZIP) →";
+      document.getElementById("bagCount").textContent = String(state.cart.length);
+      const listEl = document.getElementById("cartItemsList");
+      if (!state.cart.length) {
+        listEl.innerHTML = `<div class="rounded-xl border border-dashed border-zinc-300 p-4 text-center text-xs text-zinc-500">Your cart is empty — click <strong>ZIP £15</strong> or <strong>Full £60</strong> on any layout in the gallery.</div>`;
       } else {
-        document.getElementById("drawerSummaryLabel").textContent = "Website + .co.uk + 1yr Hosting + SSL";
-        document.getElementById("drawerPriceLabel").textContent = "£60.00";
-        document.getElementById("orderRef").textContent = dom ? `${l.code} | ${dom}` : l.code;
-        const btn = document.getElementById("revolutPayBtn");
-        btn.href = "https://revolut.me/mantosz90";
-        btn.textContent = "Pay £60 via Revolut (Turnkey) →";
+        listEl.innerHTML = state.cart.map((item, pos) => {
+          const l = E.getLayoutByIndex(item.idx);
+          const isZip = item.plan === "zip";
+          return `
+            <div class="flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-3">
+              <div class="min-w-0">
+                <div class="truncate font-display text-xs font-extrabold text-zinc-950">${l.code} — ${l.bizName}</div>
+                <div class="truncate text-[11px] text-zinc-500">${l.industry.name} · ${l.arch.name}</div>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button onclick="toggleCartItemPlan(${pos})" class="rounded-lg border border-zinc-300 bg-white px-2 py-1 text-[10px] font-bold text-zinc-900 hover:bg-zinc-950 hover:text-white transition cursor-pointer" title="Click to switch £15 ZIP / £60 Turnkey">${isZip ? 'ZIP £15' : 'Full £60'}</button>
+                <button onclick="removeCartItem(${pos})" class="rounded-lg px-1.5 py-1 text-xs text-zinc-400 hover:text-rose-600 cursor-pointer">✕</button>
+              </div>
+            </div>`;
+        }).join("");
       }
+
+      const hasTurnkey = state.cart.some(i => i.plan === "turnkey");
+      document.getElementById("drawerDomainBlock").style.display = hasTurnkey ? "block" : "none";
+
+      const total = state.cart.reduce((sum, i) => sum + (i.plan === "zip" ? 15 : 60), 0);
+      const codes = state.cart.map(i => E.formatId(i.idx) + (i.plan === "zip" ? "(ZIP)" : "(60)")).join(",");
+      const dom = document.getElementById("drawerDomain").value.trim();
+
+      document.getElementById("drawerSummaryLabel").textContent = `${state.cart.length} item(s) in cart`;
+      document.getElementById("drawerPriceLabel").textContent = `£${total}.00`;
+      document.getElementById("orderRef").textContent = dom ? `${codes || 'ORDER'} | ${dom}` : (codes || 'UK-00001');
+      const btn = document.getElementById("revolutPayBtn");
+      btn.href = "https://revolut.me/mantosz90";
+      btn.textContent = total > 0 ? `Pay £${total} via Revolut →` : "Pay via Revolut →";
     }
 
     function openDrawer() { updateDrawer(); document.getElementById("drawerBackdrop").classList.remove("hidden"); document.getElementById("orderDrawer").classList.remove("hidden"); }
@@ -678,14 +745,37 @@
     }
 
     function sendOrderEmail() {
-      const l = state.selected;
+      const total = state.cart.reduce((sum, i) => sum + (i.plan === "zip" ? 15 : 60), 0);
+      const itemsText = state.cart.map(i => {
+        const l = E.getLayoutByIndex(i.idx);
+        return `- ${l.code} (${l.bizName} / ${l.arch.name} / ${l.palette.name}) — ${i.plan === 'zip' ? '£15 ZIP' : '£60/yr Turnkey'}`;
+      }).join("\n") || "- (No layout selected yet)";
+      const features = Array.from(document.querySelectorAll(".feat-cb:checked")).map(cb => cb.value).join(", ") || "Standard";
       const biz = document.getElementById("drawerBiz").value || "(Business Name)";
-      const city = document.getElementById("drawerCity").value || "(City)";
-      const phone = document.getElementById("drawerPhone").value || "(Phone)";
+      const city = document.getElementById("drawerCity").value || "(City & Postcode)";
+      const address = document.getElementById("drawerAddress").value || "(Street Address for Map)";
+      const hours = document.getElementById("drawerHours").value || "(Opening Hours)";
+      const phone = document.getElementById("drawerPhone").value || "(Phone / WhatsApp)";
       const email = document.getElementById("drawerEmail").value || "(Email)";
+      const services = document.getElementById("drawerServices").value || "(Services & Specialisations)";
+      const about = document.getElementById("drawerAbout").value || "(About the Company)";
       const domain = document.getElementById("drawerDomain").value || "(Desired .co.uk)";
-      const subj = encodeURIComponent(`Turnkey Order £60 — ${l.code} — ${biz}`);
-      const body = encodeURIComponent(`Edition: ${l.code} (${l.industry.name} / ${l.arch.name} / ${l.palette.name})\nDomain: ${domain}\nBusiness: ${biz}\nCity: ${city}\nPhone: ${phone}\nEmail: ${email}`);
+      const subj = encodeURIComponent(`Entiu Store Order (£${total}) — ${biz}`);
+      const body = encodeURIComponent(
+        `ORDER SUMMARY (Total: £${total})\n${itemsText}\n\n` +
+        `BUSINESS DETAILS:\n` +
+        `Business Name: ${biz}\n` +
+        `City & Postcode: ${city}\n` +
+        `Address (Map): ${address}\n` +
+        `Opening Hours: ${hours}\n` +
+        `Phone / WhatsApp: ${phone}\n` +
+        `Email: ${email}\n` +
+        `Desired .co.uk Domain: ${domain}\n\n` +
+        `SPECIALISATIONS & SERVICES:\n${services}\n\n` +
+        `ABOUT THE COMPANY:\n${about}\n\n` +
+        `REQUESTED FEATURES:\n${features}\n\n` +
+        `(Attach your logo file to this email if you'd like us to include it.)`
+      );
       window.location.href = `mailto:agentaiuk90@gmail.com?subject=${subj}&body=${body}`;
     }
 

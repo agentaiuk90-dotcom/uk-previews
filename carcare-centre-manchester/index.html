@@ -4,74 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carcare Centre — Mobile Mechanic in Manchester</title>
-  <meta name="description" content="Carcare Centre — trusted Mobile Mechanic serving Manchester. Fast response, fair quotes, local workmanship." />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&family=Outfit:wght@600;700;800&family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f5f2eb; color: #1c1917; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #e9e3d7; color: #1c1917; border: 1px solid rgba(28,25,23,0.12); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 4px; background: #1c1917; color: #faf8f4; font-weight: 700; font-size: 15px; }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 4px; border: 1px solid rgba(28,25,23,0.12); color: #1c1917; font-weight: 700; font-size: 15px; }
+    .split-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    .bento-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: #ffffff; border: 1px solid rgba(28,25,23,0.12); border-radius: 4px; padding: 26px; }
+    .field { width: 100%; padding: 13px 15px; border-radius: 4px; border: 1px solid rgba(28,25,23,0.12); background: #f5f2eb; color: #1c1917; font-family: inherit; font-size: 14px; margin-bottom: 12px; }
+    @media (max-width: 860px) { .split-hero, .bento-hero, .grid-3 { grid-template-columns: 1fr; } }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-  <header class="bg-slate-950 text-white">
-    <div class="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between">
-      <div class="text-lg font-bold tracking-tight">Carcare Centre</div>
-      <div class="text-sm text-slate-300">Manchester, UK</div>
-    </div>
-    <div class="mx-auto max-w-5xl px-6 py-16 md:py-24">
-      <div class="mb-5"><span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white">Trusted Local Mobile Mechanic in Manchester</span></div>
-      <h1 class="max-w-3xl text-3xl font-extrabold tracking-tight sm:text-5xl">
-        Professional Mobile Mechanic in Manchester
-      </h1>
-      <p class="mt-4 max-w-2xl text-lg text-slate-300">
-        Fast, friendly, and dependable service from Carcare Centre. Get a clear, no-obligation quote today.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="tel:+441618668866" class="inline-flex items-center justify-center rounded-xl bg-amber-500 px-6 py-3.5 text-base font-semibold text-white shadow hover:bg-amber-400 transition">Call +44 161 866 8866</a>
-        
+<body>
+  <div style="background:#050608;color:#d4d4d8;font-size:12px;padding:8px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">
+    Exclusive Preview for <strong>Carcare Centre</strong> (UK-00512) · Want to browse 11,520 other styles or claim <strong>carcarecentre.co.uk</strong> for £60/yr?
+    <a href="https://agentaiuk90-dotcom.github.io/uk-previews/" style="color:#34d399;font-weight:700;margin-left:8px;text-decoration:underline;">Open Layout Store →</a>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(28,25,23,0.12);">
+    <div class="container" style="padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:34px;height:34px;border-radius:4px;background:#1c1917;color:#faf8f4;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">C</span>
+        <span style="font-weight:800;font-size:17px;font-family:'Outfit', sans-serif;">Carcare Centre</span>
       </div>
+      <a href="tel:+441618668866" class="btn-primary" style="padding:10px 18px;font-size:13px;">Call +44 161 866 8866</a>
     </div>
   </header>
 
-  <main class="mx-auto max-w-5xl px-6 py-14 space-y-14">
-    <section>
-      <h2 class="text-2xl font-bold text-slate-900">Our Services</h2>
-      <div class="mt-6 grid gap-6 sm:grid-cols-3">
-        
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 font-bold">✓</div>
-          <h3 class="text-lg font-semibold text-slate-900">Mobile Diagnostics</h3>
-          <p class="mt-2 text-sm text-slate-600">Reliable, transparent pricing across Manchester and surrounding areas.</p>
-        </div>
-        
+  
+        <section class="container" style="padding:64px 24px 48px;">
+          <div class="split-hero">
+            <div>
+              <div style="width:56px;height:5px;background:#1c1917;margin-bottom:18px;"></div>
+              <span class="pill">IMI Certified Technician · Manchester</span>
+              <h1 style="font-size:clamp(36px,4.8vw,58px);line-height:1.05;font-weight:800;margin:20px 0 18px;font-family:'Outfit', sans-serif;letter-spacing:-.03em;">Carcare Centre</h1>
+              <p style="font-size:18px;color:#57534e;line-height:1.65;margin-bottom:30px;">Dealer-level diagnostics, servicing & mechanical repairs with upfront UK pricing.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:12px;">
+                <a href="tel:+441618668866" class="btn-primary">Call +44 161 866 8866</a>
+                <a href="#services" class="btn-ghost">Our Services</a>
+              </div>
+            </div>
+            <div style="position:relative;">
+              <div style="border-radius:4px;overflow:hidden;border:1px solid rgba(28,25,23,0.12);box-shadow:0 28px 65px rgba(0,0,0,0.22);">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1400&q=80" alt="Carcare Centre" style="width:100%;height:440px;object-fit:cover;display:block;" />
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 font-bold">✓</div>
-          <h3 class="text-lg font-semibold text-slate-900">Brakes &amp; Servicing</h3>
-          <p class="mt-2 text-sm text-slate-600">Reliable, transparent pricing across Manchester and surrounding areas.</p>
+  <section id="services" class="container" style="padding:76px 24px;">
+    <span class="pill">Local Manchester Specialists</span>
+    <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;margin:14px 0 32px;font-family:'Outfit', sans-serif;">Our Services</h2>
+    <div class="grid-3">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">From £115</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">Full &amp; Interim Servicing</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">Manufacturer-spec oil, filters and 60-point safety check.</p>
         </div>
-        
 
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 font-bold">✓</div>
-          <h3 class="text-lg font-semibold text-slate-900">Emergency Roadside Repairs</h3>
-          <p class="mt-2 text-sm text-slate-600">Reliable, transparent pricing across Manchester and surrounding areas.</p>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">From £130</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">Brakes, Discs &amp; Calipers</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">OEM-grade brake replacements fitted cleanly same day.</p>
         </div>
-        
-      </div>
-    </section>
 
-    <section class="rounded-3xl bg-slate-900 p-8 text-white sm:p-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">From £55</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">OBD2 Engine Diagnostics</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">Dealer-grade fault scanning and warning light resolution.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">From £65</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">MOT Prep &amp; Repairs</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">Pre-MOT inspections, suspension, exhausts &amp; welding.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">From £95</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">Batteries &amp; Alternators</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">Heavy-duty Bosch &amp; Yuasa batteries supplied and fitted.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <span style="width:38px;height:38px;border-radius:4px;background:#e9e3d7;color:#1c1917;display:inline-flex;align-items:center;justify-content:center;font-weight:800;">✓</span>
+            <span style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:#e9e3d7;color:#1c1917;">Free Quote</span>
+          </div>
+          <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">Clutch &amp; Suspension</h3>
+          <p style="font-size:14px;line-height:1.6;color:#57534e;margin:0;">Springs, shock absorbers, drop links &amp; steering geometry.</p>
+        </div></div>
+  </section>
+
+  <section id="quote" class="container" style="padding:0 24px 80px;">
+    <div style="background:#1c1917;color:#faf8f4;border-radius:4px;padding:44px 36px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;">
       <div>
-        <h2 class="text-2xl font-bold">Need a Mobile Mechanic in Manchester?</h2>
-        <p class="mt-2 text-slate-300">Reach out directly for availability and pricing.</p>
+        <h2 style="font-size:clamp(26px,3.5vw,38px);font-weight:800;margin:0 0 8px;font-family:'Outfit', sans-serif;">Need Mobile Mechanic in Manchester?</h2>
+        <p style="margin:0;opacity:.9;">Reach out directly to Carcare Centre for fast availability and clear pricing.</p>
       </div>
-      <div class="flex flex-wrap gap-3">
-        <a href="tel:+441618668866" class="inline-flex items-center justify-center rounded-xl bg-amber-500 px-6 py-3.5 text-base font-semibold text-white shadow hover:bg-amber-400 transition">Call +44 161 866 8866</a>
-        
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="tel:+441618668866" style="padding:14px 24px;border-radius:4px;background:#faf8f4;color:#1c1917;font-weight:800;">Call +44 161 866 8866</a>
+        <a href="mailto:agentaiuk90@gmail.com?subject=Quote%20Request" style="padding:14px 22px;border-radius:4px;border:1px solid currentColor;font-weight:700;">Email Us</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto max-w-5xl px-6 py-6 text-sm text-slate-500 flex flex-col sm:flex-row justify-between gap-2">
-      <span>&copy; 2026 Carcare Centre. Serving Manchester.</span>
-      <span>carcarecentre.co.uk</span>
+  <footer style="border-top:1px solid rgba(28,25,23,0.12);padding:26px 24px;font-size:13px;color:#57534e;">
+    <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;">
+      <span>© 2026 Carcare Centre · Manchester, UK</span>
+      <span>carcarecentre.co.uk · UK-00512</span>
     </div>
   </footer>
 </body>

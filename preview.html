@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Layout Studio — LocalWeb UK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; background: #07080d; color: #f4f4f5; font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+    .studio-bar { background: rgba(10, 12, 18, 0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.09); }
+    #frameWrap { flex: 1; display: flex; justify-content: center; align-items: stretch; background: radial-gradient(circle at 50% 0%, rgba(99,102,241,0.12), #07080d 60%); padding: 0; overflow: hidden; }
+    #previewFrame { width: 100%; height: 100%; border: 0; background: #fff; transition: width 0.25s ease, border-radius 0.25s ease, margin 0.25s ease; }
+    .vp-tablet #previewFrame { width: 820px; border-radius: 18px; margin: 14px 0; box-shadow: 0 25px 70px rgba(0,0,0,0.6); }
+    .vp-mobile #previewFrame { width: 390px; border-radius: 26px; margin: 14px 0; box-shadow: 0 25px 70px rgba(0,0,0,0.6); }
+  </style>
+</head>
+<body>
+  <!-- Top Studio Bar -->
+  <header class="studio-bar flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 text-xs">
+    <div class="flex items-center gap-2.5">
+      <a href="index.html" class="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 font-semibold text-zinc-200 hover:bg-white/10 transition">← All 11,520 Layouts</a>
+      <span id="codeBadge" class="rounded-lg bg-indigo-500/20 px-2.5 py-1.5 font-mono font-bold text-indigo-300">UK-00001</span>
+      <span id="metaText" class="hidden text-zinc-400 lg:inline"></span>
+    </div>
+
+    <!-- Viewport + Prev/Next/Random -->
+    <div class="flex items-center gap-1.5">
+      <button onclick="stepLayout(-1)" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-zinc-300 hover:bg-white/10" title="Previous Layout">‹</button>
+      <button onclick="randomLayout()" class="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 font-semibold text-zinc-200 hover:bg-white/10">✦ Random</button>
+      <button onclick="stepLayout(1)" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-zinc-300 hover:bg-white/10" title="Next Layout">›</button>
+
+      <div class="mx-2 hidden h-5 w-px bg-white/10 sm:block"></div>
+      <div class="hidden rounded-lg border border-white/10 bg-black/40 p-0.5 sm:flex">
+        <button onclick="setViewport('desktop')" id="vpDesktop" class="rounded-md bg-white px-2.5 py-1 font-bold text-zinc-950">Desktop</button>
+        <button onclick="setViewport('tablet')" id="vpTablet" class="rounded-md px-2.5 py-1 font-semibold text-zinc-400 hover:text-white">Tablet</button>
+        <button onclick="setViewport('mobile')" id="vpMobile" class="rounded-md px-2.5 py-1 font-semibold text-zinc-400 hover:text-white">Mobile</button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button onclick="toggleCustomizer()" class="rounded-lg border border-indigo-400/35 bg-indigo-500/15 px-3.5 py-1.5 font-bold text-indigo-200 hover:bg-indigo-500/25 transition">✎ Personalise Live</button>
+      <a id="orderLink" href="https://revolut.me/mantosz90/60gbp" target="_blank" rel="noopener" class="rounded-lg bg-gradient-to-r from-emerald-500 to-teal-400 px-4 py-1.5 font-extrabold text-zinc-950 shadow hover:opacity-95 transition">Order This Design — £60/yr →</a>
+    </div>
+  </header>
+
+  <!-- Live Customizer Panel -->
+  <div id="customizerPanel" class="hidden border-b border-white/10 bg-[#0d1018] px-4 py-3 text-xs">
+    <div class="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <input id="cBiz" type="text" placeholder="Your Business Name..." class="rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-white placeholder-zinc-500 focus:border-indigo-400 focus:outline-none" />
+      <input id="cCity" type="text" placeholder="UK City (e.g. Leeds)" class="rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-white placeholder-zinc-500 focus:border-indigo-400 focus:outline-none" />
+      <input id="cPhone" type="text" placeholder="Phone (e.g. 07700 900123)" class="rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-white placeholder-zinc-500 focus:border-indigo-400 focus:outline-none" />
+      <input id="cDomain" type="text" placeholder="Desired .co.uk domain" class="rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-white placeholder-zinc-500 focus:border-indigo-400 focus:outline-none" />
+      <label class="flex cursor-pointer items-center justify-center rounded-lg border border-dashed border-white/20 bg-white/5 px-3 py-2 font-semibold text-indigo-300 hover:bg-white/10">
+        <span>⬆ Upload Logo (Live)</span>
+        <input id="cLogo" type="file" accept="image/*" class="hidden" />
+      </label>
+    </div>
+  </div>
+
+  <!-- Live Site Frame -->
+  <main id="frameWrap">
+    <iframe id="previewFrame" title="Live Website Preview"></iframe>
+  </main>
+
+  <script src="js/engine.js"></script>
+  <script>
+    const E = window.UKLayoutEngine;
+    const params = new URLSearchParams(window.location.search);
+    let currentIdx = E.parseId(params.get("id") || "UK-00001");
+    const custom = { business: "", city: "", phone: "", domain: "", logoDataUrl: "" };
+
+    function render() {
+      const layout = E.getLayoutByIndex(currentIdx);
+      document.title = `${layout.code} — ${layout.industry.name} | LocalWeb UK Studio`;
+      document.getElementById("codeBadge").textContent = layout.code;
+      document.getElementById("metaText").textContent = `${layout.industry.name} · ${layout.arch.name} · ${layout.palette.name} · ${layout.font.name}`;
+      const url = new URL(window.location.href);
+      url.searchParams.set("id", layout.code);
+      window.history.replaceState({}, "", url);
+
+      const html = E.renderFullPageHTML(layout, custom);
+      document.getElementById("previewFrame").srcdoc = html;
+    }
+
+    function stepLayout(delta) {
+      currentIdx = (currentIdx + delta + E.TOTAL_LAYOUTS) % E.TOTAL_LAYOUTS;
+      render();
+    }
+
+    function randomLayout() {
+      currentIdx = Math.floor(Math.random() * E.TOTAL_LAYOUTS);
+      render();
+    }
+
+    function toggleCustomizer() {
+      document.getElementById("customizerPanel").classList.toggle("hidden");
+    }
+
+    function setViewport(mode) {
+      const wrap = document.getElementById("frameWrap");
+      wrap.className = mode === "tablet" ? "vp-tablet" : (mode === "mobile" ? "vp-mobile" : "");
+      ["Desktop", "Tablet", "Mobile"].forEach(name => {
+        const b = document.getElementById("vp" + name);
+        const active = name.toLowerCase() === mode;
+        b.className = active ? "rounded-md bg-white px-2.5 py-1 font-bold text-zinc-950" : "rounded-md px-2.5 py-1 font-semibold text-zinc-400 hover:text-white";
+      });
+    }
+
+    ["cBiz", "cCity", "cPhone", "cDomain"].forEach(id => {
+      document.getElementById(id).addEventListener("input", e => {
+        const map = { cBiz: "business", cCity: "city", cPhone: "phone", cDomain: "domain" };
+        custom[map[id]] = e.target.value;
+        render();
+      });
+    });
+
+    document.getElementById("cLogo").addEventListener("change", e => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => { custom.logoDataUrl = reader.result; render(); };
+      reader.readAsDataURL(file);
+    });
+
+    render();
+  </script>
+</body>
+</html>

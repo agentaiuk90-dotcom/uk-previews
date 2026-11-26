@@ -92,7 +92,7 @@
 
       <button id="entiuChatBtn" aria-label="Open live chat">
         <span style="width:8px;height:8px;border-radius:99px;background:#10b981;display:inline-block;"></span>
-        <span>Live Chat · UK Concierge</span>
+        <span data-i18n="chat_btn">Live Chat · Concierge</span>
       </button>
 
       <div id="entiuChatBox" role="dialog" aria-label="Entiu Store Smart Concierge">
@@ -124,6 +124,9 @@
       </div>
     `;
     document.body.appendChild(root);
+    if (window.EntiuFullI18n && window.EntiuI18n) {
+      try { window.EntiuFullI18n.apply(window.EntiuI18n.get(), window.EntiuI18n.region()); } catch (_) {}
+    }
 
     const btn = document.getElementById("entiuChatBtn");
     const box = document.getElementById("entiuChatBox");

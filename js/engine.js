@@ -684,7 +684,7 @@
         <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;margin:16px 0 12px;font-family:${font.heading};line-height:1.06;">${esc(dui.quoteH)} ${biz}</h2>
         <p style="margin:0 0 20px;font-size:16px;color:${p.muted};line-height:1.65;">${esc(dui.quoteSub)}</p>
         <div style="font-size:14px;color:${p.muted};line-height:1.8;">
-          <div><strong style="color:${p.text};">Email:</strong> ${email}</div>
+          <div><strong style="color:${p.text};">${esc(dui.emailLabel || "Email")}:</strong> ${email}</div>
           <div><strong style="color:${p.text};">${esc(dui.areaLabel)}:</strong> ${city}</div>
         </div>
       </div>
@@ -701,7 +701,7 @@
   <footer style="border-top:1px solid ${p.border};padding:28px;font-size:13px;color:${p.muted};">
     <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;">
       <span>© 2026 ${biz} · ${city}</span>
-      <span>${domain} · Edition ${layout.code}</span>
+      <span>${domain} · ${layout.code}</span>
     </div>
   </footer>
   <script>

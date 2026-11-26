@@ -419,12 +419,15 @@
   function renderFullPageHTML(layout, custom) {
     const c = custom || {};
     const { industry: rawInd, palette: p, arch, font, photo, bizName } = layout;
-    const ind = (global.EntiuFullI18n && global.EntiuFullI18n.localizeIndustry) ? global.EntiuFullI18n.localizeIndustry(rawInd) : rawInd;
-    const heroSlogan = (global.EntiuFullI18n && global.EntiuFullI18n.getSlogan) ? global.EntiuFullI18n.getSlogan() : "Built to Last.";
     const i18nReg = global.EntiuI18n ? global.EntiuI18n.region() : { code: "en", dir: "ltr", city: "London", tld: ".co.uk" };
     const dui = global.EntiuI18n ? global.EntiuI18n.demo() : { home: "Home", services: "Services", reviews: "Reviews", contact: "Contact", emailBtn: "Email Enquiry", servicesH: "Services & Guide Pricing", trustedH: "Trusted across", quoteK: "Direct Email Quote", quoteH: "Request a quote from", quoteSub: "Send your enquiry directly by email — we reply promptly with clear written pricing.", formTitle: "Email Contact Form", namePh: "Your Name", emailPh: "Your Email Address", msgPh: "Tell us what you need...", sendBtn: "Send Email Enquiry →", sentMsg: "✓ Enquiry Sent — We Will Reply By Email Shortly!", areaLabel: "Service Area" };
     const biz = esc(c.business || bizName);
     const city = esc(c.city || i18nReg.city || "London");
+    const dc = (global.EntiuFullI18n && global.EntiuFullI18n.getDemoCopy)
+      ? global.EntiuFullI18n.getDemoCopy(rawInd, biz, city)
+      : { ind: rawInd, avail: "AVAILABLE IN", stat1: "210+ Reviews", stat2: "Rapid ETA", stat3: "Insured Cover", score: "Verified Score", revs: "190+ reviews", slots: "SAME-DAY SLOTS", guar: "12-month guarantee", kinfolkH: `${biz} — ${rawInd.name}`, quoteH: rawInd.name, bentoH: `${rawInd.name} in ${city}`, bullets: ["✓ Fixed Written Quotes", "✓ Fully Insured", "✓ 12-Month Warranty", "✓ Fast Response"], estK: "Instant Quote", estH: `Free ${city} Quote`, slogan: "Built to Last." };
+    const ind = dc.ind;
+    const heroSlogan = dc.slogan;
     const phone = esc(c.phone || "07700 900482");
     const phoneHref = (c.phone || "07700900482").replace(/[^0-9+]/g, "");
     const domain = esc(c.domain || biz.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 22) + (i18nReg.tld || ".co.uk"));
@@ -443,7 +446,7 @@
       <section class="container" style="padding:54px 28px 64px;border-bottom:1px solid ${p.border};">
         <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:${p.muted};margin-bottom:28px;">
           <span>01 / ${esc(ind.badge)}</span>
-          <span style="color:${p.accent};">● AVAILABLE IN ${city.toUpperCase()}</span>
+          <span style="color:${p.accent};">● ${esc(dc.avail)} ${city.toUpperCase()}</span>
         </div>
         <h1 style="font-size:clamp(46px,7.5vw,92px);line-height:.95;font-weight:800;letter-spacing:-.045em;margin:0 0 36px;font-family:${font.heading};">
           ${esc(ind.name)}<br/><span style="color:${p.accent};">${esc(heroSlogan)}</span>
@@ -456,9 +459,9 @@
               <a href="#services" data-scroll="services" class="btn-ghost">${esc(dui.services)}</a>
             </div>
             <div style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px;border-top:1px solid ${p.border};">
-              <div><div style="font-size:28px;font-weight:800;">4.9★</div><div style="font-size:12px;color:${p.muted};">210+ Reviews</div></div>
-              <div><div style="font-size:28px;font-weight:800;">60m</div><div style="font-size:12px;color:${p.muted};">Rapid ETA</div></div>
-              <div><div style="font-size:28px;font-weight:800;">£5M</div><div style="font-size:12px;color:${p.muted};">Insured Cover</div></div>
+              <div><div style="font-size:28px;font-weight:800;">4.9★</div><div style="font-size:12px;color:${p.muted};">${esc(dc.stat1)}</div></div>
+              <div><div style="font-size:28px;font-weight:800;">60m</div><div style="font-size:12px;color:${p.muted};">${esc(dc.stat2)}</div></div>
+              <div><div style="font-size:28px;font-weight:800;">100%</div><div style="font-size:12px;color:${p.muted};">${esc(dc.stat3)}</div></div>
             </div>
           </div>
           <div style="border:1px solid ${p.border};overflow:hidden;border-radius:${r};">
@@ -476,8 +479,8 @@
           <h1 style="font-size:clamp(42px,6.5vw,82px);line-height:1.0;font-weight:800;margin:22px 0;max-width:900px;color:#fff;font-family:${font.heading};letter-spacing:-.035em;">${biz}</h1>
           <p style="font-size:20px;line-height:1.6;color:rgba(255,255,255,.82);max-width:620px;margin:0 0 34px;">${esc(ind.tagline)}</p>
           <div style="display:flex;flex-wrap:wrap;gap:14px;">
-            <a href="tel:${phoneHref}" class="btn-primary">Direct Line: ${phone}</a>
-            <a href="#quote" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.32);">Request Written Quote →</a>
+            <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
+            <a href="#services" data-scroll="services" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.32);">${esc(dui.services)} →</a>
           </div>
         </div>
       </section>`;
@@ -488,26 +491,26 @@
           <div style="background:${p.surface};border:1px solid ${p.border};border-radius:${r};padding:44px;display:flex;flex-direction:column;justify-content:space-between;min-height:460px;">
             <div>
               <span class="pill">${esc(ind.badge)}</span>
-              <h1 style="font-size:clamp(36px,4.8vw,58px);line-height:1.04;font-weight:800;margin:22px 0 18px;font-family:${font.heading};letter-spacing:-.03em;">${esc(ind.name)} in ${city}.</h1>
+              <h1 style="font-size:clamp(36px,4.8vw,58px);line-height:1.04;font-weight:800;margin:22px 0 18px;font-family:${font.heading};letter-spacing:-.03em;">${esc(dc.bentoH)}</h1>
               <p style="font-size:17px;color:${p.muted};line-height:1.65;max-width:480px;">${esc(ind.tagline)}</p>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;">
-              <a href="tel:${phoneHref}" class="btn-primary">Call ${phone}</a>
-              <a href="#services" class="btn-ghost">Explore Pricing</a>
+              <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
+              <a href="#services" data-scroll="services" class="btn-ghost">${esc(dui.services)}</a>
             </div>
           </div>
           <div style="display:grid;grid-template-rows:1.35fr 1fr;gap:18px;">
             <div style="border-radius:${r};overflow:hidden;border:1px solid ${p.border};"><img src="${photo}" alt="${biz}" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
               <div style="background:${p.accent};color:${p.accentText};border-radius:${r};padding:26px;display:flex;flex-direction:column;justify-content:space-between;">
-                <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Verified Score</span>
+                <span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">${esc(dc.score)}</span>
                 <div style="font-size:42px;font-weight:800;line-height:1;">4.9★</div>
-                <span style="font-size:12px;opacity:.9;">190+ local UK reviews</span>
+                <span style="font-size:12px;opacity:.9;">${esc(dc.revs)}</span>
               </div>
               <div style="background:${p.surfaceAlt};border:1px solid ${p.border};border-radius:${r};padding:26px;display:flex;flex-direction:column;justify-content:space-between;">
-                <span style="font-size:11px;font-weight:800;color:${p.accent};">● SAME-DAY SLOTS</span>
+                <span style="font-size:11px;font-weight:800;color:${p.accent};">● ${esc(dc.slots)}</span>
                 <div style="font-size:21px;font-weight:800;font-family:${font.heading};">${city}</div>
-                <span style="font-size:12px;color:${p.muted};">12-month guarantee</span>
+                <span style="font-size:12px;color:${p.muted};">${esc(dc.guar)}</span>
               </div>
             </div>
           </div>
@@ -517,11 +520,11 @@
       hero = `
       <section class="container" style="padding:76px 28px 56px;text-align:center;">
         <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:${p.muted};font-weight:600;">${esc(ind.badge)} &nbsp;·&nbsp; ${city}</div>
-        <h1 style="font-size:clamp(44px,6.4vw,80px);line-height:1.03;font-weight:400;margin:24px auto 22px;max-width:860px;font-family:${font.serif};letter-spacing:-.02em;">${biz} — <em>refined ${esc(ind.short.toLowerCase())}</em> for discerning UK homes.</h1>
+        <h1 style="font-size:clamp(44px,6.4vw,80px);line-height:1.03;font-weight:400;margin:24px auto 22px;max-width:860px;font-family:${font.serif};letter-spacing:-.02em;">${dc.kinfolkH}</h1>
         <p style="font-size:18px;color:${p.muted};line-height:1.7;max-width:580px;margin:0 auto 36px;">${esc(ind.tagline)}</p>
         <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:54px;">
-          <a href="tel:${phoneHref}" class="btn-primary">Speak With Us · ${phone}</a>
-          <a href="#quote" class="btn-ghost">Arrange a Private Survey</a>
+          <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
+          <a href="#services" data-scroll="services" class="btn-ghost">${esc(dui.services)}</a>
         </div>
         <div style="border-radius:${r};overflow:hidden;border:1px solid ${p.border};max-height:520px;">
           <img src="${photo}" alt="${biz}" style="width:100%;height:520px;object-fit:cover;display:block;" />
@@ -533,30 +536,26 @@
         <div class="grid-2" style="align-items:center;">
           <div>
             <span class="pill">${esc(ind.badge)} · ${city}</span>
-            <h1 style="font-size:clamp(38px,5.2vw,64px);line-height:1.05;font-weight:800;margin:22px 0 18px;font-family:${font.heading};letter-spacing:-.035em;">Modern ${esc(ind.name)} with transparent UK pricing.</h1>
+            <h1 style="font-size:clamp(38px,5.2vw,64px);line-height:1.05;font-weight:800;margin:22px 0 18px;font-family:${font.heading};letter-spacing:-.035em;">${esc(dc.quoteH)}</h1>
             <p style="font-size:18px;color:${p.muted};line-height:1.65;margin:0 0 28px;">${esc(ind.tagline)}</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:14px;font-weight:600;margin-bottom:28px;">
-              <div>✓ Fixed Written Quotes</div>
-              <div>✓ £5M Public Liability</div>
-              <div>✓ 12-Month Warranty</div>
-              <div>✓ Zero Callout Fee</div>
+              ${dc.bullets.map(b => `<div>${esc(b)}</div>`).join("")}
             </div>
-            <a href="tel:${phoneHref}" class="btn-primary">Call ${phone}</a>
+            <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
           </div>
           <div style="background:${p.surface};border:1px solid ${p.border};border-radius:${r};padding:34px;box-shadow:0 30px 70px rgba(0,0,0,${isDark ? '.45' : '.08'});">
-            <div style="font-size:11px;font-weight:800;color:${p.accent};text-transform:uppercase;letter-spacing:.1em;">Instant Callback Estimator</div>
-            <h2 style="font-size:24px;font-weight:800;margin:8px 0 20px;font-family:${font.heading};">Get a Free ${city} Quote</h2>
-            <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Request Received — Expect a Call Within 15 Mins!';">
-              <input class="field" placeholder="Full Name" required />
-              <input class="field" placeholder="UK Phone or Postcode" required />
-              <select class="field">${ind.services.map(s => `<option>${esc(s[0])} (${esc(s[2])})</option>`).join("")}</select>
-              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Request Fixed Quote →</button>
+            <div style="font-size:11px;font-weight:800;color:${p.accent};text-transform:uppercase;letter-spacing:.1em;">${esc(dc.estK)}</div>
+            <h2 style="font-size:24px;font-weight:800;margin:8px 0 20px;font-family:${font.heading};">${esc(dc.estH)}</h2>
+            <form onsubmit="event.preventDefault();this.querySelector('button').textContent='${esc(dui.sentMsg)}';">
+              <input class="field" placeholder="${esc(dui.namePh)}" required />
+              <input class="field" type="email" placeholder="${esc(dui.emailPh)}" required />
+              <select class="field">${ind.services.map(s => `<option>${esc(s[0])} (${esc(_localizeMoney(s[2]))})</option>`).join("")}</select>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">${esc(dui.sendBtn)}</button>
             </form>
           </div>
         </div>
       </section>`;
     } else {
-      // split50, poster, asymmetric
       hero = `
       <section class="container" style="padding:56px 28px 64px;">
         <div class="grid-2" style="align-items:center;">
@@ -565,8 +564,8 @@
             <h1 style="font-size:clamp(40px,5.4vw,68px);line-height:1.03;font-weight:800;margin:22px 0 20px;font-family:${font.heading};letter-spacing:-.035em;">${biz}</h1>
             <p style="font-size:18px;color:${p.muted};line-height:1.68;margin:0 0 32px;">${esc(ind.tagline)}</p>
             <div style="display:flex;flex-wrap:wrap;gap:12px;">
-              <a href="tel:${phoneHref}" class="btn-primary">Call ${phone}</a>
-              <a href="#services" class="btn-ghost">Our Services →</a>
+              <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
+              <a href="#services" data-scroll="services" class="btn-ghost">${esc(dui.services)} →</a>
             </div>
           </div>
           <div style="border-radius:${r};overflow:hidden;border:1px solid ${p.border};">

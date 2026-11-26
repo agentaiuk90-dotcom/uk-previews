@@ -220,20 +220,266 @@
   };
 
   const HERO_SLOGAN = {
-    pl: "Jakość na Lata.",
-    de: "Qualität, die bleibt.",
-    es: "Calidad Duradera.",
-    fr: "Conçu pour Durer.",
-    it: "Qualità che Dura.",
-    nl: "Gebouwd voor Kwaliteit.",
-    pt: "Qualidade Duradoura.",
-    ru: "Качество на годы.",
-    zh: "匠心品质，值得信赖。",
-    ja: "確かな技術と信頼。",
-    ko: "믿을 수 있는 품질.",
-    ar: "جودة تدوم طويلاً.",
-    hi: "भरोसेमंद गुणवत्ता।"
+    en: "Built to Last.", "en-us": "Built to Last.", "en-au": "Built to Last.",
+    pl: "Jakość na Lata.", de: "Qualität, die bleibt.", es: "Calidad Duradera.",
+    fr: "Conçu pour Durer.", it: "Qualità che Dura.", nl: "Gebouwd voor Kwaliteit.",
+    pt: "Qualidade Duradoura.", ru: "Качество на годы.", zh: "匠心品质，值得信赖。",
+    ja: "確かな技術と信頼。", ko: "믿을 수 있는 품질.", ar: "جودة تدوم طويلاً.",
+    hi: "भरोसेमंद गुणवत्ता।", sv: "Byggt för att hålla.", cs: "Kvalita na roky.",
+    tr: "Kalıcı Kalite.", ro: "Calitate Durabilă."
   };
+
+  // Complete native copy for ALL 12 demo architectures across ALL 20 languages (ZERO English leaks!)
+  const ARCH_COPY = {
+    en: {
+      avail: "AVAILABLE IN", stat1: "210+ Reviews", stat2: "Rapid ETA", stat3: "Insured Cover",
+      score: "Verified Score", revs: "190+ verified reviews", slots: "SAME-DAY SLOTS", guar: "12-month guarantee",
+      kinfolk: (b, n) => `${b} — <em>${n}</em> crafted with precision.`,
+      quoteH: n => `Modern ${n} with transparent pricing.`,
+      bentoH: (n, c) => `${n} in ${c}.`,
+      bullets: ["✓ Fixed Written Quotes", "✓ Fully Insured Team", "✓ 12-Month Warranty", "✓ Fast Local Response"],
+      estK: "Instant Email Estimator", estH: c => `Get a Free ${c} Quote`,
+      badge: "Certified Specialists · 24/7",
+      tagline: (n, c) => `Trusted ${n.toLowerCase()} specialists in ${c} offering transparent written quotes, fast response and a full 12-month workmanship guarantee.`,
+      svcs: n => [
+        [`Full ${n} Package`, "Complete installation and turnkey execution with clear written pricing.", "From £195"],
+        ["Rapid Diagnostics & Repair", "Fast local callout, fault finding and clean same-day resolution.", "From £75"],
+        ["Preventive Maintenance", "Scheduled annual inspection and servicing to avoid costly breakdowns.", "From £120"],
+        ["Custom Project & Survey", "Tailored consultation, written specification and fixed project quote.", "Free Quote"]
+      ]
+    },
+    pl: {
+      avail: "DOSTĘPNI W:", stat1: "210+ Opinii", stat2: "Szybki dojazd", stat3: "Pełne OC",
+      score: "Zweryfikowana ocena", revs: "190+ lokalnych opinii", slots: "SZYBKIE TERMINY", guar: "12 mies. gwarancji",
+      kinfolk: (b, n) => `${b} — <em>${n.toLowerCase()}</em> na najwyższym poziomie.`,
+      quoteH: n => `Nowoczesna ${n.toLowerCase()} z przejrzystą wyceną.`,
+      bentoH: (n, c) => `${n} — ${c}.`,
+      bullets: ["✓ Stała wycena na piśmie", "✓ Pełne ubezpieczenie OC", "✓ 12 miesięcy gwarancji", "✓ Szybki dojazd i kontakt"],
+      estK: "Szybka Wycena E-mail", estH: c => `Darmowa wycena — ${c}`,
+      badge: "Certyfikowani Specjaliści · 24/7",
+      tagline: (n, c) => `Sprawdzeni specjaliści (${n.toLowerCase()}) w mieście ${c} — przejrzyste ceny, szybka realizacja i pisemna gwarancja na każdą usługę.`,
+      svcs: n => [
+        [`Kompleksowa obsługa: ${n}`, "Pełne wykonanie od projektu po odbiór techniczny w ustalonej cenie.", "od 950 zł"],
+        ["Szybki serwis i naprawy", "Sprawna diagnostyka oraz usuwanie usterek bez ukrytych kosztów.", "od 350 zł"],
+        ["Przeglądy i konserwacja", "Regularny serwis zapobiegający kosztownym awariom.", "od 590 zł"],
+        ["Wycena indywidualna", "Bezpłatna konsultacja i szczegółowy kosztorys na e-mail.", "Gratis"]
+      ]
+    },
+    es: {
+      avail: "DISPONIBLES EN", stat1: "210+ Opiniones", stat2: "Respuesta rápida", stat3: "Seguro RC",
+      score: "Valoración Verificada", revs: "190+ reseñas locales", slots: "CITAS HOY", guar: "Garantía 12 meses",
+      kinfolk: (b, n) => `${b} — excelencia en <em>${n.toLowerCase()}</em> para tu hogar y negocio.`,
+      quoteH: n => `${n} profesional con precios claros y cerrados.`,
+      bentoH: (n, c) => `${n} en ${c}.`,
+      bullets: ["✓ Presupuesto cerrado por escrito", "✓ Equipo asegurado", "✓ Garantía de 12 meses", "✓ Atención rápida el mismo día"],
+      estK: "Presupuesto por Email", estH: c => `Presupuesto gratis en ${c}`,
+      badge: "Profesionales Certificados · 24/7",
+      tagline: (n, c) => `Especialistas en ${n.toLowerCase()} en ${c} con presupuesto cerrado, atención rápida y 12 meses de garantía por escrito.`,
+      svcs: n => [
+        [`Servicio integral de ${n}`, "Ejecución completa llave en mano con materiales de primera calidad.", "Desde 190 €"],
+        ["Reparación y diagnóstico rápido", "Detección precisa y solución limpia en el mismo día.", "Desde 79 €"],
+        ["Mantenimiento preventivo", "Revisión periódica para evitar averías costosas.", "Desde 125 €"],
+        ["Proyecto a medida", "Asesoramiento personalizado y presupuesto detallado por email.", "Gratis"]
+      ]
+    },
+    de: {
+      avail: "VERFÜGBAR IN", stat1: "210+ Bewertungen", stat2: "Schnelle Anfahrt", stat3: "Voll versichert",
+      score: "Geprüfte Bewertung", revs: "190+ lokale Bewertungen", slots: "KURZFRISTIGE TERMINE", guar: "12 Monate Garantie",
+      kinfolk: (b, n) => `${b} — erstklassige <em>${n}</em> für anspruchsvolle Kunden.`,
+      quoteH: n => `Moderne ${n} zu transparenten Festpreisen.`,
+      bentoH: (n, c) => `${n} in ${c}.`,
+      bullets: ["✓ Verbindliche Festpreise", "✓ Voll versicherter Fachbetrieb", "✓ 12 Monate Gewährleistung", "✓ Schnelle Reaktion vor Ort"],
+      estK: "Sofort-Angebot per E-Mail", estH: c => `Kostenloses Angebot für ${c}`,
+      badge: "Zertifizierter Fachbetrieb · 24/7",
+      tagline: (n, c) => `Ihr zuverlässiger Partner für ${n} in ${c} — transparente Festpreise, saubere Ausführung und volle Gewährleistung.`,
+      svcs: n => [
+        [`Komplettlösung ${n}`, "Fachgerechte Ausführung von der Planung bis zur Übergabe.", "ab 195 €"],
+        ["Schneller Reparaturservice", "Zuverlässige Diagnose und saubere Behebung ohne versteckte Kosten.", "ab 85 €"],
+        ["Wartung & Inspektion", "Regelmäßiger Check für maximale Sicherheit und Langlebigkeit.", "ab 129 €"],
+        ["Individuelle Beratung", "Kostenlose Erstberatung und schriftliches Festpreisangebot.", "Kostenlos"]
+      ]
+    },
+    fr: {
+      avail: "DISPONIBLE À", stat1: "210+ Avis", stat2: "Intervention rapide", stat3: "Assuré RC Pro",
+      score: "Note Vérifiée", revs: "190+ avis clients", slots: "CRÉNEAUX RAPIDES", guar: "Garantie 12 mois",
+      kinfolk: (b, n) => `${b} — l'excellence en <em>${n.toLowerCase()}</em> pour vos projets.`,
+      quoteH: n => `${n} moderne avec tarifs transparents.`,
+      bentoH: (n, c) => `${n} à ${c}.`,
+      bullets: ["✓ Devis écrit fixe", "✓ Équipe assurée RC Pro", "✓ Garantie 12 mois", "✓ Réponse rapide par email"],
+      estK: "Devis Rapide par Email", estH: c => `Devis gratuit à ${c}`,
+      badge: "Artisans Certifiés · 24/7",
+      tagline: (n, c) => `Spécialistes en ${n.toLowerCase()} à ${c} : devis clair, travail soigné et garantie complète de 12 mois.`,
+      svcs: n => [
+        [`Prestation complète : ${n}`, "Réalisation clé en main avec matériaux professionnels.", "Dès 190 €"],
+        ["Dépannage & diagnostic rapide", "Intervention efficace et propre dans les meilleurs délais.", "Dès 80 €"],
+        ["Entretien annuel", "Contrôle complet pour prévenir les pannes coûteuses.", "Dès 125 €"],
+        ["Étude personnalisée", "Conseil sur mesure et devis détaillé envoyé par email.", "Gratuit"]
+      ]
+    },
+    pt: {
+      avail: "ATENDIMENTO EM", stat1: "210+ Avaliações", stat2: "Atendimento rápido", stat3: "Garantia total",
+      score: "Nota Verificada", revs: "190+ avaliações locais", slots: "HORÁRIOS HOJE", guar: "Garantia 12 meses",
+      kinfolk: (b, n) => `${b} — excelência em <em>${n.toLowerCase()}</em> com qualidade garantida.`,
+      quoteH: n => `${n} profissional com preços transparentes.`,
+      bentoH: (n, c) => `${n} em ${c}.`,
+      bullets: ["✓ Orçamento fechado por escrito", "✓ Equipe segurada", "✓ Garantia de 12 meses", "✓ Retorno rápido por e-mail"],
+      estK: "Orçamento por E-mail", estH: c => `Orçamento grátis em ${c}`,
+      badge: "Especialistas Certificados · 24/7",
+      tagline: (n, c) => `Especialistas em ${n.toLowerCase()} em ${c} com orçamento claro, atendimento ágil e garantia de 12 meses.`,
+      svcs: n => [
+        [`Serviço completo de ${n}`, "Execução completa com acabamento profissional e preço fechado.", "A partir de R$ 490"],
+        ["Diagnóstico e reparo rápido", "Atendimento ágil e solução limpa sem taxas ocultas.", "A partir de R$ 220"],
+        ["Manutenção preventiva", "Revisão periódica para evitar custos inesperados.", "A partir de R$ 340"],
+        ["Projeto sob medida", "Consultoria gratuita e orçamento detalhado por e-mail.", "Grátis"]
+      ]
+    },
+    it: {
+      avail: "DISPONIBILI A", stat1: "210+ Recensioni", stat2: "Intervento rapido", stat3: "Assicurati",
+      score: "Valutazione Verificata", revs: "190+ recensioni locali", slots: "DISPONIBILITÀ OGGI", guar: "Garanzia 12 mesi",
+      kinfolk: (b, n) => `${b} — eccellenza in <em>${n.toLowerCase()}</em> per la tua casa e azienda.`,
+      quoteH: n => `${n} professionale con prezzi trasparenti.`,
+      bentoH: (n, c) => `${n} a ${c}.`,
+      bullets: ["✓ Preventivo scritto fisso", "✓ Squadra assicurata", "✓ Garanzia 12 mesi", "✓ Risposta rapida via email"],
+      estK: "Preventivo via Email", estH: c => `Preventivo gratuito a ${c}`,
+      badge: "Professionisti Certificati · 24/7",
+      tagline: (n, c) => `Specialisti in ${n.toLowerCase()} a ${c}: preventivi chiari, lavoro impeccabile e garanzia 12 mesi.`,
+      svcs: n => [
+        [`Servizio completo: ${n}`, "Realizzazione chiavi in mano con materiali certificati.", "Da 190 €"],
+        ["Riparazione rapida", "Diagnosi precisa e intervento pulito in giornata.", "Da 80 €"],
+        ["Manutenzione programmata", "Controllo periodico per evitare guasti costosi.", "Da 125 €"],
+        ["Consulenza su misura", "Sopralluogo e preventivo dettagliato via email.", "Gratuito"]
+      ]
+    },
+    nl: {
+      avail: "ACTIEF IN", stat1: "210+ Reviews", stat2: "Snelle service", stat3: "Volledig verzekerd",
+      score: "Geverifieerde Score", revs: "190+ lokale reviews", slots: "SNELLE PLANNING", guar: "12 maanden garantie",
+      kinfolk: (b, n) => `${b} — vakmanschap in <em>${n.toLowerCase()}</em> zonder zorgen.`,
+      quoteH: n => `Professionele ${n.toLowerCase()} met heldere prijzen.`,
+      bentoH: (n, c) => `${n} in ${c}.`,
+      bullets: ["✓ Vaste offerte vooraf", "✓ Volledig verzekerd", "✓ 12 maanden garantie", "✓ Snelle reactie per e-mail"],
+      estK: "Directe E-mail Offerte", estH: c => `Gratis offerte in ${c}`,
+      badge: "Erkend Vakbedrijf · 24/7",
+      tagline: (n, c) => `Betrouwbare specialisten voor ${n.toLowerCase()} in ${c} met heldere prijzen en 12 maanden garantie.`,
+      svcs: n => [
+        [`Complete ${n}`, "Vakkundige uitvoering van start tot oplevering.", "Vanaf €190"],
+        ["Snelle reparatie & service", "Directe diagnose en nette oplossing zonder verrassingen.", "Vanaf €80"],
+        ["Periodiek onderhoud", "Jaarlijkse controle om hoge kosten te voorkomen.", "Vanaf €125"],
+        ["Maatwerk offerte", "Vrijblijvend advies en vaste prijsopgave per e-mail.", "Gratis"]
+      ]
+    },
+    ru: {
+      avail: "РАБОТАЕМ В:", stat1: "210+ отзывов", stat2: "Быстрый выезд", stat3: "Гарантия",
+      score: "Проверенный рейтинг", revs: "190+ реальных отзывов", slots: "ВЫЕЗД СЕГОДНЯ", guar: "Гарантия 12 мес.",
+      kinfolk: (b, n) => `${b} — безупречный сервис: <em>${n.toLowerCase()}</em>.`,
+      quoteH: n => `Профессиональная ${n.toLowerCase()} с честными ценами.`,
+      bentoH: (n, c) => `${n} — ${c}.`,
+      bullets: ["✓ Фиксированная смета", "✓ Проверенные мастера", "✓ Гарантия 12 месяцев", "✓ Быстрый ответ по Email"],
+      estK: "Быстрый расчёт по Email", estH: c => `Бесплатный расчёт — ${c}`,
+      badge: "Сертифицированные мастера · 24/7",
+      tagline: (n, c) => `Надёжные специалисты (${n.toLowerCase()}) в городе ${c}: прозрачные цены, аккуратная работа и гарантия 12 месяцев.`,
+      svcs: n => [
+        [`Комплексная услуга: ${n}`, "Выполнение под ключ с письменной гарантией и фиксированной ценой.", "от 14 900 ₽"],
+        ["Оперативный ремонт", "Быстрая диагностика и устранение неисправностей в день обращения.", "от 4 900 ₽"],
+        ["Плановое обслуживание", "Регулярная проверка для предотвращения серьёзных поломок.", "от 7 900 ₽"],
+        ["Индивидуальный расчёт", "Бесплатная консультация и подробная смета на почту.", "Бесплатно"]
+      ]
+    },
+    zh: {
+      avail: "服务地区：", stat1: "210+ 好评", stat2: "极速响应", stat3: "质保承诺",
+      score: "真实评分", revs: "190+ 本地客户评价", slots: "当日预约", guar: "12个月质保",
+      kinfolk: (b, n) => `${b} — 专业可靠的<em>${n}</em>服务。`,
+      quoteH: n => `透明报价的专业${n}服务。`,
+      bentoH: (n, c) => `${c}专业${n}。`,
+      bullets: ["✓ 书面固定报价", "✓ 专业持证团队", "✓ 12个月质量保证", "✓ 邮件快速回复"],
+      estK: "在线邮件报价", estH: c => `获取${c}免费报价`,
+      badge: "认证专业团队 · 24/7",
+      tagline: (n, c) => `${c}值得信赖的${n}专家，提供透明书面报价、高效施工与12个月质保。`,
+      svcs: n => [
+        [`全包${n}方案`, "从规划到验收的一站式专业交付，价格透明。", "¥1,500 起"],
+        ["快速检修服务", "精准排查问题，当天高效解决。", "¥580 起"],
+        ["定期维护保养", "预防性检查，降低长期维修成本。", "¥890 起"],
+        ["定制方案咨询", "免费评估并通过邮件发送详细报价单。", "免费"]
+      ]
+    },
+    ja: {
+      avail: "対応エリア：", stat1: "210件以上の評価", stat2: "迅速対応", stat3: "安心保証",
+      score: "顧客満足度", revs: "190件以上の実績", slots: "即日相談可", guar: "12ヶ月保証",
+      kinfolk: (b, n) => `${b} — 確かな品質の<em>${n}</em>サービス。`,
+      quoteH: n => `明朗会計のプロ品質${n}。`,
+      bentoH: (n, c) => `${c}の${n}。`,
+      bullets: ["✓ 明確な事前見積り", "✓ 専門有資格スタッフ", "✓ 12ヶ月施工保証", "✓ メールで迅速返信"],
+      estK: "無料メール見積り", estH: c => `${c}の無料お見積り`,
+      badge: "認定プロフェッショナル · 24/7",
+      tagline: (n, c) => `${c}で選ばれる${n}の専門店。明確なお見積りと丁寧な施工、12ヶ月保証をお届けします。`,
+      svcs: n => [
+        [`${n} フルパッケージ`, "設計から施工完了まで一貫対応の安心プラン。", "¥28,000〜"],
+        ["迅速点検・修理", "原因を的確に特定し、スピーディーに解決します。", "¥12,000〜"],
+        ["定期メンテナンス", "トラブルを未然に防ぐ安心の定期点検。", "¥18,000〜"],
+        ["個別お見積り", "ご要望に合わせた最適なプランをメールでご提案。", "無料"]
+      ]
+    },
+    ko: {
+      avail: "서비스 지역:", stat1: "210+ 고객 후기", stat2: "신속 출동", stat3: "안심 보증",
+      score: "검증된 평점", revs: "190+ 지역 후기", slots: "당일 상담 가능", guar: "12개월 보증",
+      kinfolk: (b, n) => `${b} — 믿을 수 있는 프리미엄 <em>${n}</em>.`,
+      quoteH: n => `투명한 가격의 전문 ${n}.`,
+      bentoH: (n, c) => `${c} ${n}.`,
+      bullets: ["✓ 투명한 확정 견적", "✓ 전문 인증 인력", "✓ 12개월 품질 보증", "✓ 빠른 이메일 답변"],
+      estK: "빠른 이메일 견적", estH: c => `${c} 무료 견적 받기`,
+      badge: "인증 전문 팀 · 24/7",
+      tagline: (n, c) => `${c} 지역 최고의 ${n} 전문가 — 투명한 견적과 12개월 보증을 약속드립니다.`,
+      svcs: n => [
+        [`${n} 올인원 시공`, "상담부터 완료까지 깔끔한 원스톱 서비스.", "₩250,000~"],
+        ["신속 점검 및 수리", "정확한 진단과 당일 깔끔한 해결.", "₩95,000~"],
+        ["정기 유지보수", "고장을 예방하는 합리적인 정기 관리.", "₩150,000~"],
+        ["맞춤 견적 상담", "이메일로 상세한 확정 견적서를 보내드립니다.", "무료"]
+      ]
+    },
+    ar: {
+      avail: "متاحون في", stat1: "210+ تقييم", stat2: "استجابة سريعة", stat3: "ضمان شامل",
+      score: "تقييم موثق", revs: "190+ تقييم محلي", slots: "مواعيد اليوم", guar: "ضمان 12 شهراً",
+      kinfolk: (b, n) => `${b} — التميز في <em>${n}</em> لعملائنا.`,
+      quoteH: n => `خدمات ${n} احترافية بأسعار شفافة.`,
+      bentoH: (n, c) => `${n} في ${c}.`,
+      bullets: ["✓ عرض سعر ثابت ومكتوب", "✓ فريق معتمد ومؤمّن", "✓ ضمان 12 شهراً", "✓ رد سريع عبر البريد"],
+      estK: "طلب عرض سعر فوري", estH: c => `احصل على عرض مجاني في ${c}`,
+      badge: "خبراء معتمدون · 24/7",
+      tagline: (n, c) => `متخصصون موثوقون في ${n} في ${c} — أسعار واضحة وجودة عالية مع ضمان 12 شهراً.`,
+      svcs: n => [
+        [`باقة ${n} الشاملة`, "تنفيذ متكامل بأعلى معايير الجودة وبسعر ثابت.", "ابتداءً من 650 AED"],
+        ["فحص وإصلاح سريع", "تشخيص دقيق وحل فوري بدون رسوم خفية.", "ابتداءً من 250 AED"],
+        ["صيانة دورية وقائية", "فحص منتظم لتجنب الأعطال المكلفة.", "ابتداءً من 390 AED"],
+        ["استشارة وعرض سعر", "تقييم مجاني وعرض سعر مفصل عبر البريد الإلكتروني.", "مجاني"]
+      ]
+    }
+  };
+
+  function getDemoCopy(ind, biz, city) {
+    const code = global.EntiuI18n ? global.EntiuI18n.get() : "en";
+    const baseKey = ARCH_COPY[code] ? code : (code.startsWith("en") ? "en" : "en");
+    const c = ARCH_COPY[baseKey] || ARCH_COPY.en;
+    const localizedInd = localizeIndustry(ind);
+    const isEn = code === "en" || code === "en-us" || code === "en-au";
+    const isPlWithSpecific = code === "pl" && !!PL_TRADES[ind.id];
+
+    const finalBadge = isEn ? ind.badge : (isPlWithSpecific ? localizedInd.badge : c.badge);
+    const finalTagline = isEn ? ind.tagline : (isPlWithSpecific ? localizedInd.tagline : c.tagline(localizedInd.name, city));
+    const finalServices = isEn ? ind.services : (isPlWithSpecific ? localizedInd.services : c.svcs(localizedInd.name));
+
+    return {
+      ind: Object.assign({}, localizedInd, { badge: finalBadge, tagline: finalTagline, services: finalServices }),
+      avail: c.avail,
+      stat1: c.stat1, stat2: c.stat2, stat3: c.stat3,
+      score: c.score, revs: c.revs, slots: c.slots, guar: c.guar,
+      kinfolkH: c.kinfolk(biz, localizedInd.name),
+      quoteH: c.quoteH(localizedInd.name),
+      bentoH: c.bentoH(localizedInd.name, city),
+      bullets: c.bullets,
+      estK: c.estK,
+      estH: c.estH(city),
+      slogan: HERO_SLOGAN[code] || "Built to Last."
+    };
+  }
 
   function applyFullPack(code, meta) {
     const pack = getFullPageStrings(code, meta);
@@ -280,6 +526,7 @@
   global.EntiuFullI18n = {
     apply: applyFullPack,
     localizeIndustry,
+    getDemoCopy,
     getReviews,
     getSlogan
   };

@@ -418,7 +418,9 @@
   /* Full Agency-Grade £50k-Caliber Live Website Renderer */
   function renderFullPageHTML(layout, custom) {
     const c = custom || {};
-    const { industry: ind, palette: p, arch, font, photo, bizName } = layout;
+    const { industry: rawInd, palette: p, arch, font, photo, bizName } = layout;
+    const ind = (global.EntiuFullI18n && global.EntiuFullI18n.localizeIndustry) ? global.EntiuFullI18n.localizeIndustry(rawInd) : rawInd;
+    const heroSlogan = (global.EntiuFullI18n && global.EntiuFullI18n.getSlogan) ? global.EntiuFullI18n.getSlogan() : "Built to Last.";
     const i18nReg = global.EntiuI18n ? global.EntiuI18n.region() : { code: "en", dir: "ltr", city: "London", tld: ".co.uk" };
     const dui = global.EntiuI18n ? global.EntiuI18n.demo() : { home: "Home", services: "Services", reviews: "Reviews", contact: "Contact", emailBtn: "Email Enquiry", servicesH: "Services & Guide Pricing", trustedH: "Trusted across", quoteK: "Direct Email Quote", quoteH: "Request a quote from", quoteSub: "Send your enquiry directly by email — we reply promptly with clear written pricing.", formTitle: "Email Contact Form", namePh: "Your Name", emailPh: "Your Email Address", msgPh: "Tell us what you need...", sendBtn: "Send Email Enquiry →", sentMsg: "✓ Enquiry Sent — We Will Reply By Email Shortly!", areaLabel: "Service Area" };
     const biz = esc(c.business || bizName);
@@ -444,14 +446,14 @@
           <span style="color:${p.accent};">● AVAILABLE IN ${city.toUpperCase()}</span>
         </div>
         <h1 style="font-size:clamp(46px,7.5vw,92px);line-height:.95;font-weight:800;letter-spacing:-.045em;margin:0 0 36px;font-family:${font.heading};">
-          ${esc(ind.name)}<br/><span style="color:${p.accent};">Built to Last.</span>
+          ${esc(ind.name)}<br/><span style="color:${p.accent};">${esc(heroSlogan)}</span>
         </h1>
         <div class="grid-2" style="align-items:end;">
           <div>
             <p style="font-size:19px;line-height:1.6;color:${p.muted};max-width:480px;margin:0 0 28px;">${esc(ind.tagline)}</p>
             <div style="display:flex;flex-wrap:wrap;gap:12px;">
-              <a href="tel:${phoneHref}" class="btn-primary">Call ${phone} →</a>
-              <a href="#services" class="btn-ghost">View Fixed Rates</a>
+              <a href="#quote" data-scroll="quote" class="btn-primary">${esc(dui.emailBtn)} →</a>
+              <a href="#services" data-scroll="services" class="btn-ghost">${esc(dui.services)}</a>
             </div>
             <div style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:24px;border-top:1px solid ${p.border};">
               <div><div style="font-size:28px;font-weight:800;">4.9★</div><div style="font-size:12px;color:${p.muted};">210+ Reviews</div></div>
@@ -667,9 +669,11 @@
         <span style="font-weight:700;color:${p.accent};">★★★★★ 4.9 / 5.0</span>
       </div>
       <div class="grid-3">
-        <div style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;"><p style="font-size:15px;line-height:1.7;margin:0 0 20px;">"Exceptional standard of work from start to finish. Punctual, spotless and priced exactly as quoted."</p><strong style="font-size:13px;">Oliver Bennett · ${city}</strong></div>
-        <div style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;"><p style="font-size:15px;line-height:1.7;margin:0 0 20px;">"Responded the same morning and resolved the issue in under two hours. Truly head and shoulders above the rest."</p><strong style="font-size:13px;">Hannah Clarke · ${city}</strong></div>
-        <div style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;"><p style="font-size:15px;line-height:1.7;margin:0 0 20px;">"Clear communication, zero mess left behind and a full 12-month guarantee. Highly recommended."</p><strong style="font-size:13px;">Marcus &amp; Priya Patel · ${city}</strong></div>
+        ${((global.EntiuFullI18n && global.EntiuFullI18n.getReviews && global.EntiuFullI18n.getReviews(city)) || [
+          ['"Exceptional standard of work from start to finish. Punctual, spotless and priced exactly as quoted."', `Oliver Bennett · ${city}`],
+          ['"Responded the same morning and resolved the issue in under two hours. Truly head and shoulders above the rest."', `Hannah Clarke · ${city}`],
+          ['"Clear communication, zero mess left behind and a full 12-month guarantee. Highly recommended."', `Marcus & Priya Patel · ${city}`]
+        ]).map(rv => `<div style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;"><p style="font-size:15px;line-height:1.7;margin:0 0 20px;">${esc(rv[0])}</p><strong style="font-size:13px;">${esc(rv[1])}</strong></div>`).join("")}
       </div>
     </div>
   </section>

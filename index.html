@@ -156,37 +156,75 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .offer-menu:hover .offer-dropdown, .offer-menu:focus-within .offer-dropdown { display: block; }
   </style>
 </head>
 <body class="min-h-screen">
 
-  <!-- Crisp Editorial Top Navbar (Land-book / Landingfolio Style) -->
-  <header class="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/90 backdrop-blur-xl">
+  <!-- Crisp Editorial Top Navbar with Offer Subcategories Dropdown -->
+  <header class="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/95 backdrop-blur-xl">
     <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5">
       <div class="flex items-center gap-7">
-        <a href="#" class="flex items-center gap-2.5">
+        <a href="index.html" class="flex items-center gap-2.5">
           <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 font-display text-xs font-extrabold text-white">ES</span>
           <span class="font-display text-[15px] font-extrabold tracking-tight text-zinc-950">Entiu<span class="text-zinc-400 font-semibold">.store</span></span>
         </a>
         <nav class="hidden items-center gap-6 text-[13px] font-medium text-zinc-500 md:flex">
-          <a href="#gallery" class="text-zinc-950 font-semibold">Websites <span class="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] text-zinc-600">11,520</span></a>
+          <a href="index.html" class="text-zinc-950 font-bold">Home</a>
+
+          <!-- Offer Dropdown with Subcategories -->
+          <div class="offer-menu relative py-1">
+            <a href="catalogue.html" class="inline-flex items-center gap-1 hover:text-zinc-950 transition">
+              <span>Offer</span>
+              <span class="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-bold text-zinc-700">11,520</span>
+              <svg class="h-3.5 w-3.5 text-zinc-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+            </a>
+            <div class="offer-dropdown hidden absolute left-0 top-full pt-2 w-[540px] z-50">
+              <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-2xl grid grid-cols-2 gap-5">
+                <div>
+                  <div class="text-[10px] font-extrabold uppercase tracking-widest text-zinc-400 mb-2.5">Trades &amp; Construction</div>
+                  <div class="space-y-1 text-xs">
+                    <a href="catalogue.html?trade=plumber" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Plumbers &amp; Heating</a>
+                    <a href="catalogue.html?trade=electrician" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Electricians &amp; EV</a>
+                    <a href="catalogue.html?trade=builder" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Builders &amp; Extensions</a>
+                    <a href="catalogue.html?trade=roofer" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Roofers &amp; Slate</a>
+                    <a href="catalogue.html?trade=carpenter" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Carpenters &amp; Joiners</a>
+                    <a href="catalogue.html?trade=painter" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Painters &amp; Decorators</a>
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[10px] font-extrabold uppercase tracking-widest text-zinc-400 mb-2.5">Auto, Transport &amp; Local</div>
+                  <div class="space-y-1 text-xs">
+                    <a href="catalogue.html?trade=mechanic" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Garages &amp; Mechanics</a>
+                    <a href="catalogue.html?trade=manvan" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Man &amp; Van / Removals</a>
+                    <a href="catalogue.html?trade=landscaper" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Landscapers &amp; Garden</a>
+                    <a href="catalogue.html?trade=locksmith" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Locksmiths 24/7</a>
+                    <a href="catalogue.html?trade=cleaning" class="block rounded-lg px-2.5 py-1.5 font-semibold text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950">Cleaning &amp; Facilities</a>
+                    <a href="catalogue.html" class="mt-2 block rounded-lg bg-zinc-950 px-2.5 py-1.5 font-bold text-white text-center hover:bg-zinc-800">All 20 Subcategories →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <a href="#how" class="hover:text-zinc-950 transition">How it works</a>
           <a href="#pricing" class="hover:text-zinc-950 transition">Pricing (£15 / £60)</a>
+          <button onclick="openEnquiryModal()" class="hover:text-zinc-950 transition cursor-pointer">Email Enquiry</button>
         </nav>
       </div>
 
-      <!-- Inline Search in Navbar (Landingfolio style) -->
-      <div class="hidden max-w-md flex-1 lg:block">
-        <input id="navSearch" type="text" placeholder="Search 11,520 designs — e.g. Swiss, Plumber, Dark, UK-04812..." class="w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:bg-white focus:outline-none transition" />
-      </div>
+      <!-- Search submits directly to Offer Catalogue -->
+      <form onsubmit="submitNavSearch(event)" class="hidden max-w-md flex-1 lg:block">
+        <input id="navSearch" type="text" placeholder="Search 11,520 designs in Offer — e.g. Plumber, Garage, Dark..." class="w-full rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-xs text-zinc-900 placeholder-zinc-400 focus:border-zinc-900 focus:bg-white focus:outline-none transition" />
+      </form>
 
       <div class="flex items-center gap-2.5">
-        <button onclick="openRandomPreview()" class="hidden rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-xs font-semibold text-zinc-700 hover:border-zinc-400 hover:text-zinc-950 sm:inline-flex items-center gap-1.5 transition cursor-pointer">
-          ↻ Shuffle
+        <button onclick="openEnquiryModal()" class="hidden rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-xs font-semibold text-zinc-700 hover:border-zinc-400 hover:text-zinc-950 sm:inline-flex items-center gap-1.5 transition cursor-pointer">
+          Email Us
         </button>
         <button onclick="EntiuCart.open()" class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 transition cursor-pointer">
-          <span>🛒 Cart</span>
-          <span id="bagCount" class="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold text-zinc-950">0</span>
+          <span>Cart</span>
+          <span id="bagCount" class="rounded-full bg-emerald-400 px-1.5 py-0.5 text-[10px] font-extrabold text-zinc-950">0</span>
         </button>
       </div>
     </div>
@@ -250,15 +288,15 @@
         <!-- Right Visual Browser Showcase + Embedded Nominet UK Checker -->
         <div class="lg:col-span-5 space-y-4">
           <!-- Crisp Browser Preview Frame -->
-          <a href="preview.html?trade=mechanic&amp;biz=Poplar%20Grove%20Garage&amp;city=Manchester&amp;phone=0161%20496%200821" class="group block overflow-hidden rounded-2xl border border-white/15 bg-zinc-900 shadow-2xl shadow-black/60 transition hover:border-emerald-400/50">
+          <div class="group block overflow-hidden rounded-2xl border border-white/15 bg-zinc-900 shadow-2xl shadow-black/60 transition hover:border-emerald-400/50">
             <div class="flex items-center justify-between border-b border-white/10 bg-zinc-950/90 px-3.5 py-2">
               <div class="flex items-center gap-1.5">
                 <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
                 <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
                 <span class="h-2.5 w-2.5 rounded-full bg-zinc-700"></span>
               </div>
-              <span class="rounded-md bg-white/5 px-2.5 py-0.5 font-mono text-[10px] text-zinc-400">https://poplargrovegarage.co.uk</span>
-              <span class="text-[10px] font-bold text-emerald-400 group-hover:translate-x-0.5 transition">Live Demo →</span>
+              <a href="preview.html?trade=mechanic&amp;biz=Poplar%20Grove%20Garage&amp;city=Manchester&amp;phone=0161%20496%200821" class="rounded-md bg-white/5 px-2.5 py-0.5 font-mono text-[10px] text-zinc-400 hover:text-white transition">https://poplargrovegarage.co.uk</a>
+              <a href="preview.html?trade=mechanic&amp;biz=Poplar%20Grove%20Garage&amp;city=Manchester&amp;phone=0161%20496%200821" class="text-[10px] font-bold text-emerald-400 hover:underline">Live Demo →</a>
             </div>
             <div class="relative h-48 w-full overflow-hidden">
               <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=85" alt="UK Garage Website Live Demo" class="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105" />
@@ -267,12 +305,12 @@
                 <div>
                   <span class="inline-block rounded bg-emerald-500/20 border border-emerald-400/30 px-2 py-0.5 text-[10px] font-bold text-emerald-300">MANCHESTER · LIVE IN 24H</span>
                   <div class="mt-1 font-display text-lg font-extrabold text-white leading-tight">Poplar Grove Garage</div>
-                  <div class="text-[11px] text-zinc-300">MOT · Brakes · Diagnostics · 0161 496 0821</div>
+                  <div class="text-[11px] text-zinc-300">MOT · Brakes · Diagnostics · Direct Email Quotes</div>
                 </div>
-                <span class="shrink-0 rounded-full bg-white px-3 py-1.5 text-[11px] font-extrabold text-zinc-950">Call Now</span>
+                <button onclick="openEnquiryModal('Poplar Grove Garage style')" class="shrink-0 rounded-full bg-white px-3.5 py-1.5 text-[11px] font-extrabold text-zinc-950 hover:bg-emerald-300 transition cursor-pointer">Email Enquiry →</button>
               </div>
             </div>
-          </a>
+          </div>
 
           <!-- Embedded Nominet UK Domain Checker -->
           <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-md">
@@ -299,7 +337,7 @@
           <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Live Industry Examples</span>
           <h2 class="mt-1 font-display text-xl font-extrabold tracking-tight text-zinc-950">Click any UK trade to test a finished live website</h2>
         </div>
-        <a href="#gallery" class="text-xs font-bold text-zinc-600 hover:text-zinc-950 transition">Browse all 11,520 unique layouts ↓</a>
+        <a href="catalogue.html" class="inline-flex items-center gap-1.5 rounded-full bg-zinc-950 px-4 py-2 text-xs font-bold text-white hover:bg-zinc-800 transition">Open Full Offer (11,520) →</a>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -366,43 +404,60 @@
     </div>
   </section>
 
-  <!-- Sticky Filter Bar (Land-book Style) -->
-  <section id="gallery" class="sticky top-[61px] z-30 border-b border-zinc-200/80 bg-[#f6f6f7]/95 backdrop-blur-md">
-    <div class="mx-auto max-w-[1400px] px-5 py-3">
-      <!-- Category Pills -->
-      <div id="industryPills" class="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-2.5"></div>
-
-      <!-- Precision Sub-Filters -->
-      <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
-        <div class="flex flex-wrap items-center gap-2">
-          <!-- Light / Dark Mode Switch -->
-          <div class="inline-flex rounded-lg border border-zinc-200 bg-white p-0.5 text-xs font-semibold">
-            <button onclick="setMode('all')" id="modeAll" class="rounded-md bg-zinc-950 px-2.5 py-1 text-white">All</button>
-            <button onclick="setMode('light')" id="modeLight" class="rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950">Light</button>
-            <button onclick="setMode('dark')" id="modeDark" class="rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950">Dark</button>
-          </div>
-
-          <select id="archFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
-          <select id="paletteFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
-          <select id="fontFilter" class="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 focus:border-zinc-900 focus:outline-none"></select>
-          <button onclick="resetFilters()" class="rounded-lg px-2.5 py-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-950 cursor-pointer">Reset</button>
+  <!-- Clean Offer Subcategories Strip (Replaces Cluttered Grid on Homepage) -->
+  <section class="border-b border-zinc-200/80 bg-[#f6f6f7] py-12">
+    <div class="mx-auto max-w-[1400px] px-5">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Browse Offer by Subcategory</span>
+          <h2 class="mt-1 font-display text-2xl font-extrabold tracking-tight text-zinc-950">20 UK trade subcategories — 11,520 exclusive designs</h2>
         </div>
-
-        <div id="resultsCount" class="text-xs font-medium text-zinc-500">11,520 unique websites</div>
+        <a href="catalogue.html" class="rounded-full border border-zinc-950 bg-white px-5 py-2.5 text-xs font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition">View All 11,520 in Offer →</a>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        <a href="catalogue.html?trade=plumber" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Plumbers &amp; Heating</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=electrician" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Electricians &amp; EV</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=mechanic" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Garages &amp; Mechanics</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=builder" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Builders &amp; Extensions</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=roofer" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Roofers &amp; Slate</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=manvan" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Man &amp; Van / Removals</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=landscaper" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Landscapers &amp; Garden</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=locksmith" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Locksmiths 24/7</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html?trade=cleaning" class="rounded-2xl border border-zinc-200 bg-white p-4 hover:border-zinc-950 hover:shadow-md transition">
+          <div class="font-display text-sm font-extrabold text-zinc-950">Cleaning &amp; Facilities</div>
+          <div class="mt-1 text-[11px] text-zinc-500">576 unique designs →</div>
+        </a>
+        <a href="catalogue.html" class="rounded-2xl border border-zinc-950 bg-zinc-950 p-4 text-white hover:bg-zinc-800 transition">
+          <div class="font-display text-sm font-extrabold">All 20 Subcategories</div>
+          <div class="mt-1 text-[11px] text-emerald-300">Open full Offer →</div>
+        </a>
       </div>
     </div>
   </section>
-
-  <!-- 3-Column Tall Curated Gallery Grid -->
-  <main class="mx-auto max-w-[1400px] px-5 py-8">
-    <div id="catalogGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-
-    <div class="mt-12 text-center">
-      <button id="loadMoreBtn" onclick="loadMore()" class="rounded-full border border-zinc-300 bg-white px-8 py-3 text-xs font-bold text-zinc-900 shadow-sm hover:border-zinc-900 hover:bg-zinc-950 hover:text-white transition cursor-pointer">
-        Load 24 More Exclusive Designs
-      </button>
-    </div>
-  </main>
 
   <!-- Minimal Editorial How It Works + £60/yr Pricing -->
   <section id="how" class="border-t border-zinc-200 bg-white py-20">
@@ -567,6 +622,40 @@
       <span>Contact: <a href="mailto:agentaiuk90@gmail.com" class="font-semibold text-zinc-800 hover:underline">agentaiuk90@gmail.com</a></span>
     </div>
   </footer>
+
+  <!-- Direct Email Enquiry Modal (Sends directly to our email so we can reply by email) -->
+  <div id="enquiryModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/55 p-4 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="inline-flex rounded-full bg-zinc-100 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-zinc-700">Direct Email Support</span>
+          <h3 class="mt-2 font-display text-xl font-extrabold text-zinc-950">Send Us an Email Enquiry</h3>
+          <p class="mt-1 text-xs text-zinc-500">Ask about a custom website, .co.uk domain or free preview — we reply straight to your email.</p>
+        </div>
+        <button onclick="closeEnquiryModal()" class="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 cursor-pointer">✕</button>
+      </div>
+      <form onsubmit="submitEnquiryForm(event)" class="mt-5 space-y-3">
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">Your Name / Business *</label>
+            <input id="enqName" required type="text" placeholder="e.g. John — Apex Plumbing" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">Your Email *</label>
+            <input id="enqEmail" required type="email" placeholder="you@gmail.com" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-zinc-700">Your Message / Question *</label>
+          <textarea id="enqMsg" required rows="3" placeholder="Tell us your UK trade, city, or any question about the £60/yr turnkey website..." class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none"></textarea>
+        </div>
+        <button id="enqSubmitBtn" type="submit" class="w-full rounded-full bg-zinc-950 py-3.5 text-sm font-extrabold text-white hover:bg-zinc-800 transition cursor-pointer">
+          Send Email Enquiry →
+        </button>
+        <div id="enqStatus" class="text-center text-xs min-h-[18px]"></div>
+      </form>
+    </div>
+  </div>
 
   <!-- Instant Free Live Preview Modal ("Show First, Sell Second") -->
   <div id="freePreviewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
@@ -741,122 +830,70 @@
   <script src="js/chat-widget.js?v=2"></script>
   <script>
     const E = window.UKLayoutEngine;
-    const state = {
-      industry: "all", mode: "all", arch: "all", palette: "all", font: "all", search: "",
-      pageSize: 24, shown: 24, filtered: [], cart: [{ idx: 0, plan: "turnkey" }]
-    };
 
     function init() {
-      const pills = document.getElementById("industryPills");
-      pills.innerHTML =
-        `<button onclick="setIndustry('all')" data-ind="all" class="ind-pill shrink-0 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-semibold text-white">All 20 Trades</button>` +
-        E.INDUSTRIES.map(ind =>
-          `<button onclick="setIndustry('${ind.id}')" data-ind="${ind.id}" class="ind-pill shrink-0 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-600 hover:border-zinc-400 hover:text-zinc-950 transition cursor-pointer">${ind.short}</button>`
-        ).join("");
-
-      fill("archFilter", "All 12 Architectures", E.ARCHITECTURES);
-      fill("paletteFilter", "All 12 Palettes", E.PALETTES);
-      fill("fontFilter", "All 4 Font Systems", E.FONTS);
-
-      document.getElementById("navSearch").addEventListener("input", e => { state.search = e.target.value.trim().toLowerCase(); applyFilters(); });
-      document.getElementById("archFilter").addEventListener("change", e => { state.arch = e.target.value; applyFilters(); });
-      document.getElementById("paletteFilter").addEventListener("change", e => { state.palette = e.target.value; applyFilters(); });
-      document.getElementById("fontFilter").addEventListener("change", e => { state.font = e.target.value; applyFilters(); });
-      document.getElementById("drawerDomain").addEventListener("input", updateDrawer);
-      document.getElementById("drawerEmail").addEventListener("input", updateDrawer);
-
-      applyFilters();
+      const dd = document.getElementById("drawerDomain");
+      const de = document.getElementById("drawerEmail");
+      if (dd) dd.addEventListener("input", updateDrawer);
+      if (de) de.addEventListener("input", updateDrawer);
     }
 
-    function fill(id, label, list) {
-      document.getElementById(id).innerHTML = `<option value="all">${label}</option>` + list.map(x => `<option value="${x.id}">${x.name}</option>`).join("");
+    function submitNavSearch(e) {
+      e.preventDefault();
+      const q = document.getElementById("navSearch").value.trim();
+      window.location.href = q ? `catalogue.html?q=${encodeURIComponent(q)}` : "catalogue.html";
     }
 
-    function setIndustry(id) {
-      state.industry = id;
-      document.querySelectorAll(".ind-pill").forEach(b => {
-        const on = b.dataset.ind === id;
-        b.className = on
-          ? "ind-pill shrink-0 rounded-full bg-zinc-950 px-3.5 py-1.5 text-xs font-semibold text-white cursor-pointer"
-          : "ind-pill shrink-0 rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-600 hover:border-zinc-400 hover:text-zinc-950 transition cursor-pointer";
-      });
-      applyFilters();
-    }
-
-    function setMode(m) {
-      state.mode = m;
-      ["All", "Light", "Dark"].forEach(n => {
-        const el = document.getElementById("mode" + n);
-        const on = n.toLowerCase() === m;
-        el.className = on ? "rounded-md bg-zinc-950 px-2.5 py-1 text-white" : "rounded-md px-2.5 py-1 text-zinc-600 hover:text-zinc-950";
-      });
-      applyFilters();
-    }
-
-    function resetFilters() {
-      state.industry = "all"; state.mode = "all"; state.arch = "all"; state.palette = "all"; state.font = "all"; state.search = "";
-      document.getElementById("navSearch").value = "";
-      document.getElementById("archFilter").value = "all";
-      document.getElementById("paletteFilter").value = "all";
-      document.getElementById("fontFilter").value = "all";
-      setMode("all");
-      setIndustry("all");
-    }
-
-    function applyFilters() {
-      const out = [];
-      // Bijective coprime permutation so adjacent cards NEVER repeat architecture, palette, photo or trade!
-      const step = 251; // gcd(251, 11520) = 1 => visits all 11,520 layouts exactly once
-      for (let k = 0; k < E.TOTAL_LAYOUTS; k++) {
-        const idx = (k * step + 17) % E.TOTAL_LAYOUTS;
-        const l = E.getLayoutByIndex(idx);
-        if (state.industry !== "all" && l.industry.id !== state.industry) continue;
-        if (state.mode !== "all" && l.palette.mode !== state.mode) continue;
-        if (state.arch !== "all" && l.arch.id !== state.arch) continue;
-        if (state.palette !== "all" && l.palette.id !== state.palette) continue;
-        if (state.font !== "all" && l.font.id !== state.font) continue;
-        if (state.search) {
-          const hay = `${l.code} ${l.bizName} ${l.industry.name} ${l.arch.name} ${l.palette.name} ${l.palette.mode} ${l.font.name}`.toLowerCase();
-          if (!hay.includes(state.search)) continue;
-        }
-        out.push(idx);
+    function openEnquiryModal(prefill) {
+      const m = document.getElementById("enquiryModal");
+      if (prefill) {
+        const msg = document.getElementById("enqMsg");
+        if (!msg.value) msg.value = `Hi, I'm interested in a £60/yr UK website (${prefill}). Please email me with details.`;
       }
-      state.filtered = out;
-      state.shown = state.pageSize;
-      renderGrid();
+      document.getElementById("enqStatus").textContent = "";
+      m.classList.remove("hidden");
+      m.classList.add("flex");
     }
 
-    function renderGrid() {
-      const total = state.filtered.length;
-      const slice = state.filtered.slice(0, state.shown);
-      document.getElementById("resultsCount").textContent = `Showing ${slice.length.toLocaleString()} of ${total.toLocaleString()} unique websites`;
-      document.getElementById("catalogGrid").innerHTML = slice.map(idx => {
-        const l = E.getLayoutByIndex(idx);
-        return `
-          <article class="lb-card">
-            <div class="lb-frame">
-              <a href="preview.html?id=${l.code}" class="block h-full">${E.renderGalleryThumbnail(l)}</a>
-            </div>
-            <div class="px-4 pt-3 pb-3.5">
-              <div class="flex items-center justify-between gap-2">
-                <div class="min-w-0">
-                  <a href="preview.html?id=${l.code}" class="block truncate font-display text-[13px] font-bold text-zinc-950 hover:underline">${l.bizName}</a>
-                  <div class="truncate text-[11px] text-zinc-500">${l.arch.name} · ${l.palette.name}</div>
-                </div>
-                <span class="shrink-0 rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-zinc-600">${l.code}</span>
-              </div>
-              <div class="mt-3 flex items-center gap-1.5">
-                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full border border-zinc-200 bg-zinc-50 py-1.5 text-center text-[11px] font-bold text-zinc-800 hover:border-zinc-900 hover:text-zinc-950 transition">Preview ↗</a>
-                <button onclick="EntiuCart.addItem(${l.index}, 'zip', false)" class="rounded-full border border-zinc-900 bg-white px-2.5 py-1.5 text-[11px] font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">+ ZIP £15</button>
-                <button onclick="EntiuCart.addItem(${l.index}, 'turnkey', false)" class="rounded-full bg-zinc-950 px-2.5 py-1.5 text-[11px] font-extrabold text-white hover:bg-zinc-800 transition cursor-pointer">+ Full £60</button>
-              </div>
-            </div>
-          </article>`;
-      }).join("");
-      document.getElementById("loadMoreBtn").style.display = state.shown < total ? "inline-block" : "none";
+    function closeEnquiryModal() {
+      const m = document.getElementById("enquiryModal");
+      m.classList.add("hidden");
+      m.classList.remove("flex");
     }
 
-    function loadMore() { state.shown += state.pageSize; renderGrid(); }
+    async function submitEnquiryForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById("enqSubmitBtn");
+      const status = document.getElementById("enqStatus");
+      const name = document.getElementById("enqName").value.trim();
+      const email = document.getElementById("enqEmail").value.trim();
+      const message = document.getElementById("enqMsg").value.trim();
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/agentaiuk90@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            _subject: `Entiu.store Email Enquiry — ${name}`,
+            _replyto: email,
+            name, email, message
+          })
+        });
+        if (res.ok) {
+          status.innerHTML = `<span class="font-bold text-emerald-700">✓ Enquiry sent! We will reply directly to ${email} shortly.</span>`;
+          document.getElementById("enqMsg").value = "";
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      } catch {
+        status.innerHTML = `<span class="text-rose-600">Could not send automatically — email us directly at <a href="mailto:agentaiuk90@gmail.com" class="underline font-bold">agentaiuk90@gmail.com</a>.</span>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Send Email Enquiry →";
+      }
+    }
+
     function openRandomPreview() { window.location.href = `preview.html?id=${E.formatId(Math.floor(Math.random() * E.TOTAL_LAYOUTS))}`; }
     function openDrawer() { EntiuCart.open(); }
     function closeDrawer() { EntiuCart.close(); }

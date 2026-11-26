@@ -635,15 +635,17 @@
 <body>
   <header style="position:sticky;top:0;z-index:40;background:${isDark ? 'rgba(6,6,8,0.82)' : 'rgba(255,255,255,0.86)'};backdrop-filter:blur(16px);border-bottom:1px solid ${p.border};">
     <div class="container" style="padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
-      ${logoHtml}
+      <a href="#top" data-scroll="top" style="display:inline-flex;align-items:center;">${logoHtml}</a>
       <nav class="nav-links" style="display:flex;gap:30px;font-size:14px;font-weight:600;color:${p.muted};">
-        <a href="#services">Services</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#quote">Contact</a>
+        <a href="#top" data-scroll="top">Home</a>
+        <a href="#services" data-scroll="services">Services</a>
+        <a href="#reviews" data-scroll="reviews">Reviews</a>
+        <a href="#quote" data-scroll="quote">Contact</a>
       </nav>
-      <a href="tel:${phoneHref}" class="btn-primary" style="padding:10px 20px;font-size:13px;">${phone}</a>
+      <a href="#quote" data-scroll="quote" class="btn-primary" style="padding:10px 20px;font-size:13px;">Email Enquiry</a>
     </div>
   </header>
+  <div id="top"></div>
 
   ${hero}
   ${servicesSection}
@@ -663,15 +665,24 @@
   </section>
 
   <section id="quote" class="container" style="padding:84px 28px;">
-    <div style="background:${p.accent};color:${p.accentText};border-radius:${r};padding:56px 42px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;">
-      <div style="max-width:560px;">
-        <h2 style="font-size:clamp(28px,4vw,46px);font-weight:800;margin:0 0 12px;font-family:${font.heading};line-height:1.05;">Ready to work with ${biz}?</h2>
-        <p style="margin:0;font-size:17px;opacity:.9;">Call directly for same-day availability or email for a clear written quote.</p>
+    <div class="grid-2" style="background:${p.surface};border:1px solid ${p.border};border-radius:${r};padding:48px 40px;align-items:center;">
+      <div>
+        <span class="pill">Direct Email Quote · ${city}</span>
+        <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;margin:16px 0 12px;font-family:${font.heading};line-height:1.06;">Request a quote from ${biz}</h2>
+        <p style="margin:0 0 20px;font-size:16px;color:${p.muted};line-height:1.65;">Send your enquiry directly by email — we reply promptly with clear written pricing and availability across ${city}.</p>
+        <div style="font-size:14px;color:${p.muted};line-height:1.8;">
+          <div><strong style="color:${p.text};">Email:</strong> ${email}</div>
+          <div><strong style="color:${p.text};">Phone:</strong> ${phone}</div>
+          <div><strong style="color:${p.text};">Service Area:</strong> ${city} &amp; surrounding UK postcodes</div>
+        </div>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;">
-        <a href="tel:${phoneHref}" style="padding:16px 28px;border-radius:${br};background:${p.accentText};color:${p.accent};font-weight:800;font-size:15px;">Call ${phone}</a>
-        <a href="mailto:${email}?subject=Quote%20Enquiry" style="padding:16px 26px;border-radius:${br};border:1px solid currentColor;font-weight:700;font-size:15px;">Email Us</a>
-      </div>
+      <form onsubmit="event.preventDefault();const b=this.querySelector('button');b.textContent='✓ Enquiry Sent — We Will Reply By Email Shortly!';b.style.opacity='0.85';" style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${p.accent};margin-bottom:14px;">Email Contact Form</div>
+        <input class="field" placeholder="Your Name" required />
+        <input class="field" type="email" placeholder="Your Email Address" required />
+        <textarea class="field" rows="3" placeholder="Tell us what you need..." required style="resize:vertical;"></textarea>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Send Email Enquiry →</button>
+      </form>
     </div>
   </section>
 
@@ -681,6 +692,18 @@
       <span>${domain} · Edition ${layout.code}</span>
     </div>
   </footer>
+  <script>
+    document.addEventListener("click", function(e) {
+      var a = e.target.closest("a[href^='#']");
+      if (!a) return;
+      var id = a.getAttribute("data-scroll") || a.getAttribute("href").slice(1);
+      var el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  </script>
 </body>
 </html>`;
   }

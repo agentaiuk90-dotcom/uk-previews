@@ -69,11 +69,14 @@
     const E = window.UKLayoutEngine;
     const params = new URLSearchParams(window.location.search);
     let currentIdx = E.parseId(params.get("id") || "UK-00001");
-    if (params.get("trade") && !params.get("id")) {
-      const tIdx = E.INDUSTRIES.findIndex(i => i.id === params.get("trade"));
-      if (tIdx >= 0) {
-        const match = E.queryLayouts({ industry: params.get("trade") }, 0, 1);
-        if (match.items && match.items.length) currentIdx = match.items[0].idx;
+    const tradeParam = (params.get("trade") || "").trim().toLowerCase();
+    if (tradeParam && !params.get("id")) {
+      for (let k = 0; k < E.TOTAL_LAYOUTS; k++) {
+        const idx = (k * 251 + 17) % E.TOTAL_LAYOUTS;
+        if (E.getLayoutByIndex(idx).industry.id === tradeParam) {
+          currentIdx = idx;
+          break;
+        }
       }
     }
     const custom = {

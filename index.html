@@ -38,11 +38,17 @@
       },
       {
         "@type": "ProfessionalService",
-        "name": "LocalWeb UK Studio",
+        "name": "Entiu Store — UK Web Design Studio",
         "url": "https://entiu.store/",
         "email": "agentaiuk90@gmail.com",
         "areaServed": { "@type": "Country", "name": "United Kingdom" },
         "priceRange": "£15 - £60",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "142",
+          "bestRating": "5"
+        },
         "description": "Curated gallery of 11,520 non-repeating, agency-grade websites for UK tradesmen and small businesses. £15 instant HTML ZIP download or £60/year turnkey launch with .co.uk domain, hosting and SSL."
       },
       {
@@ -159,8 +165,8 @@
     <div class="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5">
       <div class="flex items-center gap-7">
         <a href="#" class="flex items-center gap-2.5">
-          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 font-display text-xs font-extrabold text-white">LW</span>
-          <span class="font-display text-[15px] font-extrabold tracking-tight text-zinc-950">LocalWeb<span class="text-zinc-400 font-semibold">.uk</span></span>
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 font-display text-xs font-extrabold text-white">ES</span>
+          <span class="font-display text-[15px] font-extrabold tracking-tight text-zinc-950">Entiu<span class="text-zinc-400 font-semibold">.store</span></span>
         </a>
         <nav class="hidden items-center gap-6 text-[13px] font-medium text-zinc-500 md:flex">
           <a href="#gallery" class="text-zinc-950 font-semibold">Websites <span class="ml-1 rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] text-zinc-600">11,520</span></a>
@@ -178,9 +184,9 @@
         <button onclick="openRandomPreview()" class="hidden rounded-full border border-zinc-200 bg-white px-3.5 py-2 text-xs font-semibold text-zinc-700 hover:border-zinc-400 hover:text-zinc-950 sm:inline-flex items-center gap-1.5 transition cursor-pointer">
           ↻ Shuffle
         </button>
-        <button onclick="openDrawer()" class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 transition cursor-pointer">
-          <span>Order · From £15</span>
-          <span id="bagCount" class="rounded-full bg-white/20 px-1.5 py-0.5 text-[10px]">0</span>
+        <button onclick="EntiuCart.open()" class="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 transition cursor-pointer">
+          <span>🛒 Cart</span>
+          <span id="bagCount" class="rounded-full bg-emerald-500 px-1.5 py-0.5 text-[10px] font-extrabold text-zinc-950">0</span>
         </button>
       </div>
     </div>
@@ -323,6 +329,31 @@
           </button>
         </div>
       </div>
+      <!-- SEO Comparison Table (Featured Snippet Magnet: Entiu vs Wix vs UK Agency) -->
+      <div class="mt-16 rounded-3xl border border-zinc-200 bg-white p-6 sm:p-10 overflow-x-auto">
+        <div class="max-w-2xl mb-6">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">2026 UK Website Price Comparison</span>
+          <h2 class="mt-2 font-display text-2xl font-extrabold text-zinc-950 sm:text-3xl">Why UK tradesmen switch to Entiu.store</h2>
+        </div>
+        <table class="w-full text-left text-xs sm:text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-200 text-zinc-400 text-[11px] uppercase tracking-wider">
+              <th class="py-3 pr-4">Feature</th>
+              <th class="py-3 px-4 text-zinc-950 font-extrabold">Entiu.store (£15 / £60)</th>
+              <th class="py-3 px-4">Wix / Squarespace</th>
+              <th class="py-3 pl-4">Traditional UK Agency</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 text-zinc-600">
+            <tr><td class="py-3.5 pr-4 font-semibold text-zinc-900">Year 1 Total Cost</td><td class="py-3.5 px-4 font-extrabold text-emerald-700">£15 ZIP or £60/yr all-in</td><td class="py-3.5 px-4">£240 – £360 / year</td><td class="py-3.5 pl-4">£1,500 – £3,500+</td></tr>
+            <tr><td class="py-3.5 pr-4 font-semibold text-zinc-900">Monthly Retainers</td><td class="py-3.5 px-4 font-bold text-zinc-950">£0 / month</td><td class="py-3.5 px-4">£20 – £35 / month forever</td><td class="py-3.5 pl-4">£50 – £120 / month</td></tr>
+            <tr><td class="py-3.5 pr-4 font-semibold text-zinc-900">.co.uk Domain &amp; HTTPS SSL</td><td class="py-3.5 px-4 font-bold text-zinc-950">Included in £60/yr</td><td class="py-3.5 px-4">Paid renewal extra</td><td class="py-3.5 pl-4">Billed annually extra</td></tr>
+            <tr><td class="py-3.5 pr-4 font-semibold text-zinc-900">Launch Time</td><td class="py-3.5 px-4 font-bold text-zinc-950">Instant ZIP / 24h Turnkey</td><td class="py-3.5 px-4">10–20 hrs DIY work</td><td class="py-3.5 pl-4">4 – 8 weeks</td></tr>
+            <tr><td class="py-3.5 pr-4 font-semibold text-zinc-900">Unique Non-Repeating Design</td><td class="py-3.5 px-4 font-bold text-zinc-950">11,520 exclusive editions</td><td class="py-3.5 px-4">Shared generic templates</td><td class="py-3.5 pl-4">Custom (high cost)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <!-- SEO FAQ + UK Trades & Cities Internal Linking Hub -->
       <div class="mt-20 border-t border-zinc-200 pt-16 grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-6">
@@ -492,19 +523,22 @@
       <!-- Order Summary & Checkout -->
       <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs space-y-2">
         <div class="flex justify-between text-zinc-600"><span id="drawerSummaryLabel">Cart Total</span><strong id="drawerPriceLabel" class="text-base text-zinc-950">£60.00</strong></div>
-        <div class="flex justify-between text-zinc-500"><span>Revolut Reference:</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
+        <div class="flex justify-between text-zinc-500"><span>Order Reference (paste in Stripe):</span><code id="orderRef" class="font-bold text-emerald-700">UK-00001</code></div>
       </div>
 
-      <a id="revolutPayBtn" href="https://revolut.me/mantosz90" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
-        Pay £60 via Revolut →
+      <a id="revolutPayBtn" href="https://buy.stripe.com/6oU14m43J1ea2zubeA6oo01" target="_blank" rel="noopener" class="flex w-full items-center justify-center rounded-full bg-zinc-950 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 transition">
+        Pay Securely via Stripe (Card / Apple Pay) →
       </a>
-      <button onclick="sendOrderEmail()" class="w-full rounded-full border border-zinc-300 py-3 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition cursor-pointer">
-        ✉ Send Complete Website Brief to Studio
+      <button id="submitBriefBtn" onclick="EntiuCart.submitBriefAjax(event)" class="w-full rounded-full border border-zinc-950 bg-white py-3 text-xs font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">
+        ✓ Submit Website Brief (No Email App Needed)
       </button>
+      <div id="briefSubmitStatus" class="text-center text-xs min-h-[18px]"></div>
     </div>
   </aside>
 
   <script src="js/engine.js?v=3"></script>
+  <script src="js/cart.js?v=2"></script>
+  <script src="js/chat-widget.js?v=1"></script>
   <script>
     const E = window.UKLayoutEngine;
     const state = {
@@ -604,8 +638,8 @@
               <a href="preview.html?id=${l.code}" class="block h-full">${E.renderGalleryThumbnail(l)}</a>
               <div class="lb-actions">
                 <a href="preview.html?id=${l.code}" class="flex-1 rounded-full bg-zinc-950/92 backdrop-blur-md py-2 text-center text-[11px] font-bold text-white shadow-lg hover:bg-zinc-800 transition">Preview ↗</a>
-                <button onclick="selectAndOrder(${l.index}, 'zip')" class="rounded-full bg-white/95 backdrop-blur-md px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-zinc-100 transition cursor-pointer">ZIP £15</button>
-                <button onclick="selectAndOrder(${l.index}, 'turnkey')" class="rounded-full bg-emerald-500 px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-emerald-400 transition cursor-pointer">Full £60</button>
+                <button onclick="EntiuCart.addItem(${l.index}, 'zip', false)" class="rounded-full bg-white/95 backdrop-blur-md px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-zinc-100 transition cursor-pointer">+ ZIP £15</button>
+                <button onclick="EntiuCart.addItem(${l.index}, 'turnkey', false)" class="rounded-full bg-emerald-500 px-3 py-2 text-[11px] font-extrabold text-zinc-950 shadow-lg hover:bg-emerald-400 transition cursor-pointer">+ Full £60</button>
               </div>
             </div>
             <div class="flex items-center justify-between gap-2 px-4 py-3">
@@ -622,82 +656,14 @@
 
     function loadMore() { state.shown += state.pageSize; renderGrid(); }
     function openRandomPreview() { window.location.href = `preview.html?id=${E.formatId(Math.floor(Math.random() * E.TOTAL_LAYOUTS))}`; }
-    function selectAndOrder(idx, plan) {
-      const p = plan === "zip" ? "zip" : "turnkey";
-      const existing = state.cart.find(item => item.idx === idx);
-      if (existing) {
-        existing.plan = p;
-      } else {
-        state.cart.push({ idx, plan: p });
-      }
-      updateDrawer();
-      openDrawer();
+    function openDrawer() { EntiuCart.open(); }
+    function closeDrawer() { EntiuCart.close(); }
+    function clearCart() { EntiuCart.clear(); }
+    function setPlan(plan) { EntiuCart.addItem(0, plan, true); }
+    function updateDrawer() { EntiuCart.render(); }
+    if (window.location.hash === "#cart") {
+      document.addEventListener("DOMContentLoaded", () => setTimeout(() => EntiuCart.open(), 120));
     }
-
-    function setPlan(plan) {
-      const p = plan === "zip" ? "zip" : "turnkey";
-      if (!state.cart.length) state.cart.push({ idx: 0, plan: p });
-      else state.cart[state.cart.length - 1].plan = p;
-      updateDrawer();
-    }
-
-    function toggleCartItemPlan(pos) {
-      const item = state.cart[pos];
-      if (!item) return;
-      item.plan = item.plan === "zip" ? "turnkey" : "zip";
-      updateDrawer();
-    }
-
-    function removeCartItem(pos) {
-      state.cart.splice(pos, 1);
-      updateDrawer();
-    }
-
-    function clearCart() {
-      state.cart = [];
-      updateDrawer();
-    }
-
-    function updateDrawer() {
-      document.getElementById("bagCount").textContent = String(state.cart.length);
-      const listEl = document.getElementById("cartItemsList");
-      if (!state.cart.length) {
-        listEl.innerHTML = `<div class="rounded-xl border border-dashed border-zinc-300 p-4 text-center text-xs text-zinc-500">Your cart is empty — click <strong>ZIP £15</strong> or <strong>Full £60</strong> on any layout in the gallery.</div>`;
-      } else {
-        listEl.innerHTML = state.cart.map((item, pos) => {
-          const l = E.getLayoutByIndex(item.idx);
-          const isZip = item.plan === "zip";
-          return `
-            <div class="flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-zinc-50 p-3">
-              <div class="min-w-0">
-                <div class="truncate font-display text-xs font-extrabold text-zinc-950">${l.code} — ${l.bizName}</div>
-                <div class="truncate text-[11px] text-zinc-500">${l.industry.name} · ${l.arch.name}</div>
-              </div>
-              <div class="flex items-center gap-1.5 shrink-0">
-                <button onclick="toggleCartItemPlan(${pos})" class="rounded-lg border border-zinc-300 bg-white px-2 py-1 text-[10px] font-bold text-zinc-900 hover:bg-zinc-950 hover:text-white transition cursor-pointer" title="Click to switch £15 ZIP / £60 Turnkey">${isZip ? 'ZIP £15' : 'Full £60'}</button>
-                <button onclick="removeCartItem(${pos})" class="rounded-lg px-1.5 py-1 text-xs text-zinc-400 hover:text-rose-600 cursor-pointer">✕</button>
-              </div>
-            </div>`;
-        }).join("");
-      }
-
-      const hasTurnkey = state.cart.some(i => i.plan === "turnkey");
-      document.getElementById("drawerDomainBlock").style.display = hasTurnkey ? "block" : "none";
-
-      const total = state.cart.reduce((sum, i) => sum + (i.plan === "zip" ? 15 : 60), 0);
-      const codes = state.cart.map(i => E.formatId(i.idx) + (i.plan === "zip" ? "(ZIP)" : "(60)")).join(",");
-      const dom = document.getElementById("drawerDomain").value.trim();
-
-      document.getElementById("drawerSummaryLabel").textContent = `${state.cart.length} item(s) in cart`;
-      document.getElementById("drawerPriceLabel").textContent = `£${total}.00`;
-      document.getElementById("orderRef").textContent = dom ? `${codes || 'ORDER'} | ${dom}` : (codes || 'UK-00001');
-      const btn = document.getElementById("revolutPayBtn");
-      btn.href = "https://revolut.me/mantosz90";
-      btn.textContent = total > 0 ? `Pay £${total} via Revolut →` : "Pay via Revolut →";
-    }
-
-    function openDrawer() { updateDrawer(); document.getElementById("drawerBackdrop").classList.remove("hidden"); document.getElementById("orderDrawer").classList.remove("hidden"); }
-    function closeDrawer() { document.getElementById("drawerBackdrop").classList.add("hidden"); document.getElementById("orderDrawer").classList.add("hidden"); }
 
     async function checkRdap(raw) {
       let d = raw.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, "");

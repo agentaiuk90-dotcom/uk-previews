@@ -407,16 +407,26 @@
       </div>`;
   }
 
+  function _localizeMoney(str) {
+    if (!global.EntiuI18n || global.EntiuI18n.get() === "en") return str;
+    return String(str).replace(/£([\d,]+)/g, function (_, num) {
+      var gbp = parseInt(num.replace(/,/g, ""), 10);
+      return isNaN(gbp) ? _ : global.EntiuI18n.formatGbp(gbp);
+    });
+  }
+
   /* Full Agency-Grade £50k-Caliber Live Website Renderer */
   function renderFullPageHTML(layout, custom) {
     const c = custom || {};
     const { industry: ind, palette: p, arch, font, photo, bizName } = layout;
+    const i18nReg = global.EntiuI18n ? global.EntiuI18n.region() : { code: "en", dir: "ltr", city: "London", tld: ".co.uk" };
+    const dui = global.EntiuI18n ? global.EntiuI18n.demo() : { home: "Home", services: "Services", reviews: "Reviews", contact: "Contact", emailBtn: "Email Enquiry", servicesH: "Services & Guide Pricing", trustedH: "Trusted across", quoteK: "Direct Email Quote", quoteH: "Request a quote from", quoteSub: "Send your enquiry directly by email — we reply promptly with clear written pricing.", formTitle: "Email Contact Form", namePh: "Your Name", emailPh: "Your Email Address", msgPh: "Tell us what you need...", sendBtn: "Send Email Enquiry →", sentMsg: "✓ Enquiry Sent — We Will Reply By Email Shortly!", areaLabel: "Service Area" };
     const biz = esc(c.business || bizName);
-    const city = esc(c.city || "London & Manchester");
+    const city = esc(c.city || i18nReg.city || "London");
     const phone = esc(c.phone || "07700 900482");
     const phoneHref = (c.phone || "07700900482").replace(/[^0-9+]/g, "");
-    const email = esc(c.email || "enquiries@localbusiness.co.uk");
-    const domain = esc(c.domain || biz.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 22) + ".co.uk");
+    const domain = esc(c.domain || biz.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 22) + (i18nReg.tld || ".co.uk"));
+    const email = esc(c.email || `hello@${domain}`);
     const r = arch.radius;
     const br = arch.btnRadius;
     const isDark = p.mode === "dark";
@@ -569,8 +579,8 @@
       ? `
       <section id="services" class="container" style="padding:84px 28px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:44px;">
-          <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;margin:0;font-family:${font.heading};letter-spacing:-.03em;">Services &amp; Guide Pricing</h2>
-          <span style="font-size:13px;color:${p.muted};">Transparent rates across ${city}</span>
+          <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;margin:0;font-family:${font.heading};letter-spacing:-.03em;">${esc(dui.servicesH)}</h2>
+          <span style="font-size:13px;color:${p.muted};">${city}</span>
         </div>
         <div style="border-top:1px solid ${p.border};">
           ${ind.services.map((s, i) => `
@@ -578,7 +588,7 @@
               <span style="font-family:monospace;font-size:13px;color:${p.accent};font-weight:700;">0${i + 1}</span>
               <strong style="font-size:20px;font-family:${font.heading};">${esc(s[0])}</strong>
               <span style="font-size:15px;color:${p.muted};line-height:1.5;">${esc(s[1])}</span>
-              <span style="font-size:14px;font-weight:800;padding:8px 14px;border-radius:${br};background:${p.surfaceAlt};color:${p.text};white-space:nowrap;">${esc(s[2])}</span>
+              <span style="font-size:14px;font-weight:800;padding:8px 14px;border-radius:${br};background:${p.surfaceAlt};color:${p.text};white-space:nowrap;">${esc(_localizeMoney(s[2]))}</span>
             </div>
           `).join("")}
         </div>
@@ -586,15 +596,15 @@
       : `
       <section id="services" class="container" style="padding:84px 28px;">
         <div style="margin-bottom:40px;">
-          <span class="pill">What We Deliver</span>
-          <h2 style="font-size:clamp(30px,4vw,46px);font-weight:800;margin:14px 0 0;font-family:${font.heading};letter-spacing:-.03em;">Tailored ${esc(ind.short)} Solutions</h2>
+          <span class="pill">${esc(dui.services)}</span>
+          <h2 style="font-size:clamp(30px,4vw,46px);font-weight:800;margin:14px 0 0;font-family:${font.heading};letter-spacing:-.03em;">${esc(dui.servicesH)}</h2>
         </div>
         <div class="grid-2">
           ${ind.services.map(s => `
             <div style="background:${p.surface};border:1px solid ${p.border};border-radius:${r};padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;">
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <h3 style="font-size:21px;font-weight:800;margin:0;font-family:${font.heading};">${esc(s[0])}</h3>
-                <span style="font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;background:${p.surfaceAlt};color:${p.accent};">${esc(s[2])}</span>
+                <span style="font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;background:${p.surfaceAlt};color:${p.accent};">${esc(_localizeMoney(s[2]))}</span>
               </div>
               <p style="font-size:15px;line-height:1.65;color:${p.muted};margin:0;">${esc(s[1])}</p>
             </div>
@@ -603,7 +613,7 @@
       </section>`;
 
     return `<!DOCTYPE html>
-<html lang="en-GB">
+<html lang="${i18nReg.code}" dir="${i18nReg.dir || 'ltr'}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -637,12 +647,12 @@
     <div class="container" style="padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
       <a href="#top" data-scroll="top" style="display:inline-flex;align-items:center;">${logoHtml}</a>
       <nav class="nav-links" style="display:flex;gap:30px;font-size:14px;font-weight:600;color:${p.muted};">
-        <a href="#top" data-scroll="top">Home</a>
-        <a href="#services" data-scroll="services">Services</a>
-        <a href="#reviews" data-scroll="reviews">Reviews</a>
-        <a href="#quote" data-scroll="quote">Contact</a>
+        <a href="#top" data-scroll="top">${esc(dui.home)}</a>
+        <a href="#services" data-scroll="services">${esc(dui.services)}</a>
+        <a href="#reviews" data-scroll="reviews">${esc(dui.reviews)}</a>
+        <a href="#quote" data-scroll="quote">${esc(dui.contact)}</a>
       </nav>
-      <a href="#quote" data-scroll="quote" class="btn-primary" style="padding:10px 20px;font-size:13px;">Email Enquiry</a>
+      <a href="#quote" data-scroll="quote" class="btn-primary" style="padding:10px 20px;font-size:13px;">${esc(dui.emailBtn)}</a>
     </div>
   </header>
   <div id="top"></div>
@@ -653,8 +663,8 @@
   <section id="reviews" style="background:${p.surface};border-top:1px solid ${p.border};border-bottom:1px solid ${p.border};">
     <div class="container" style="padding:84px 28px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
-        <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;margin:0;font-family:${font.heading};">Trusted across ${city}</h2>
-        <span style="font-weight:700;color:${p.accent};">★★★★★ 4.9 / 5.0 Verified</span>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;margin:0;font-family:${font.heading};">${esc(dui.trustedH)} ${city}</h2>
+        <span style="font-weight:700;color:${p.accent};">★★★★★ 4.9 / 5.0</span>
       </div>
       <div class="grid-3">
         <div style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;"><p style="font-size:15px;line-height:1.7;margin:0 0 20px;">"Exceptional standard of work from start to finish. Punctual, spotless and priced exactly as quoted."</p><strong style="font-size:13px;">Oliver Bennett · ${city}</strong></div>
@@ -667,21 +677,20 @@
   <section id="quote" class="container" style="padding:84px 28px;">
     <div class="grid-2" style="background:${p.surface};border:1px solid ${p.border};border-radius:${r};padding:48px 40px;align-items:center;">
       <div>
-        <span class="pill">Direct Email Quote · ${city}</span>
-        <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;margin:16px 0 12px;font-family:${font.heading};line-height:1.06;">Request a quote from ${biz}</h2>
-        <p style="margin:0 0 20px;font-size:16px;color:${p.muted};line-height:1.65;">Send your enquiry directly by email — we reply promptly with clear written pricing and availability across ${city}.</p>
+        <span class="pill">${esc(dui.quoteK)} · ${city}</span>
+        <h2 style="font-size:clamp(28px,4vw,44px);font-weight:800;margin:16px 0 12px;font-family:${font.heading};line-height:1.06;">${esc(dui.quoteH)} ${biz}</h2>
+        <p style="margin:0 0 20px;font-size:16px;color:${p.muted};line-height:1.65;">${esc(dui.quoteSub)}</p>
         <div style="font-size:14px;color:${p.muted};line-height:1.8;">
           <div><strong style="color:${p.text};">Email:</strong> ${email}</div>
-          <div><strong style="color:${p.text};">Phone:</strong> ${phone}</div>
-          <div><strong style="color:${p.text};">Service Area:</strong> ${city} &amp; surrounding UK postcodes</div>
+          <div><strong style="color:${p.text};">${esc(dui.areaLabel)}:</strong> ${city}</div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault();const b=this.querySelector('button');b.textContent='✓ Enquiry Sent — We Will Reply By Email Shortly!';b.style.opacity='0.85';" style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;">
-        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${p.accent};margin-bottom:14px;">Email Contact Form</div>
-        <input class="field" placeholder="Your Name" required />
-        <input class="field" type="email" placeholder="Your Email Address" required />
-        <textarea class="field" rows="3" placeholder="Tell us what you need..." required style="resize:vertical;"></textarea>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">Send Email Enquiry →</button>
+      <form onsubmit="event.preventDefault();const b=this.querySelector('button');b.textContent='${esc(dui.sentMsg)}';b.style.opacity='0.85';" style="background:${p.bg};border:1px solid ${p.border};border-radius:${r};padding:28px;">
+        <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:${p.accent};margin-bottom:14px;">${esc(dui.formTitle)}</div>
+        <input class="field" placeholder="${esc(dui.namePh)}" required />
+        <input class="field" type="email" placeholder="${esc(dui.emailPh)}" required />
+        <textarea class="field" rows="3" placeholder="${esc(dui.msgPh)}" required style="resize:vertical;"></textarea>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;">${esc(dui.sendBtn)}</button>
       </form>
     </div>
   </section>

@@ -263,11 +263,14 @@
     </div>
   </aside>
 
-  <script src="js/engine.js?v=4"></script>
-  <script src="js/cart.js?v=4"></script>
+  <script src="js/engine.js?v=5"></script>
+  <script src="js/cart.js?v=5"></script>
   <script src="js/chat-widget.js?v=2"></script>
-  <script src="js/i18n.js?v=2"></script>
+  <script src="js/i18n.js?v=3"></script>
   <script>
+    if (window.EntiuI18n) {
+      window.EntiuI18n.onChange(() => { try { renderGrid(); if (window.EntiuCart) window.EntiuCart.render(); } catch (_) {} });
+    }
     const E = window.UKLayoutEngine;
     const urlParams = new URLSearchParams(window.location.search);
     const state = {
@@ -366,6 +369,7 @@
       const total = state.filtered.length;
       const slice = state.filtered.slice(0, state.shown);
       document.getElementById("resultsCount").textContent = `Showing ${slice.length.toLocaleString()} of ${total.toLocaleString()} unique websites`;
+      const str = window.EntiuI18n ? window.EntiuI18n.strings() : { card_preview: "Preview ↗", card_zip_btn: "+ ZIP £15", card_tk_btn: "+ Full £60" };
       document.getElementById("catalogGrid").innerHTML = slice.map(idx => {
         const l = E.getLayoutByIndex(idx);
         return `
@@ -382,9 +386,9 @@
                 <span class="shrink-0 rounded-md border border-zinc-200 bg-zinc-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-zinc-600">${l.code}</span>
               </div>
               <div class="mt-3 flex items-center gap-1.5">
-                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full border border-zinc-200 bg-zinc-50 py-1.5 text-center text-[11px] font-bold text-zinc-800 hover:border-zinc-900 hover:text-zinc-950 transition">Preview ↗</a>
-                <button onclick="EntiuCart.addItem(${l.index}, 'zip', false)" class="rounded-full border border-zinc-900 bg-white px-2.5 py-1.5 text-[11px] font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">+ ZIP £15</button>
-                <button onclick="EntiuCart.addItem(${l.index}, 'turnkey', false)" class="rounded-full bg-zinc-950 px-2.5 py-1.5 text-[11px] font-extrabold text-white hover:bg-zinc-800 transition cursor-pointer">+ Full £60</button>
+                <a href="preview.html?id=${l.code}" class="flex-1 rounded-full border border-zinc-200 bg-zinc-50 py-1.5 text-center text-[11px] font-bold text-zinc-800 hover:border-zinc-900 hover:text-zinc-950 transition">${str.card_preview}</a>
+                <button onclick="EntiuCart.addItem(${l.index}, 'zip', false)" class="rounded-full border border-zinc-900 bg-white px-2.5 py-1.5 text-[11px] font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">${str.card_zip_btn}</button>
+                <button onclick="EntiuCart.addItem(${l.index}, 'turnkey', false)" class="rounded-full bg-zinc-950 px-2.5 py-1.5 text-[11px] font-extrabold text-white hover:bg-zinc-800 transition cursor-pointer">${str.card_tk_btn}</button>
               </div>
             </div>
           </article>`;

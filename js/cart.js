@@ -132,6 +132,7 @@
         const l = E ? E.getLayoutByIndex(item.idx) : { code: "UK-00001", bizName: "Layout", industry: { name: "UK Business" }, arch: { name: "Modern" }, palette: { accent: "#111", bg: "#fff" } };
         const isZip = item.plan === "zip";
         const lineTotal = (isZip ? 15 : 60) * (item.qty || 1);
+        const fmt = g => (global.EntiuI18n ? global.EntiuI18n.formatGbp(g) : `£${g}`);
         return `
           <div class="flex items-center justify-between gap-2.5 rounded-xl border border-zinc-200 bg-white p-3 shadow-2xs">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -140,13 +141,13 @@
                 <div class="truncate font-display text-xs font-extrabold text-zinc-950">${l.code} — ${l.bizName}</div>
                 <div class="truncate text-[11px] text-zinc-500">${l.industry.name} · ${l.arch.name}</div>
                 <div class="mt-1 flex items-center gap-1.5">
-                  <button onclick="EntiuCart.setPlan(${pos}, 'zip')" class="rounded px-1.5 py-0.5 text-[10px] font-bold cursor-pointer ${isZip ? 'bg-zinc-950 text-white' : 'bg-zinc-100 text-zinc-600'}">ZIP £15</button>
-                  <button onclick="EntiuCart.setPlan(${pos}, 'turnkey')" class="rounded px-1.5 py-0.5 text-[10px] font-bold cursor-pointer ${!isZip ? 'bg-zinc-950 text-white' : 'bg-zinc-100 text-zinc-600'}">Full £60/yr</button>
+                  <button onclick="EntiuCart.setPlan(${pos}, 'zip')" class="rounded px-1.5 py-0.5 text-[10px] font-bold cursor-pointer ${isZip ? 'bg-zinc-950 text-white' : 'bg-zinc-100 text-zinc-600'}">ZIP ${fmt(15)}</button>
+                  <button onclick="EntiuCart.setPlan(${pos}, 'turnkey')" class="rounded px-1.5 py-0.5 text-[10px] font-bold cursor-pointer ${!isZip ? 'bg-zinc-950 text-white' : 'bg-zinc-100 text-zinc-600'}">Full ${fmt(60)}</button>
                 </div>
               </div>
             </div>
             <div class="flex flex-col items-end gap-1 shrink-0">
-              <div class="text-xs font-extrabold text-zinc-950">£${lineTotal}</div>
+              <div class="text-xs font-extrabold text-zinc-950">${fmt(lineTotal)}</div>
               <div class="flex items-center gap-1">
                 <button onclick="EntiuCart.changeQty(${pos}, -1)" class="h-5 w-5 rounded border border-zinc-200 text-xs leading-none text-zinc-600 hover:bg-zinc-100 cursor-pointer">−</button>
                 <span class="w-4 text-center text-[11px] font-bold">${item.qty || 1}</span>
@@ -163,6 +164,8 @@
     if (domBlock) domBlock.style.display = hasTurnkey ? "block" : "none";
 
     const total = totalAmount();
+    const fmtTotal = global.EntiuI18n ? global.EntiuI18n.formatGbp(total) : `£${total}.00`;
+    const isNonGbp = global.EntiuI18n && global.EntiuI18n.get() !== "en";
     const codes = cart.map(i => {
       const c = E ? E.formatId(i.idx) : "UK-00001";
       return `${c}(${i.plan === "zip" ? "ZIP" : "60"}x${i.qty || 1})`;
@@ -172,11 +175,13 @@
 
     const sumLabel = document.getElementById("drawerSummaryLabel");
     const priceLabel = document.getElementById("drawerPriceLabel");
+    const drawerTotalEl = document.getElementById("drawerTotal");
     const refEl = document.getElementById("orderRef");
     const payBtn = document.getElementById("revolutPayBtn");
 
     if (sumLabel) sumLabel.textContent = `${totalCount()} item(s) in cart`;
-    if (priceLabel) priceLabel.textContent = `£${total}.00`;
+    if (priceLabel) priceLabel.textContent = isNonGbp ? `${fmtTotal} (£${total})` : `£${total}.00`;
+    if (drawerTotalEl) drawerTotalEl.textContent = isNonGbp ? `${fmtTotal} (£${total})` : `£${total}`;
     if (refEl) refEl.textContent = dom ? `${codes || "ORDER"} | ${dom}` : (codes || "Add an item");
 
     if (payBtn) {
@@ -185,7 +190,7 @@
       payBtn.href = "#";
       payBtn.onclick = startSingleStripeCheckout;
       payBtn.textContent = total > 0
-        ? `Pay £${total}.00 in One Payment (Stripe · Card / Apple Pay) →`
+        ? `Pay ${fmtTotal} in One Payment (Stripe · Card / Apple Pay) →`
         : `Add a layout to pay via Stripe →`;
     }
   }

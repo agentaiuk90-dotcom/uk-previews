@@ -38,10 +38,11 @@
     </div>
 
     <div class="flex items-center gap-2">
+      <div id="langSwitcherSlot"></div>
       <button onclick="toggleCustomizer()" class="rounded-full border border-zinc-300 bg-white px-3.5 py-1.5 font-bold text-zinc-900 hover:bg-zinc-100 transition cursor-pointer">✎ Personalise Live</button>
-      <button onclick="EntiuCart.addItem(currentIdx, 'zip', false)" class="rounded-full border border-zinc-950 bg-white px-3.5 py-1.5 font-extrabold text-zinc-950 hover:bg-zinc-100 transition cursor-pointer">+ Cart ZIP £15</button>
-      <button onclick="EntiuCart.addItem(currentIdx, 'turnkey', false)" class="rounded-full bg-zinc-950 px-4 py-1.5 font-bold text-white hover:bg-zinc-800 transition cursor-pointer">+ Cart Full £60</button>
-      <a href="index.html#cart" class="rounded-full bg-emerald-500 px-3 py-1.5 font-extrabold text-zinc-950 hover:bg-emerald-400 transition">🛒 <span id="bagCount">0</span></a>
+      <button onclick="EntiuCart.addItem(currentIdx, 'zip', false)" data-i18n="card_zip_btn" class="rounded-full border border-zinc-950 bg-white px-3.5 py-1.5 font-extrabold text-zinc-950 hover:bg-zinc-100 transition cursor-pointer">+ ZIP £15</button>
+      <button onclick="EntiuCart.addItem(currentIdx, 'turnkey', false)" data-i18n="card_tk_btn" class="rounded-full bg-zinc-950 px-4 py-1.5 font-bold text-white hover:bg-zinc-800 transition cursor-pointer">+ Full £60</button>
+      <a href="index.html#cart" class="rounded-full bg-emerald-400 px-3 py-1.5 font-extrabold text-zinc-950 hover:bg-emerald-300 transition"><span id="bagCount">0</span></a>
     </div>
   </header>
 
@@ -62,10 +63,14 @@
     <iframe id="previewFrame" title="Live Website Preview"></iframe>
   </main>
 
-  <script src="js/engine.js?v=4"></script>
-  <script src="js/cart.js?v=4"></script>
+  <script src="js/engine.js?v=5"></script>
+  <script src="js/cart.js?v=5"></script>
   <script src="js/chat-widget.js?v=2"></script>
+  <script src="js/i18n.js?v=3"></script>
   <script>
+    if (window.EntiuI18n) {
+      window.EntiuI18n.onChange(() => { try { render(); } catch (_) {} });
+    }
     const E = window.UKLayoutEngine;
     const params = new URLSearchParams(window.location.search);
     let currentIdx = E.parseId(params.get("id") || "UK-00001");

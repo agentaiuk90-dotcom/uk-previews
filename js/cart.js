@@ -179,9 +179,41 @@
     if (refEl) refEl.textContent = dom ? `${codes || "ORDER"} | ${dom}` : (codes || "Add an item");
 
     if (payBtn) {
-      const onlyZip = cart.length > 0 && cart.every(i => i.plan === "zip");
-      payBtn.href = onlyZip ? PAY_LINKS.zip : PAY_LINKS.turnkey;
-      payBtn.textContent = total > 0 ? `Pay £${total}.00 Securely (${PAY_LINKS.provider}) →` : `Proceed to Payment →`;
+      const zipCount = cart.filter(i => i.plan === "zip").reduce((s, i) => s + (i.qty || 1), 0);
+      const turnkeyCount = cart.filter(i => i.plan === "turnkey").reduce((s, i) => s + (i.qty || 1), 0);
+      const custEmail = (document.getElementById("drawerEmail")?.value || "").trim();
+      const refClean = (codes || "ENTIU").replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 60);
+      const qs = `?client_reference_id=${encodeURIComponent(refClean)}` + (custEmail ? `&prefilled_email=${encodeURIComponent(custEmail)}` : "");
+
+      let secondary = document.getElementById("stripeSecondaryPayBtn");
+      if (!secondary) {
+        secondary = document.createElement("a");
+        secondary.id = "stripeSecondaryPayBtn";
+        secondary.target = "_blank";
+        secondary.rel = "noopener";
+        secondary.className = "hidden flex w-full items-center justify-center rounded-full border-2 border-zinc-950 bg-white py-3 text-sm font-extrabold text-zinc-950 hover:bg-zinc-100 transition";
+        payBtn.insertAdjacentElement("afterend", secondary);
+      }
+
+      if (zipCount > 0 && turnkeyCount > 0) {
+        payBtn.href = PAY_LINKS.turnkey + qs;
+        payBtn.textContent = `1) Pay £${turnkeyCount * 60}.00/yr Turnkey via Stripe →`;
+        secondary.href = PAY_LINKS.zip + qs;
+        secondary.textContent = `2) Pay £${zipCount * 15}.00 Layout ZIP via Stripe →`;
+        secondary.classList.remove("hidden");
+      } else if (zipCount > 0) {
+        payBtn.href = PAY_LINKS.zip + qs;
+        payBtn.textContent = `Pay £${zipCount * 15}.00 Layout ZIP via Stripe →`;
+        secondary.classList.add("hidden");
+      } else if (turnkeyCount > 0) {
+        payBtn.href = PAY_LINKS.turnkey + qs;
+        payBtn.textContent = `Pay £${turnkeyCount * 60}.00/yr Turnkey via Stripe →`;
+        secondary.classList.add("hidden");
+      } else {
+        payBtn.href = PAY_LINKS.turnkey;
+        payBtn.textContent = `Add a layout to pay via Stripe →`;
+        secondary.classList.add("hidden");
+      }
     }
   }
 

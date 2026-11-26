@@ -69,7 +69,24 @@
     const E = window.UKLayoutEngine;
     const params = new URLSearchParams(window.location.search);
     let currentIdx = E.parseId(params.get("id") || "UK-00001");
-    const custom = { business: "", city: "", phone: "", domain: "", logoDataUrl: "" };
+    if (params.get("trade") && !params.get("id")) {
+      const tIdx = E.INDUSTRIES.findIndex(i => i.id === params.get("trade"));
+      if (tIdx >= 0) {
+        const match = E.queryLayouts({ industry: params.get("trade") }, 0, 1);
+        if (match.items && match.items.length) currentIdx = match.items[0].idx;
+      }
+    }
+    const custom = {
+      business: params.get("biz") || "",
+      city: params.get("city") || "",
+      phone: params.get("phone") || "",
+      domain: params.get("domain") || "",
+      logoDataUrl: ""
+    };
+    if (custom.business) document.getElementById("cBiz").value = custom.business;
+    if (custom.city) document.getElementById("cCity").value = custom.city;
+    if (custom.phone) document.getElementById("cPhone").value = custom.phone;
+    if (custom.domain) document.getElementById("cDomain").value = custom.domain;
 
     function render() {
       const layout = E.getLayoutByIndex(currentIdx);

@@ -192,36 +192,103 @@
     </div>
   </header>
 
-  <!-- Compact Editorial Gallery Hero (OnePageLove / Land-book Proportions) -->
+  <!-- Productized Service Hero (Done-For-You UK Website in 24h) -->
   <section class="border-b border-zinc-200/80 bg-white">
     <div class="mx-auto max-w-[1400px] px-5 py-12 md:py-16">
-      <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
         <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[11px] font-semibold text-zinc-600">
+          <div class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-bold text-emerald-800">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            11,520 Exclusive, Zero-Repeat UK Designs · Turnkey in 24 Hours
+            Done-For-You UK Business Websites · Live in 24 Hours · Zero Monthly Fees
           </div>
-          <h1 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-[54px] leading-[1.04]">
-            The finest websites for UK businesses — <span class="font-editorial italic font-normal text-zinc-600">yours for £60/yr.</span>
+          <h1 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-[52px] leading-[1.05]">
+            A finished website for your UK business — <span class="font-editorial italic font-normal text-zinc-600">live in 24h for £60/yr.</span>
           </h1>
-          <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-zinc-500">
-            Curated across 12 agency-grade design architectures and 20 UK trades. Preview any design live with your own logo, claim a free <strong class="text-zinc-900">.co.uk</strong> domain, and launch tomorrow.
+          <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-zinc-600">
+            Built for UK garages, plumbers, builders, removals &amp; local trades. Includes your <strong class="text-zinc-950">.co.uk domain</strong>, fast hosting, HTTPS SSL, <strong class="text-zinc-950">Google Map</strong>, <strong class="text-zinc-950">Click-to-Call</strong> mobile button &amp; contact form — zero agency retainers.
           </p>
+
+          <!-- Two Clear High-Converting CTAs -->
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <button onclick="setPlan('turnkey'); openDrawer()" class="rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-zinc-950/15 hover:bg-zinc-800 transition cursor-pointer">
+              Order Turnkey Website — £60/yr →
+            </button>
+            <button onclick="openFreePreviewModal()" class="rounded-full border-2 border-zinc-950 bg-white px-6 py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-950 hover:text-white transition cursor-pointer">
+              See a FREE Preview of Your Business
+            </button>
+          </div>
+
+          <!-- Instant Trust Strip -->
+          <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-zinc-500">
+            <span>🔒 Secure Stripe Checkout</span>
+            <span>⚡ Live in 24 Hours</span>
+            <span>🇬🇧 .co.uk + SSL Included</span>
+            <span>📞 Click-to-Call &amp; Google Map</span>
+          </div>
         </div>
 
         <!-- Clean Live .co.uk Nominet RDAP Checker Card -->
         <div class="lg:col-span-5">
-          <div class="rounded-2xl border border-zinc-200 bg-[#f9f9fa] p-4">
-            <div class="flex items-center justify-between text-[11px] font-semibold text-zinc-500 mb-2.5">
+          <div class="rounded-2xl border border-zinc-200 bg-[#f9f9fa] p-5 shadow-xs">
+            <div class="flex items-center justify-between text-[11px] font-bold text-zinc-500 mb-2.5">
               <span>LIVE NOMINET UK DOMAIN CHECKER</span>
-              <span class="text-emerald-600">Included in £60/yr</span>
+              <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-800">FREE in £60/yr</span>
             </div>
             <form onsubmit="checkHeroDomain(event)" class="flex gap-2">
               <input id="heroDomainInput" type="text" placeholder="yourbusiness.co.uk" class="flex-1 rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-sm text-zinc-950 placeholder-zinc-400 focus:border-zinc-900 focus:outline-none" />
               <button type="submit" class="rounded-xl bg-zinc-950 px-4 py-2.5 text-xs font-bold text-white hover:bg-zinc-800 transition cursor-pointer">Check Free</button>
             </form>
             <div id="heroDomainResult" class="mt-2.5 min-h-[18px] text-xs text-zinc-500">Instant check against official UK registry (RDAP).</div>
+            <div class="mt-4 border-t border-zinc-200/80 pt-3.5 flex items-center justify-between text-xs">
+              <span class="text-zinc-500">Have a question before ordering?</span>
+              <button onclick="window.EntiuChat && window.EntiuChat.open ? window.EntiuChat.open() : document.getElementById('entiuChatToggle')?.click()" class="font-bold text-zinc-950 underline hover:text-emerald-700 cursor-pointer">💬 Ask Live Chat</button>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- 4 Live UK Trade Demos (Real Business Examples — Zero Lorem Ipsum) -->
+      <div class="mt-12 border-t border-zinc-200/80 pt-8">
+        <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Live UK Industry Demos</span>
+            <h2 class="mt-1 font-display text-lg font-extrabold text-zinc-950">See a finished website for your exact trade (click to test live)</h2>
+          </div>
+          <a href="#gallery" class="text-xs font-bold text-zinc-600 hover:text-zinc-950">Browse all 11,520 unique designs ↓</a>
+        </div>
+        <div class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="preview.html?trade=mechanic&amp;biz=Poplar%20Grove%20Garage&amp;city=Manchester&amp;phone=0161%20496%200821" class="group rounded-2xl border border-zinc-200 bg-[#fafafa] p-4 hover:border-zinc-950 hover:bg-white hover:shadow-md transition">
+            <div class="flex items-center justify-between text-[11px] font-bold text-zinc-500">
+              <span>🔧 GARAGE &amp; MECHANIC</span>
+              <span class="text-emerald-700 group-hover:translate-x-0.5 transition">Live Demo →</span>
+            </div>
+            <div class="mt-2 font-display text-sm font-extrabold text-zinc-950">Poplar Grove Garage</div>
+            <div class="mt-0.5 text-xs text-zinc-500">Manchester · MOT, Brakes, Diagnostics &amp; Click-to-Call</div>
+          </a>
+          <a href="preview.html?trade=plumber&amp;biz=Thames%20%26%20Crown%20Plumbing&amp;city=London&amp;phone=020%207946%200319" class="group rounded-2xl border border-zinc-200 bg-[#fafafa] p-4 hover:border-zinc-950 hover:bg-white hover:shadow-md transition">
+            <div class="flex items-center justify-between text-[11px] font-bold text-zinc-500">
+              <span>🚿 PLUMBER &amp; HEATING</span>
+              <span class="text-emerald-700 group-hover:translate-x-0.5 transition">Live Demo →</span>
+            </div>
+            <div class="mt-2 font-display text-sm font-extrabold text-zinc-950">Thames &amp; Crown Plumbing</div>
+            <div class="mt-0.5 text-xs text-zinc-500">London · Boilers, 60-Min Emergency &amp; Gas Safe</div>
+          </a>
+          <a href="preview.html?trade=manvan&amp;biz=SwiftMove%20UK%20Removals&amp;city=Birmingham&amp;phone=0121%20496%200452" class="group rounded-2xl border border-zinc-200 bg-[#fafafa] p-4 hover:border-zinc-950 hover:bg-white hover:shadow-md transition">
+            <div class="flex items-center justify-between text-[11px] font-bold text-zinc-500">
+              <span>🚐 MAN &amp; VAN / REMOVALS</span>
+              <span class="text-emerald-700 group-hover:translate-x-0.5 transition">Live Demo →</span>
+            </div>
+            <div class="mt-2 font-display text-sm font-extrabold text-zinc-950">SwiftMove UK Removals</div>
+            <div class="mt-0.5 text-xs text-zinc-500">Birmingham · House Moves, Courier &amp; Instant Quotes</div>
+          </a>
+          <a href="preview.html?trade=builder&amp;biz=Monolith%20Build%20%26%20Roofing&amp;city=Leeds&amp;phone=0113%20496%200714" class="group rounded-2xl border border-zinc-200 bg-[#fafafa] p-4 hover:border-zinc-950 hover:bg-white hover:shadow-md transition">
+            <div class="flex items-center justify-between text-[11px] font-bold text-zinc-500">
+              <span>🏗️ BUILDER &amp; ROOFER</span>
+              <span class="text-emerald-700 group-hover:translate-x-0.5 transition">Live Demo →</span>
+            </div>
+            <div class="mt-2 font-display text-sm font-extrabold text-zinc-950">Monolith Build &amp; Roofing</div>
+            <div class="mt-0.5 text-xs text-zinc-500">Leeds · Extensions, Loft Conversions &amp; Slate Roofs</div>
+          </a>
         </div>
       </div>
     </div>
@@ -270,25 +337,25 @@
     <div class="mx-auto max-w-[1400px] px-5">
       <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Turnkey Studio</span>
-          <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">Agency craft without the £50,000 invoice.</h2>
-          <p class="mt-4 text-sm leading-relaxed text-zinc-500">Every design in our gallery is mathematically unique — combining distinct layouts, editorial typography, and tailored UK trade copy. Pick your edition, test it live with your logo, and we handle the rest.</p>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400">What Happens After You Order</span>
+          <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-4xl">Zero stress. Live in 24 hours — guaranteed.</h2>
+          <p class="mt-4 text-sm leading-relaxed text-zinc-500">No agency calls, no DIY builders, no monthly retainers. Here is the exact 3-step process from payment to your finished UK business website:</p>
         </div>
         <div class="grid gap-6 sm:grid-cols-3 lg:col-span-7">
           <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
-            <div class="font-mono text-xs font-bold text-zinc-400">01</div>
-            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Pick &amp; Personalise</h3>
-            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Open any of the 11,520 editions in Live Studio. Enter your business name, city, phone and logo to preview immediately.</p>
+            <div class="font-mono text-xs font-bold text-emerald-700">STEP 01</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Pay Securely via Stripe</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Order the £60/yr Turnkey package (or £15 ZIP) with Visa, Mastercard, Apple Pay or Google Pay. Instant Stripe receipt, zero monthly fees.</p>
           </div>
           <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
-            <div class="font-mono text-xs font-bold text-zinc-400">02</div>
-            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Claim Your .co.uk</h3>
-            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Check domain availability live and pay one flat £60/year via Revolut. Zero monthly agency fees.</p>
+            <div class="font-mono text-xs font-bold text-emerald-700">STEP 02</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Send Business Info &amp; Logo</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">Fill our 2-minute brief at checkout (name, UK postcode, phone, services &amp; photos) or reply directly to your welcome email.</p>
           </div>
           <div class="rounded-2xl border border-zinc-200 bg-[#fafafa] p-6">
-            <div class="font-mono text-xs font-bold text-zinc-400">03</div>
-            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Live in 24 Hours</h3>
-            <p class="mt-2 text-xs leading-relaxed text-zinc-500">We register your .co.uk, attach HTTPS SSL hosting, publish your site and send your full source ZIP.</p>
+            <div class="font-mono text-xs font-bold text-emerald-700">STEP 03</div>
+            <h3 class="mt-3 font-display text-base font-bold text-zinc-950">Live Under Your .co.uk in 24h</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-500">We register your .co.uk domain, enable HTTPS SSL, wire Google Maps, Click-to-Call &amp; contact form, and email your live link + full ZIP.</p>
           </div>
         </div>
       </div>
@@ -302,7 +369,7 @@
             <p class="mt-2 text-sm text-zinc-600">Buy any single layout edition as a clean, ready-to-host <strong>.ZIP source package</strong> sent directly to your email right after payment.</p>
             <ul class="mt-5 space-y-2 text-xs text-zinc-600">
               <li>✓ 1 exclusive layout edition (<code class="text-zinc-900">index.html</code> + assets)</li>
-              <li>✓ Instant automated ZIP delivery after £15 Revolut payment</li>
+              <li>✓ Instant automated ZIP delivery after £15 Stripe payment</li>
               <li>✓ Lifetime ownership — host free on Netlify Drop or GitHub Pages</li>
               <li>✓ Simple 60-second upload guide included</li>
             </ul>
@@ -314,19 +381,24 @@
 
         <div class="rounded-3xl bg-zinc-950 p-8 text-white sm:p-10 flex flex-col justify-between gap-6">
           <div>
-            <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">Most Popular · Done-For-You</span>
+            <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">Most Popular · Done-For-You in 24h</span>
             <h3 class="mt-4 font-display text-3xl font-extrabold">£60 <span class="text-base font-medium text-zinc-400">/ year all-in</span></h3>
-            <p class="mt-2 text-sm text-zinc-400">Complete turnkey launch — we register your <strong class="text-white">.co.uk</strong> domain, set up hosting &amp; SSL, insert your logo &amp; details, and go live in 24 hours.</p>
+            <p class="mt-2 text-sm text-zinc-400">Complete turnkey launch — we register your <strong class="text-white">.co.uk</strong> domain, set up hosting &amp; SSL, insert your logo, Google Map &amp; Click-to-Call button, and go live in 24 hours.</p>
             <ul class="mt-5 space-y-2 text-xs text-zinc-300">
-              <li>✓ Everything in the £15 Layout ZIP package</li>
-              <li>✓ Free <code class="text-emerald-300">.co.uk</code> domain registration (1 year)</li>
-              <li>✓ High-speed global hosting + HTTPS SSL certificate</li>
-              <li>✓ Free logo integration, phone/email tailoring &amp; SEO setup</li>
+              <li>✓ Free <code class="text-emerald-300">.co.uk</code> domain registration (1 year) + HTTPS SSL</li>
+              <li>✓ High-speed global hosting — £0/month forever</li>
+              <li>✓ Click-to-Call mobile button, Google Map &amp; Contact Form wired</li>
+              <li>✓ Your logo, phone, UK postcode, trade services &amp; full ZIP included</li>
             </ul>
           </div>
-          <button onclick="setPlan('turnkey'); openDrawer()" class="w-full rounded-full bg-white py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
-            Order Turnkey .co.uk — £60/yr →
-          </button>
+          <div class="flex flex-col gap-2.5">
+            <button onclick="setPlan('turnkey'); openDrawer()" class="w-full rounded-full bg-white py-3.5 text-sm font-extrabold text-zinc-950 hover:bg-zinc-200 transition cursor-pointer">
+              Order Turnkey .co.uk — £60/yr →
+            </button>
+            <button onclick="openFreePreviewModal()" class="w-full rounded-full border border-white/25 py-3 text-xs font-bold text-white hover:bg-white/10 transition cursor-pointer">
+              Not sure yet? See a FREE Preview of Your Business first
+            </button>
+          </div>
         </div>
       </div>
       <!-- SEO Comparison Table (Featured Snippet Magnet: Entiu vs Wix vs UK Agency) -->
@@ -423,6 +495,62 @@
       <span>Contact: <a href="mailto:agentaiuk90@gmail.com" class="font-semibold text-zinc-800 hover:underline">agentaiuk90@gmail.com</a></span>
     </div>
   </footer>
+
+  <!-- Instant Free Live Preview Modal ("Show First, Sell Second") -->
+  <div id="freePreviewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
+    <div class="w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-800">100% Free · Zero Obligation</span>
+          <h3 class="mt-2 font-display text-xl font-extrabold text-zinc-950">See Your Business Website Live</h3>
+          <p class="mt-1 text-xs text-zinc-500">Enter your details below and we'll generate a real interactive preview for your exact UK trade in 3 seconds.</p>
+        </div>
+        <button onclick="closeFreePreviewModal()" class="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 cursor-pointer">✕</button>
+      </div>
+      <form onsubmit="launchFreePreview(event)" class="mt-5 space-y-3">
+        <div>
+          <label class="text-[11px] font-bold text-zinc-700">Your Business Name *</label>
+          <input id="fpBiz" required type="text" placeholder="e.g. Poplar Grove Garage" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">Your UK Trade *</label>
+            <select id="fpTrade" class="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none">
+              <option value="mechanic">Garage / Mobile Mechanic</option>
+              <option value="plumber">Plumber &amp; Heating</option>
+              <option value="electrician">Electrician</option>
+              <option value="builder">Builder &amp; Extensions</option>
+              <option value="roofer">Roofer</option>
+              <option value="manvan">Man &amp; Van / Removals</option>
+              <option value="landscaper">Landscaper &amp; Garden</option>
+              <option value="locksmith">Locksmith</option>
+              <option value="cleaning">Cleaning Services</option>
+              <option value="carpenter">Carpenter &amp; Joiner</option>
+              <option value="painter">Painter &amp; Decorator</option>
+              <option value="handyman">Handyman</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">UK Town / City *</label>
+            <input id="fpCity" required type="text" placeholder="e.g. Manchester" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">Phone (shown on site)</label>
+            <input id="fpPhone" type="text" placeholder="07700 900123" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-zinc-700">Email (optional)</label>
+            <input id="fpEmail" type="email" placeholder="you@gmail.com" class="mt-1 w-full rounded-xl border border-zinc-200 px-3.5 py-2.5 text-xs text-zinc-950 focus:border-zinc-950 focus:outline-none" />
+          </div>
+        </div>
+        <button type="submit" class="mt-2 w-full rounded-full bg-zinc-950 py-3.5 text-sm font-extrabold text-white hover:bg-zinc-800 transition cursor-pointer">
+          Build My Free Live Preview →
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Clean Editorial Slide-over Shopping Cart + Full Client Website Brief Builder -->
   <div id="drawerBackdrop" onclick="closeDrawer()" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-xs"></div>
@@ -745,6 +873,38 @@
         `(Attach your logo file to this email if you'd like us to include it.)`
       );
       window.location.href = `mailto:agentaiuk90@gmail.com?subject=${subj}&body=${body}`;
+    }
+
+    function openFreePreviewModal() {
+      const m = document.getElementById("freePreviewModal");
+      m.classList.remove("hidden");
+      m.classList.add("flex");
+    }
+    function closeFreePreviewModal() {
+      const m = document.getElementById("freePreviewModal");
+      m.classList.add("hidden");
+      m.classList.remove("flex");
+    }
+    function launchFreePreview(e) {
+      e.preventDefault();
+      const biz = document.getElementById("fpBiz").value.trim();
+      const trade = document.getElementById("fpTrade").value;
+      const city = document.getElementById("fpCity").value.trim();
+      const phone = document.getElementById("fpPhone").value.trim();
+      const email = document.getElementById("fpEmail").value.trim();
+      if (email || phone) {
+        fetch("https://formsubmit.co/ajax/agentaiuk90@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            _subject: `FREE Live Preview Request — ${biz} (${city})`,
+            business: biz, trade, city, phone, email
+          })
+        }).catch(() => {});
+      }
+      const q = new URLSearchParams({ trade, biz, city });
+      if (phone) q.set("phone", phone);
+      window.location.href = `preview.html?${q.toString()}`;
     }
 
     init();
